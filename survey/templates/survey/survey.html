@@ -1,0 +1,501 @@
+{% extends "basetemp/indexbase.html" %}
+{% load static %}
+{% block content %}
+<style>
+.sec {
+	width: 200px;
+}
+.ch {
+	font-size: 20px;
+	color: green;
+}
+
+.pending {
+	color: red;
+}
+</style>	
+
+<!-- start of forced modal -->
+
+    {% for items in check_user %}
+		{% if items.data_privacy == 0 %}
+            <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+          <!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Holy guacamole!</strong> It looks like you have the default password. Update it
+
+            <a href="/schema/edit_password/{{user}}" target="popup" class="cust" onclick="window.open('/schema/edit_password/{{user}}','popup','width=600,height=400'); return false;">here!</a>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div> -->
+          <script>
+          $(document).ready(function(){
+            $("#passp").modal('show');
+            $('#passp').on('hide.bs.modal', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+            });
+          });
+        </script>
+
+        <div id="passp" class="modal fade">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title">Data Privacy Act</h5>
+                      <!-- <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                  </div>
+                  <div class="modal-body">
+                  <p class="text-justify">The purpose of this survey is to gather information related to information technology infrastructure and assess the pace at which innovations in technology occur in various offices in the Department of Transportation (DOTr). Information about IT infrastructure and supporting IT processes needs to be gathered as essential background to a more detailed risk evaluation.</p><br>
+
+                  <p class="text-justify">
+                  	This system is designed to facilitate the collection of information necessary for understanding the IT infrastructure in various offices in the Department of Transportation (DOTr). The data will be used for documentation and as a basis in the decision-making process. Your information will only be disclosed to authorized parties inside the organization and will not be disclosed to any third party organization without your permission.
+                  	<br><br>
+                  	By continuing in answering the form means you agree and understand the statement above.  
+
+                  	<form method="POST">
+                  		{% csrf_token %}
+
+                  		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="d" class="form-check-input" required> I Agree
+                  		<br><br>
+                  		<input type="submit" name="ia" class="btn btn-info" value="Proceed">
+                  		<a href="/logout/" class="btn btn-secondary">Logout</a>
+                  	</form>	
+                  </p>
+
+                  
+                 
+                  </div>
+              </div>
+          </div>
+      </div>
+
+		{% endif %}
+		
+		{% empty %}
+
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+          <!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Holy guacamole!</strong> It looks like you have the default password. Update it
+
+            <a href="/schema/edit_password/{{user}}" target="popup" class="cust" onclick="window.open('/schema/edit_password/{{user}}','popup','width=600,height=400'); return false;">here!</a>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div> -->
+          <script>
+          $(document).ready(function(){
+            $("#passp").modal('show');
+            $('#passp').on('hide.bs.modal', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+            });
+          });
+        </script>
+
+        <div id="passp" class="modal fade">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title">Data Privacy Act</h5>
+                      <!-- <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                  </div>
+                  <div class="modal-body">
+                  <p class="text-justify">The purpose of this survey is to gather information related to information technology infrastructure and assess the pace at which innovations in technology occur in various offices in the Department of Transportation (DOTr). Information about IT infrastructure and supporting IT processes needs to be gathered as essential background to a more detailed risk evaluation.</p><br>
+
+                  <p class="text-justify">
+                  	This system is designed to facilitate the collection of information necessary for understanding the IT infrastructure in various offices in the Department of Transportation (DOTr). The data will be used for documentation and as a basis in the decision-making process. Your information will only be disclosed to authorized parties inside the organization and will not be disclosed to any third party organization without your permission.
+                  	<br><br>
+                  	By continuing in answering the form means you agree and understand the statement above.  
+
+                  	<form method="POST">
+                  		{% csrf_token %}
+
+                  		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="d" class="form-check-input" required> I Agree
+                  		<br><br>
+                  		<input type="submit" name="ia" class="btn btn-info" value="Proceed">
+                  		<a href="/logout/" class="btn btn-secondary">Logout</a>
+                  	</form>	
+                  </p>
+
+                  
+                 
+                  </div>
+              </div>
+          </div>
+      </div>
+    {% endfor %}
+<!-- end of forced modal -->
+
+<h1 class="mt-4">ICT Needs Assessment</h1>
+                    <p class="text-justify">The purpose of this survey is to gather information related to information technology infrastructure and assess the pace at which innovations in technology occur in various offices in the Department of Transportation (DOTr). Information about IT infrastructure and supporting IT processes needs to be gathered as essential background to a more detailed risk evaluation.</p>
+                    
+<div class="container">
+	<div class="row">
+		<div class="col-lg-4 col-lg-4 col-xs-4">
+			<center>
+				<a href="#" data-toggle="modal" data-target="#privacy"><img src="{% static 'basetemp/sec0.png' %}" class="img-responsive sec"></a>
+				<p>Data Privacy <i class="fa fa-check-circle ch" aria-hidden="true"></i></p>
+			</center>
+
+			<!-- Data Privacy Modal -->
+				<div class="modal fade" id="privacy" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">Data Privacy</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				        <p class="text-justify">This document is designed to facilitate collection of information necessary for understanding the IT infrastructure in various offices in the Department of Transportation (DOTr). The data will be used for documentation and as a basis in the decision-making process. Your information will only be disclosed to authorized parties inside the organization and will not be disclosed to any third party organization without your permission.</p>
+
+				        {% for items in check_user %}
+						{% if items.privacy_section == 0 %}
+							Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+						{% else %}
+							Done <i class="fa fa-check-circle ch" aria-hidden="true"></i>
+						{% endif %}
+
+						{% empty %}
+							Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+						{% endfor %}
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				        
+				      </div>
+				    </div>
+				  </div>
+				</div>	
+		</div>
+
+		<div class="col-lg-4 col-lg-4 col-xs-4">
+			<center>
+				<a href="#" data-toggle="modal" data-target="#demographics"><img src="{% static 'basetemp/sec1.png' %}" class="img-responsive sec"></a>
+				<p>Demographics 
+					{% for items in check_user %}
+						{% if items.demographics_section == 0 %}
+							<i class="fa fa-bookmark pending" aria-hidden="true"></i>
+						{% else %}
+							<i class="fa fa-check-circle ch" aria-hidden="true"></i>
+						{% endif %}
+
+						{% empty %}
+							<i class="fa fa-bookmark pending" aria-hidden="true"></i>
+					{% endfor %}
+
+				</p>
+
+					
+			</center>
+
+			<!-- Demographics Modal -->
+				<div class="modal fade" id="demographics" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">Demographics</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				        <p class="text-justify">To allow the MIS to describe, and better analyze the data in order to come up with the best decision/s relevant to the needs of each service and personnel.</p>
+
+				        <br>
+
+				        {% for items in check_user %}
+						{% if items.demographics_section == 0 %}
+							Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+						{% else %}
+							Done <i class="fa fa-check-circle ch" aria-hidden="true"></i>
+						{% endif %}
+
+						{% empty %}
+							Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+					{% endfor %}
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				        {% for i in check_user %}
+				        <a href="/survey/demographics/{{i.survey_id}}" class="btn btn-info">Proceed</a>
+				        {% endfor %}
+				      </div>
+				    </div>
+				  </div>
+				</div>	
+		</div>
+
+		<div class="col-lg-4 col-lg-4 col-xs-4">
+			<center>
+				<a href="#" data-toggle="modal" data-target="#hardware"><img src="{% static 'basetemp/sec2.png' %}" class="img-responsive sec"></a>
+				<p>Hardware Products
+					{% for items in check_user %}
+						{% if items.hardware_section == 0 %}
+							<i class="fa fa-bookmark pending" aria-hidden="true"></i>
+						{% else %}
+							<i class="fa fa-check-circle ch" aria-hidden="true"></i>
+						{% endif %}
+
+						{% empty %}
+							<i class="fa fa-bookmark pending" aria-hidden="true"></i>
+					{% endfor %}
+				</p>
+			</center>
+
+			<!-- Hardware Modal -->
+				<div class="modal fade" id="hardware" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">Currently Installed Hardware Products</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				        <p class="text-justify">Hardware refers to the external and internal devices and equipment that enable you to perform major functions such as input, output, storage, communication, processing, and more.</p>
+				        <br>
+
+				        {% for items in check_user %}
+						{% if items.hardware_section == 0 %}
+							Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+						{% else %}
+							Done <i class="fa fa-check-circle ch" aria-hidden="true"></i>
+						{% endif %}
+
+						{% empty %}
+							Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+						{% endfor %}
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				        <a href="" class="btn btn-info">Proceed</a>
+				      </div>
+				    </div>
+				  </div>
+				</div>	
+		</div>
+	</div>
+	<br>
+	<div class="row">
+
+		<div class="col-lg-3 col-lg-3 col-xs-3">
+			<center>
+				<a href="#" data-toggle="modal" data-target="#software"><img src="{% static 'basetemp/sec3.png' %}" class="img-responsive sec"></a>
+				<p>Software Products
+
+				{% for items in check_user %}
+						{% if items.software_section == 0 %}
+							<i class="fa fa-bookmark pending" aria-hidden="true"></i>
+						{% else %}
+							<i class="fa fa-check-circle ch" aria-hidden="true"></i>
+						{% endif %}
+
+						{% empty %}
+							<i class="fa fa-bookmark pending" aria-hidden="true"></i>
+					{% endfor %}
+				</p>
+			</center>
+
+			<!-- Software Modal -->
+				<div class="modal fade" id="software" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">Currently Installed Software Products</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				        <p class="text-justify">Software is a generic term used to refer to applications, scripts and programs that run on a device used for productivity purposes in the office/division.</p>
+				        <br>
+
+				        {% for items in check_user %}
+						{% if items.software_section == 0 %}
+							Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+						{% else %}
+							Done <i class="fa fa-check-circle ch" aria-hidden="true"></i>
+						{% endif %}
+
+						{% empty %}
+							Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+						{% endfor %}
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				        <a href="" class="btn btn-info">Proceed</a>
+				      </div>
+				    </div>
+				  </div>
+				</div>	
+		</div>
+
+		<div class="col-lg-3 col-lg-3 col-xs-3">
+			<center>
+				<a href="#" data-toggle="modal" data-target="#storage"><img src="{% static 'basetemp/sec4.png' %}" class="img-responsive sec"></a>
+				<p>Storage Products
+					{% for items in check_user %}
+						{% if items.storage_section == 0 %}
+							<i class="fa fa-bookmark pending" aria-hidden="true"></i>
+						{% else %}
+							<i class="fa fa-check-circle ch" aria-hidden="true"></i>
+						{% endif %}
+
+						{% empty %}
+							<i class="fa fa-bookmark pending" aria-hidden="true"></i>
+					{% endfor %}
+				</p>
+			</center>
+
+			<!-- storage Modal -->
+				<div class="modal fade" id="storage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">Currently Used Storage Products</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				        <p class="text-justify">Storage is a physical device or a virtual product used to store digital data and applications which may be in the form of images, video, audio, etc.</p>
+
+				        <br>
+
+				        {% for items in check_user %}
+						{% if items.storage_section == 0 %}
+							Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+						{% else %}
+							Done <i class="fa fa-check-circle ch" aria-hidden="true"></i>
+						{% endif %}
+
+						{% empty %}
+							Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+						{% endfor %}
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				        <a href="" class="btn btn-info">Proceed</a>
+				      </div>
+				    </div>
+				  </div>
+				</div>	
+		</div>
+
+		<div class="col-lg-3 col-lg-3 col-xs-3">
+			<center>
+				<a href="#" data-toggle="modal" data-target="#competencies"><img src="{% static 'basetemp/sec5.png' %}" class="img-responsive sec"></a>
+				<p>ICT Competencies 
+					{% for items in check_user %}
+						{% if items.competencies_section == 0 %}
+							<i class="fa fa-bookmark pending" aria-hidden="true"></i>
+						{% else %}
+							<i class="fa fa-check-circle ch" aria-hidden="true"></i>
+						{% endif %}
+
+						{% empty %}
+							<i class="fa fa-bookmark pending" aria-hidden="true"></i>
+					{% endfor %}
+				</p>
+			</center>
+
+			<!-- competencies Modal -->
+				<div class="modal fade" id="competencies" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">ICT Competencies</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				        <p class="text-justify">Competencies refer  to the practical or theoretical understanding of a subject.</p>
+				        <br>
+
+				        {% for items in check_user %}
+						{% if items.competencies_section == 0 %}
+							Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+						{% else %}
+							Done <i class="fa fa-check-circle ch" aria-hidden="true"></i>
+						{% endif %}
+
+						{% empty %}
+							Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+						{% endfor %}
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				        <a href="" class="btn btn-info">Proceed</a>
+				      </div>
+				    </div>
+				  </div>
+				</div>	
+		</div>
+
+		<div class="col-lg-3 col-lg-3 col-xs-3">
+			<center>
+				<a href="#" data-toggle="modal" data-target="#trainings"><img src="{% static 'basetemp/sec6.png' %}" class="img-responsive sec"></a>
+				<p>ICT Training Programs 
+					{% for items in check_user %}
+						{% if items.trainings_section == 0 %}
+							<i class="fa fa-bookmark pending" aria-hidden="true"></i>
+						{% else %}
+							<i class="fa fa-check-circle ch" aria-hidden="true"></i>
+						{% endif %}
+
+						{% empty %}
+							<i class="fa fa-bookmark pending" aria-hidden="true"></i>
+					{% endfor %}
+				</p>
+			</center>
+
+			<!-- training Modal -->
+				<div class="modal fade" id="trainings" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">ICT Training Programs</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				        <p class="text-justify">Training is a planned sequence and combination of activities designed to equip employees with knowledge and skills to become better professionals.</p>
+				        <br>
+
+				        {% for items in check_user %}
+						{% if items.trainings_section == 0 %}
+							Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+						{% else %}
+							Done <i class="fa fa-check-circle ch" aria-hidden="true"></i>
+						{% endif %}
+
+						{% empty %}
+							Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+						{% endfor %}
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				        <a href="" class="btn btn-info">Proceed</a>
+				      </div>
+				    </div>
+				  </div>
+				</div>	
+		</div>
+	</div>
+
+	
+</div>
+
+{% endblock content %}
