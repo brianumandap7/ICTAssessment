@@ -69,6 +69,17 @@ class demographics(UpdateView):
 
 		return context
 
+class profile(View):
+	template_name = 'survey/profile.html'
+
+
+	def get(self, request, *args, **kwargs):
+		query = {
+			'check_user': Survey.objects.filter(user=request.user),
+		}
+
+		return render(request, self.template_name, query)
+
 
 
 

@@ -1,0 +1,72 @@
+{% extends "basetemp/indexbase.html" %}
+{% load static %}
+{% block content %}
+<style>
+	.slogo {
+		width: 250px;
+		
+	}
+
+	.slogo1 {
+		width: 200px;
+	}
+
+	.sdiv {
+		margin-top: 50px;
+	}
+
+	.odiv {
+		margin-top: 80px;
+	}
+</style>	
+<div class="container-fluid sdiv">
+
+	<div class="row">
+		<div class="col-lg-6 col-md-6 col-xs-12">
+		<!-- start of office -->
+		<div class="row odiv">
+			<div class="col-lg-12 col-md-12 col-xs-12">
+				<center><img src="{% static 'basetemp/office.png' %}" class="img-responsive slogo rounded"><br><h5>{% for items in check_user %}{{items.office_division_name}}{% endfor %}</h5></center>
+			</div>
+		</div>
+
+		<br><br>
+
+		<!-- end of office -->
+		</div>
+
+	<div class="col-lg-6 col-md-6 col-xs-12">
+	<!-- start of down -->
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-xs-6">
+				<center><img src="{% static 'basetemp/permanent.png' %}" class="img-responsive slogo1"><br><h5>{% for items in check_user %}{{items.permanent}}{% endfor %}</h5></center>
+			</div>
+
+			<div class="col-lg-6 col-md-6 col-xs-6">
+				<center><img src="{% static 'basetemp/presidential.png' %}" class="img-responsive slogo1"><br><h5>{% for items in check_user %}{{items.presidential_appointee}}{% endfor %}</h5></center>
+			</div>
+		</div>
+		<br>
+		<br>
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-xs-6">
+				<center><img src="{% static 'basetemp/coterminus.png' %}" class="img-responsive slogo1"><br><h5>{% for items in check_user %}{{items.coterminus}}{% endfor %}</h5></center>
+			</div>
+
+			<div class="col-lg-6 col-md-6 col-xs-6">
+				<center><img src="{% static 'basetemp/jo.png' %}" class="img-responsive slogo1"><br><h5>{% for items in check_user %}{{items.jo_cos}}{% endfor %}</h5></center>
+			</div>
+		</div>
+		<br><br>
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-xs-12">
+				<center><img src="{% static 'basetemp/casual.png' %}" class="img-responsive slogo1"><br><h5>{% for items in check_user %}{{items.casual_temporary}}{% endfor %}</h5></center>
+			</div>
+		</div>
+
+		<!-- end of down -->
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

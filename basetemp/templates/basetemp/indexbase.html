@@ -75,11 +75,11 @@
         <div class="d-flex justify-content" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light"><img class="dotrlogo1" src="{% static 'basetemp/dotr_logo.png' %}" alt="AdminLTELogo" height="160" width="160"><br>ICT Needs Assessment</div>
+                <div class="sidebar-heading border-bottom bg-light"><a href="/"><img class="dotrlogo1" src="{% static 'basetemp/dotr_logo.png' %}" alt="AdminLTELogo" height="160" width="160"></a><br>ICT Needs Assessment</div>
                 <div class="list-group list-group-flush">
                     <br>
                     <a class="list-group-item list-group-item-action list-group-item p-3" href="/"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home</a>
-                    <a class="list-group-item list-group-item-action list-group-item p-3" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;Profile</a>
+                    <a class="list-group-item list-group-item-action list-group-item p-3" href="/survey/profile"><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;Profile</a>
                     <br>
                     <a class="list-group-item list-group-item-action list-group-item p-3" href = "#" data-toggle="modal" data-target="#lmodal"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Logout</a>
 
@@ -117,7 +117,7 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" style="color:white;" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.get_full_name}}</a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#!">View Profile</a>
+                                        <a class="dropdown-item" href="/survey/profile">View Profile</a>
                                         <a class="dropdown-item" href = "#" data-toggle="modal" data-target="#lmodal">Logout</a>
                                         
                                     </div>
