@@ -30,7 +30,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from .models import Survey
 
-from .forms import demographicsform
+from .forms import demographicsform, hardwareform
 
 from django.urls import reverse_lazy
 # Create your views here.
@@ -79,6 +79,28 @@ class profile(View):
 		}
 
 		return render(request, self.template_name, query)
+
+class hardware(UpdateView):
+	model = Survey
+	form_class = hardwareform
+	template_name = 'survey/hardware.html'
+	success_url = reverse_lazy('survey:dash')
+
+	def get_context_data(self, **kwargs):
+		context = super(hardware, self).get_context_data(**kwargs)
+		context['title'] = 'Hardware'
+		context['qt'] = 'Desktop Computers:'
+		context['qs'] = 'Identify the number of DOTr-issued Desktop Computers in your division/office:'
+		context['q1'] = 'Please indicate the number of Desktop Computers per brand:'
+
+		context['qt2'] = 'Laptop Computers:'
+		context['qs2'] = 'Identify the number of DOTr-issued Laptop Computers in your division/office:'
+		context['q2'] = 'Please indicate the number of Laptop Computers per brand:'
+
+		context['qt3'] = 'Tablets'
+		context['qs3'] = 'Identify the number of DOTr-issued Laptop Computers in your division/office:'
+
+		return context
 
 
 

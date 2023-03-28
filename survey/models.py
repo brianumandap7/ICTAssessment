@@ -27,6 +27,11 @@ class Survey(models.Model):
     mouse_installed = models.IntegerField(blank=True, null=True)
     keyboardesktop_hp_installed = models.IntegerField(blank=True, null=True)
 
+    laptop_acer_installed = models.IntegerField(blank=True, null=True)
+    laptop_hp_installed = models.IntegerField(blank=True, null=True)
+    laptop_lenovo_installed = models.IntegerField(blank=True, null=True)
+    laptop_samsung_installed = models.IntegerField(blank=True, null=True)
+
     privacy_section = models.IntegerField(blank=True, null=True, default = 0)
     demographics_section = models.IntegerField(blank=True, null=True, default = 0)
     hardware_section = models.IntegerField(blank=True, null=True, default = 0)

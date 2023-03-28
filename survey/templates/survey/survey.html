@@ -290,7 +290,9 @@
 				      </div>
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				        <a href="" class="btn btn-info">Proceed</a>
+				        {% for i in check_user %}
+				        <a href="/survey/hardware/{{i.survey_id}}" class="btn btn-info">Proceed</a>
+				        {% endfor %}
 				      </div>
 				    </div>
 				  </div>

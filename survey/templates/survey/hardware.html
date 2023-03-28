@@ -1,0 +1,127 @@
+{% extends "basetemp/indexbase.html" %}
+{% load static %}
+{% block content %}
+<style>
+	.fieldsize {
+		width: 150%;
+	}
+
+	.formdiv {
+		margin-top: 20px;
+	}
+
+	.dbtn {
+		width: 150px;
+	}
+
+	span {
+		color: red;
+	}
+	table {
+		margin-bottom: 20px;
+	}
+</style>
+<h3 class="mt-4">{{title}}</h3>
+<div class="container-fluid formdiv">
+	<form method="post">
+		{% csrf_token %}
+		<b>{{qt}}</b><br>
+		{{qs}}<br><br>
+		1. &nbsp;<span>*</span>{{q1}}<br>
+
+		<table>
+			<tr>
+				<td>
+					{{ form.desktop_acer_installed.label_tag }} 
+				</td>
+
+				<td>
+					{{ form.desktop_acer_installed }}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					{{ form.desktop_hp_installed.label_tag }} 
+				</td>
+
+				<td>
+					{{ form.desktop_hp_installed }}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					{{ form.desktop_lenovo_installed.label_tag }} 
+				</td>
+
+				<td>
+					{{ form.desktop_lenovo_installed }}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					{{ form.desktop_samsung_installed.label_tag }} 
+				</td>
+
+				<td>
+					{{ form.desktop_samsung_installed }}
+
+					{{ form.hardware_section }}
+				</td>
+			</tr>
+		</table>
+
+		<b>{{qt2}}</b><br>
+		{{qs2}}<br><br>
+		2. &nbsp;<span>*</span>{{q2}}<br>
+		
+		<table>
+			<tr>
+				<td>
+					{{ form.laptop_acer_installed.label_tag }} 
+				</td>
+
+				<td>
+					{{ form.laptop_acer_installed }}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					{{ form.laptop_hp_installed.label_tag }} 
+				</td>
+
+				<td>
+					{{ form.laptop_hp_installed }}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					{{ form.laptop_lenovo_installed.label_tag }} 
+				</td>
+
+				<td>
+					{{ form.laptop_lenovo_installed }}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					{{ form.laptop_samsung_installed.label_tag }} 
+				</td>
+
+				<td>
+					{{ form.laptop_samsung_installed }}
+				</td>
+			</tr>
+		</table>
+
+		<button type="submit" class="btn btn-primary dbtn">Update</button>
+		<a href="/survey/" class="btn btn-danger dbtn">Go back</a>
+	</form>	
+		
+</div>
+{% endblock content %}
