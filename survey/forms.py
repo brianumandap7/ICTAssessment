@@ -4,7 +4,7 @@ from .models import Survey, office_division
 class demographicsform(forms.ModelForm):
 	class Meta:
 		model = Survey
-		fields = ['office_division_name','presidential_appointee', 'permanent', 'coterminus', 'jo_cos', 'casual_temporary', 'demographics_section']
+		fields = ['office_division_name','presidential_appointee', 'permanent', 'coterminus', 'jo_cos', 'casual_temporary', 'male', 'female', 'age_20_24', 'age_25_34', 'age_35_44', 'age_45_54', 'age_55_above', 'demographics_section']
 		widgets = {
 			'office_division_name': forms.Select(attrs={'class': 'form-control fieldsize'}),
 			'presidential_appointee': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
@@ -12,6 +12,13 @@ class demographicsform(forms.ModelForm):
 			'coterminus': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
 			'jo_cos': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
 			'casual_temporary': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'male': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'female': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'age_20_24': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'age_25_34': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'age_35_44': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'age_45_54': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'age_55_above': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
 			'demographics_section': forms.HiddenInput(attrs={'class': 'form-control fieldsize'}),
 		}
 
@@ -20,8 +27,15 @@ class demographicsform(forms.ModelForm):
 			'presidential_appointee': 'Number of Presidential Appointees',
 			'permanent': 'Number of Permanent Employees',
 			'coterminus': 'Number of Coterminous Employees',
-			'jo_cos': 'Number of Job Order/Contract of Service Employees',
+			'jo_cos': 'Number of JO/COS Employees',
 			'casual_temporary': 'Number of Casual/Temporary Employees',
+			'male': 'Number of Male Personnel',
+			'female': 'Number of Female Personnel',
+			'age_20_24': 'Age 20-24',
+			'age_25_34': 'Age 25-34',
+			'age_35_44': 'Age 35-44',
+			'age_45_54': 'Age 45-54',
+			'age_55_above': 'Age 55 and Above',
 		}
 
 	def __init__(self,*args, **kwargs):
@@ -35,6 +49,13 @@ class demographicsform(forms.ModelForm):
 		self.fields['coterminus'].required = True
 		self.fields['jo_cos'].required = True
 		self.fields['casual_temporary'].required = True
+		self.fields['male'].required = True
+		self.fields['female'].required = True
+		self.fields['age_20_24'].required = True
+		self.fields['age_25_34'].required = True
+		self.fields['age_35_44'].required = True
+		self.fields['age_45_54'].required = True
+		self.fields['age_55_above'].required = True
 		self.fields['demographics_section'].required = True
 
 class hardwareform(forms.ModelForm):

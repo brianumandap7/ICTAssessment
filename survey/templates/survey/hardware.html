@@ -20,14 +20,18 @@
 	table {
 		margin-bottom: 20px;
 	}
+
+	form {
+		margin-bottom: 20px;
+	}
 </style>
 <h3 class="mt-4">{{title}}</h3>
 <div class="container-fluid formdiv">
 	<form method="post">
 		{% csrf_token %}
-		<b>{{qt}}</b><br>
-		{{qs}}<br><br>
-		1. &nbsp;<span>*</span>{{q1}}<br>
+		<b>{{uestion_title1}}</b><br>
+		{{question_specific1}}<br><br>
+		1. &nbsp;<span>*</span>{{question_1}}<br>
 
 		<table>
 			<tr>
@@ -73,9 +77,9 @@
 			</tr>
 		</table>
 
-		<b>{{qt2}}</b><br>
-		{{qs2}}<br><br>
-		2. &nbsp;<span>*</span>{{q2}}<br>
+		<b>{{question_title2}}</b><br>
+		{{question_specific2}}<br><br>
+		2. &nbsp;<span>*</span>{{question_2}}<br>
 		
 		<table>
 			<tr>
