@@ -29,6 +29,16 @@
 		border: none;
 	}
 
+	#scrollPercentage {
+	  position: fixed;
+	  top: 60px;
+	  right: 0;
+	  font-size: 16px;
+	  color: #000;
+	  background-color: #007BFF;
+	  padding: 10px;
+	  color: white;
+	}
 </style>
 <h3 class="mt-4">{{title}}</h3>
 <div class="container-fluid formdiv">
@@ -548,7 +558,25 @@
 		<a href="/survey/" class="btn btn-danger dbtn">Go back</a>
 
 	</form>	
-		
+	<div id="scrollPercentage"></div>
+
 
 </div>
+
+<script>
+	// Get the container element
+	var scrollPercentageElement = document.getElementById("scrollPercentage");
+
+	// Add a scroll event listener to the window
+	window.addEventListener("scroll", function() {
+	  // Calculate the percentage of the webpage scrolled
+	  var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+	  var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+	  var scrolledPercentage = (scrollTop / (scrollHeight - window.innerHeight)) * 100;
+
+	  // Update the content of the container element with the calculated percentage
+	  scrollPercentageElement.textContent = "Page Completion: " + Math.round(scrolledPercentage) + "%";
+	});
+
+</script>
 {% endblock content %}
