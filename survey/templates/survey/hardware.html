@@ -3,7 +3,7 @@
 {% block content %}
 <style>
 	.fieldsize {
-		width: 150%;
+		width: 50%;
 	}
 
 	.formdiv {
@@ -25,18 +25,21 @@
 	form {
 		margin-bottom: 20px;
 	}
+	#qtbl td {
+		border: none;
+	}
 
 </style>
 <h3 class="mt-4">{{title}}</h3>
 <div class="container-fluid formdiv">
-	<form method="post">
+	<form method="post" class="form">
 		{% csrf_token %}
 
-		<b>{{question_title1}}</b><br>
-		{{question_specific1}}<br><br>
-		1. &nbsp;<span>*</span>{{question_1}}<br>
+		<b>Desktop Computers:</b><br>
+		Identify the number of <b>DOTr-issued Desktop Computers</b> in your division/office:<br><br>
+		1. &nbsp;<span>*</span>Please indicate the number of Desktop Computers per brand:<br>
 
-		<table>
+		<table class="table" id = "qtbl">
 			<tr>
 				<td>
 					{{ form.desktop_acer_installed.label_tag }} 
@@ -79,10 +82,21 @@
 				</td>
 			</tr>
 		</table>
-		<b>{{question_title2}}</b><br>
-		{{question_specific2}}<br><br>
-		2. &nbsp;<span>*</span>{{question_2}}<br>
-		<table>
+
+		2. <span>*</span>Please indicate the number of <b>personal-owned desktop computers</b> used in your division/office:
+
+		<table class="table" id = "qtbl">
+			<tr>
+				<td>
+					{{form.desktop_personal}}
+				</td>
+			</tr>
+		</table>
+
+		<b>Laptop Computers:</b><br>
+		Identify the number of <b>DOTr-issued Laptop Computers</b> in your division/office:<br><br>
+		3. &nbsp;<span>*</span>Please indicate the number of Laptop Computers per brand:<br>
+		<table class="table" id = "qtbl">
 			<tr>
 				<td>
 					{{ form.laptop_acer_installed.label_tag }} 
@@ -124,9 +138,417 @@
 			</tr>
 		</table>
 
+		4. <span>*</span>Please indicate the number of <b>personal-owned laptop</b> computers used in your division/office:
+
+		<table class="table" id = "qtbl">
+			<tr>
+				<td>
+					{{form.laptop_personal}}
+				</td>
+			</tr>
+		</table>
+
+		<b>Tablets: </b><br>
+		5. <span>*</span>Identify the number of <b>DOTr-issued tablets</b> in your division/office: 
+
+		<table class="table" id = "qtbl">
+			<tr>
+				<td>
+					{{form.tablet_office}}
+				</td>
+			</tr>
+		</table>
+
+		6. <span>*</span>Identify the number of <b>personal-owned tablets</b> in your division/office: 
+
+		<table class="table" id = "qtbl">
+			<tr>
+				<td>
+					{{form.tablet_personal}}
+				</td>
+			</tr>
+		</table>
+
+		<b>Mouse: </b><br>
+		7. <span>*</span>Identify the number of <b>DOTr-issued mouse</b> in your division/office: 
+
+		<table class="table" id = "qtbl">
+			<tr>
+				<td>
+					{{form.mouse_office}}
+				</td>
+			</tr>
+		</table>
+
+		8. <span>*</span>Identify the number of <b>personal-owned mouse</b> in your division/office: 
+
+		<table class="table" id = "qtbl">
+			<tr>
+				<td>
+					{{form.mouse_personal}}
+				</td>
+			</tr>
+		</table>
+
+		<b>Keyboards: </b><br>
+		9. <span>*</span>Identify the number of <b>DOTr-issued keyboards</b> in your division/office: 
+
+		<table class="table" id = "qtbl">
+			<tr>
+				<td>
+					{{form.keyboard_office}}
+				</td>
+			</tr>
+		</table>
+
+		10. <span>*</span>Identify the number of <b>personal-owned keyboards</b> in your division/office: 
+
+		<table class="table" id = "qtbl">
+			<tr>
+				<td>
+					{{form.keyboard_personal}}
+				</td>
+			</tr>
+		</table>
+
+		<b>Monitors: </b><br>
+		11. <span>*</span>Identify the number of <b>DOTr-issued monitors </b>in your division/office: 
+
+		<table class="table" id = "qtbl">
+			<tr>
+				<td>
+					{{form.monitor_office}}
+				</td>
+			</tr>
+		</table>
+
+		12. <span>*</span>Identify the number of <b>personal-owned monitors </b>in your division/office: 
+
+		<table class="table" id = "qtbl">
+			<tr>
+				<td>
+					{{form.monitor_personal}}
+				</td>
+			</tr>
+		</table>
+
+		<b>Shared Devices: </b><br>
+		13. <span>*</span>Identify and indicate the number of <b>DOTr-issued shared devices</b> in your office.
+
+		<table class="table" id = "qtbl">
+			<tr>
+				<td>
+					Ordinary Printer:
+				</td>
+				<td>
+					{{form.ordinaryprinter_shared}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Colored Printer:
+				</td>
+				<td>
+					{{form.coloredprinter_shared}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Scanner:
+				</td>
+				<td>
+					{{form.scanner_shared}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Speaker:
+				</td>
+				<td>
+					{{form.speaker_shared}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Television/Big Monitor:
+				</td>
+				<td>
+					{{form.tv_shared}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Projector:
+				</td>
+				<td>
+					{{form.projector_shared}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Camera
+				</td>
+				<td>
+					{{form.camera_shared}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Microphone
+				</td>
+				<td>
+					{{form.microphone_shared}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Photo-copier:
+				</td>
+				<td>
+					{{form.photocopier_shared}}
+				</td>
+			</tr>
+		</table>
+
+		14. <span>*</span>Identify and indicate the number of <b>personal-owned shared devices </b>in your office.
+
+		<table class="table" id = "qtbl">
+			<tr>
+				<td>
+					Ordinary Printer:
+				</td>
+				<td>
+					{{form.ordinaryprinter_shared_personal}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Colored Printer:
+				</td>
+				<td>
+					{{form.coloredprinter_shared_personal}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Scanner:
+				</td>
+				<td>
+					{{form.scanner_shared_personal}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Speaker:
+				</td>
+				<td>
+					{{form.speaker_shared_personal}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Television/Big Monitor:
+				</td>
+				<td>
+					{{form.tv_shared_personal}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Projector:
+				</td>
+				<td>
+					{{form.projector_shared_personal}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Camera
+				</td>
+				<td>
+					{{form.camera_shared_personal}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Microphone
+				</td>
+				<td>
+					{{form.microphone_shared_personal}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Photo-copier:
+				</td>
+				<td>
+					{{form.photocopier_shared_personal}}
+				</td>
+			</tr>
+		</table>
+
+		15. Identify the type of equipment/s <b>you need</b> in your office/division and indicate the number of preferred units per equipment:
+
+		<table class="table" id = "qtbl">
+			<tr>
+				<td>
+					Desktop Computer:
+				</td>
+				<td>
+					{{form.desktop_need}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Laptop Computer:
+				</td>
+				<td>
+					{{form.laptop_need}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Tablet:
+				</td>
+				<td>
+					{{form.tablet_need}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Mouse:
+				</td>
+				<td>
+					{{form.mouse_need}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Keyboard:
+				</td>
+				<td>
+					{{form.keyboard_need}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Monitor
+				</td>
+				<td>
+					{{form.monitor_need}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Ordinary Printer:
+				</td>
+				<td>
+					{{form.ordinaryprinter_need}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Colored Printer:
+				</td>
+				<td>
+					{{form.coloredprinter_need}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Scanner:
+				</td>
+				<td>
+					{{form.scanner_need}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Speaker:
+				</td>
+				<td>
+					{{form.speaker_need}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Television/Big Monitor:
+				</td>
+				<td>
+					{{form.tv_need}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Projector:
+				</td>
+				<td>
+					{{form.projector_need}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Camera
+				</td>
+				<td>
+					{{form.camera_need}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Microphone
+				</td>
+				<td>
+					{{form.microphone_need}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Photo-copier:
+				</td>
+				<td>
+					{{form.photocopier_need}}
+				</td>
+			</tr>
+		</table>
+
+		16. <span>*</span>Any <b>comments and suggestions</b> to improve the hardware setup in your division/office:
+
+		<table class="table" id = "qtbl">
+			<tr>
+				<td>
+					{{form.hardware_comments}}
+					{{form.hardware_comments.errors}}
+
+				</td>
+			</tr>
+		</table>
 		<button type="submit" class="btn btn-primary dbtn">Update</button>
 		<a href="/survey/" class="btn btn-danger dbtn">Go back</a>
+
 	</form>	
 		
+
 </div>
 {% endblock content %}
