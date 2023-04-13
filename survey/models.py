@@ -19,6 +19,13 @@ class Survey(models.Model):
     coterminus = models.IntegerField(blank=True, null=True)
     jo_cos = models.IntegerField(blank=True, null=True)
     casual_temporary = models.IntegerField(blank=True, null=True)
+    male = models.IntegerField(blank=True, null=True)
+    female = models.IntegerField(blank=True, null=True)
+    age_20_24 = models.IntegerField(blank=True, null=True)
+    age_25_34 = models.IntegerField(blank=True, null=True)
+    age_35_44 = models.IntegerField(blank=True, null=True)
+    age_45_54 = models.IntegerField(blank=True, null=True)
+    age_55_above = models.IntegerField(blank=True, null=True)
 
     desktop_acer_installed = models.IntegerField(blank=True, null=True)
     desktop_hp_installed = models.IntegerField(blank=True, null=True)

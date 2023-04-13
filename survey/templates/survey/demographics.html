@@ -3,8 +3,9 @@
 {% block content %}
 <style>
 	.fieldsize {
-		width: 50%;
+		width: 90%;
 	}
+
 
 	.formdiv {
 		margin-top: 20px;
@@ -19,7 +20,103 @@
 	<form method="post">
 		{% csrf_token %}
 
-		{{form.as_p}}
+		<table class="table">
+							<tr>
+								<td>
+									<strong>{{form.office_division_name.label_tag}}</strong>
+									{{form.office_division_name}}
+									{{form.demographics_section}}
+				
+								</td>
+								<td>
+									<strong>{{form.presidential_appointee.label_tag}}</strong>
+									{{form.presidential_appointee}}
+								</td>
+							</tr>
+				
+							<tr>
+								<td>
+									<strong>{{form.permanent.label_tag}}</strong>
+									{{form.permanent}}
+								</td>
+				
+								<td>
+									<strong>{{form.coterminus.label_tag}}</strong>
+									{{form.coterminus}}
+								</td>
+								
+							</tr>
+				
+							<tr>
+								<td>
+									<strong>{{form.jo_cos.label_tag}}</strong>
+									{{form.jo_cos}}
+								</td>
+								<td>
+									<strong>{{form.casual_temporary.label_tag}}</strong>
+									{{form.casual_temporary}}
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<strong>Gender: </strong><br><small>(Define the number of male and female personnel)</small>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									
+									<strong>{{form.male.label_tag}}</strong>
+									{{form.male}}
+								</td>
+				
+								<td>
+									
+									<strong>{{form.female.label_tag}}</strong>
+									{{form.female}}
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<strong>Age Bracket:</strong><br><small>(Define the number of personnel per age bracket)</small>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<strong>{{form.age_20_24.label_tag}}</strong>
+									{{form.age_20_24}}
+								</td>
+
+								<td>
+									<strong>{{form.age_25_34.label_tag}}</strong>
+									{{form.age_25_34}}
+								</td>
+							</tr>
+				
+
+							<tr>
+								<td>
+									
+									<strong>{{form.age_35_44.label_tag}}</strong>
+									{{form.age_35_44}}
+								</td>
+
+								<td>
+									<strong>{{form.age_45_54.label_tag}}</strong>
+									{{form.age_45_54}}
+								</td>
+							</tr>
+
+							
+
+							<tr>
+								<td>
+									<strong>{{form.age_55_above.label_tag}}</strong>
+									{{form.age_55_above}}
+								</td>
+							</tr>
+						</table>
+		<br>
+		
 
 		<button type="submit" class="btn btn-primary dbtn">Update</button>
 		<a href="/survey/" class="btn btn-danger dbtn">Go back</a>
