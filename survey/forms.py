@@ -27,6 +27,7 @@ class demographicsform(forms.ModelForm):
 			'presidential_appointee': 'Number of Presidential Appointees',
 			'permanent': 'Number of Permanent Employees',
 			'coterminus': 'Number of Coterminous Employees',
+<<<<<<< HEAD
 			'jo_cos': 'Number of JO/COS Employees',
 			'casual_temporary': 'Number of Casual/Temporary Employees',
 			'male': 'Number of Male Personnel',
@@ -36,6 +37,10 @@ class demographicsform(forms.ModelForm):
 			'age_35_44': 'Age 35-44',
 			'age_45_54': 'Age 45-54',
 			'age_55_above': 'Age 55 and Above',
+=======
+			'jo_cos': 'Number of Job Order/Contract of Service Employees',
+			'casual_temporary': 'Number of Casual/Temporary Employees',
+>>>>>>> 1a23448f7741a9e0e5336b9abcdaa29e94f587da
 		}
 
 	def __init__(self,*args, **kwargs):
