@@ -4,7 +4,8 @@ from .models import Survey, office_division
 class demographicsform(forms.ModelForm):
 	class Meta:
 		model = Survey
-		fields = ['office_division_name','presidential_appointee', 'permanent', 'coterminus', 'jo_cos', 'casual_temporary', 'male', 'female', 'age_20_24', 'age_25_34', 'age_35_44', 'age_45_54', 'age_55_above', 'demographics_section']
+		fields = ['office_division_name','presidential_appointee', 'permanent', 'coterminus', 'jo_cos', 'casual_temporary', 'male',
+		 'female', 'age_20_24', 'age_25_34', 'age_35_44', 'age_45_54', 'age_55_above', 'demographics_section']
 		widgets = {
 			'office_division_name': forms.Select(attrs={'class': 'form-control fieldsize'}),
 			'presidential_appointee': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
@@ -58,22 +59,77 @@ class demographicsform(forms.ModelForm):
 		self.fields['age_55_above'].required = True
 		self.fields['demographics_section'].required = True
 
+
 class hardwareform(forms.ModelForm):
 	class Meta:
 		model = Survey
 		fields = ['desktop_acer_installed', 'desktop_hp_installed', 'desktop_lenovo_installed', 'desktop_samsung_installed',
-		 'hardware_section', 'laptop_acer_installed', 'laptop_hp_installed', 'laptop_lenovo_installed', 'laptop_samsung_installed']
+		 'hardware_section', 'laptop_acer_installed', 'laptop_hp_installed', 'laptop_lenovo_installed', 'laptop_samsung_installed',
+		 'desktop_personal', 'laptop_personal', 'tablet_office', 'tablet_personal', 'mouse_office', 'mouse_personal',
+		 'keyboard_office', 'keyboard_personal', 'monitor_office', 'monitor_personal',
+		 'ordinaryprinter_shared', 'coloredprinter_shared', 'scanner_shared', 'speaker_shared', 'tv_shared',
+		 'projector_shared', 'camera_shared', 'microphone_shared', 'photocopier_shared',
+		 'ordinaryprinter_shared_personal', 'coloredprinter_shared_personal', 'scanner_shared_personal',
+		 'speaker_shared_personal', 'tv_shared_personal',
+		 'projector_shared_personal', 'camera_shared_personal', 'microphone_shared_personal', 'photocopier_shared_personal',
+		 'desktop_need', 'laptop_need', 'tablet_need', 'mouse_need', 'keyboard_need', 'monitor_need',
+		 'ordinaryprinter_need', 'coloredprinter_need', 'scanner_need', 'speaker_need', 'tv_need',
+		 'projector_need', 'camera_need', 'microphone_need', 'photocopier_need', 'hardware_comments']
+		
 		widgets = {
 			'desktop_acer_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
 			'desktop_hp_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
 			'desktop_lenovo_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
 			'desktop_samsung_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
 			'hardware_section': forms.HiddenInput(attrs={'class': 'form-control fieldsize'}),
-
 			'laptop_acer_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
 			'laptop_hp_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
 			'laptop_lenovo_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
 			'laptop_samsung_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'desktop_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'laptop_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'tablet_office': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'tablet_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'mouse_office': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'mouse_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'keyboard_office': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'keyboard_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'monitor_office': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'monitor_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'ordinaryprinter_shared': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'coloredprinter_shared': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'scanner_shared': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'speaker_shared': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'tv_shared': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'projector_shared': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'camera_shared': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'microphone_shared': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'photocopier_shared': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'ordinaryprinter_shared_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'coloredprinter_shared_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'scanner_shared_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'speaker_shared_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'tv_shared_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'projector_shared_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'camera_shared_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'microphone_shared_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'photocopier_shared_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'desktop_need': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'laptop_need': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'tablet_need': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'mouse_need': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'keyboard_need': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'monitor_need': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'ordinaryprinter_need': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'coloredprinter_need': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'scanner_need': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'speaker_need': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'tv_need': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'projector_need': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'camera_need': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'microphone_need': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'photocopier_need': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'hardware_comments': forms.Textarea(attrs={'class': 'form-control'}),
 		}
 		labels = {
 			'desktop_acer_installed': 'Acer',
@@ -86,9 +142,49 @@ class hardwareform(forms.ModelForm):
 			'laptop_lenovo_installed': 'Lenovo',
 			'laptop_samsung_installed': 'Samsung',
 		}
+
 	def __init__(self,*args, **kwargs):
 		initial_data = kwargs.get('initial', {})
 		initial_data['hardware_section'] = 1
 		kwargs['initial'] = initial_data
 		super().__init__(*args, **kwargs)
+		self.fields['desktop_acer_installed'].required = True
+		self.fields['desktop_hp_installed'].required = True
+		self.fields['desktop_lenovo_installed'].required = True
+		self.fields['desktop_samsung_installed'].required = True
+		self.fields['laptop_acer_installed'].required = True
+		self.fields['laptop_hp_installed'].required = True
+		self.fields['laptop_lenovo_installed'].required = True
+		self.fields['laptop_samsung_installed'].required = True
+		self.fields['desktop_personal'].required = True
+		self.fields['laptop_personal'].required = True
+		self.fields['tablet_office'].required = True
+		self.fields['tablet_personal'].required = True
+		self.fields['mouse_office'].required = True
+		self.fields['mouse_personal'].required = True
+		self.fields['keyboard_office'].required = True
+		self.fields['keyboard_personal'].required = True
+		self.fields['monitor_office'].required = True
+		self.fields['monitor_personal'].required = True
+		self.fields['ordinaryprinter_shared'].required = True
+		self.fields['coloredprinter_shared'].required = True
+		self.fields['scanner_shared'].required = True
+		self.fields['speaker_shared'].required = True
+		self.fields['tv_shared'].required = True
+		self.fields['projector_shared'].required = True
+		self.fields['camera_shared'].required = True
+		self.fields['microphone_shared'].required = True
+		self.fields['photocopier_shared'].required = True
+		self.fields['ordinaryprinter_shared_personal'].required = True
+		self.fields['coloredprinter_shared_personal'].required = True
+		self.fields['scanner_shared_personal'].required = True
+		self.fields['speaker_shared_personal'].required = True
+		self.fields['tv_shared_personal'].required = True
+		self.fields['projector_shared_personal'].required = True
+		self.fields['camera_shared_personal'].required = True
+		self.fields['microphone_shared_personal'].required = True
+		self.fields['photocopier_shared_personal'].required = True
+		self.fields['hardware_comments'].required = True
+
+
 

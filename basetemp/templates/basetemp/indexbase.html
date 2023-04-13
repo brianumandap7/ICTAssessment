@@ -21,7 +21,9 @@
             width: 50px;
             height: 50px;
         }
-
+        body {
+          overflow: hidden;
+        }
         .loader-wrapper {
           width: 100%;
           height: 100%;
@@ -148,6 +150,10 @@
         
 
         <script>
+
+            function removeOverflowHidden() {
+              document.body.style.overflow = 'auto';
+            }
         // Add window.onload event listener
             window.onload = function() {
                 // Get the loader element
@@ -156,7 +162,10 @@
                 // Set loader element to display none
                     setTimeout(() => {
                     loader.style.display = 'none';
+                    setTimeout(removeOverflowHidden, 100);
                 }, 2000);
+
+
             };
         </script>
         <!-- Bootstrap core JS-->
