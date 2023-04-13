@@ -89,29 +89,14 @@ class hardware(UpdateView):
 	def get_context_data(self, **kwargs):
 		context = super(hardware, self).get_context_data(**kwargs)
 		context['title'] = 'Hardware'
-<<<<<<< HEAD
 		context['question_title1'] = 'Desktop Computers:'
 		context['question_specific1'] = 'Identify the number of DOTr-issued Desktop Computers in your division/office:'
 		context['question_1'] = 'Please indicate the number of Desktop Computers per brand:'
-
 		context['question_title2'] = 'Laptop Computers:'
 		context['question_specific2'] = 'Identify the number of DOTr-issued Laptop Computers in your division/office:'
 		context['question_2'] = 'Please indicate the number of Laptop Computers per brand:'
-
 		context['question_title3'] = 'Tablets'
 		context['question_specific3'] = 'Identify the number of DOTr-issued Laptop Computers in your division/office:'
-=======
-		context['qt'] = 'Desktop Computers:'
-		context['qs'] = 'Identify the number of DOTr-issued Desktop Computers in your division/office:'
-		context['q1'] = 'Please indicate the number of Desktop Computers per brand:'
-
-		context['qt2'] = 'Laptop Computers:'
-		context['qs2'] = 'Identify the number of DOTr-issued Laptop Computers in your division/office:'
-		context['q2'] = 'Please indicate the number of Laptop Computers per brand:'
-
-		context['qt3'] = 'Tablets'
-		context['qs3'] = 'Identify the number of DOTr-issued Laptop Computers in your division/office:'
->>>>>>> 1a23448f7741a9e0e5336b9abcdaa29e94f587da
 
 		return context
 
