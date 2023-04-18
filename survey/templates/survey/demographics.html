@@ -133,6 +133,7 @@
 		<a href="/survey/" class="btn btn-danger dbtn">Go back</a>
 	</form>	
 		<div id="scrollPercentage">Page Scroll: 0%&nbsp;&nbsp;&nbsp;</div>
+
 </div>
 
 <script>
@@ -147,7 +148,9 @@
 	  var scrolledPercentage = (scrollTop / (scrollHeight - window.innerHeight)) * 100;
 
 	  // Update the content of the container element with the calculated percentage
+
 	  scrollPercentageElement.textContent = "Page Scroll: " + Math.round(scrolledPercentage) + "%";
+
 	});
 
 </script>
