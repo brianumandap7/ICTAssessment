@@ -1,72 +1,132 @@
 {% extends "basetemp/indexbase.html" %}
 {% load static %}
 {% block content %}
+
 <style>
-	.slogo {
-		width: 250px;
-		
+
+	.card1 {
+		background-color: #fe6571;
+		border: none;
+		height: 300px;
 	}
 
-	.slogo1 {
-		width: 200px;
+	.card {
+		border: none;
 	}
 
-	.sdiv {
-		margin-top: 50px;
+	.icons {
+		font-size: 100px;
 	}
 
-	.odiv {
-		margin-top: 80px;
+	.card2 {
+		background-color: #ffcc00;
+		border: none;
+		height: 300px;
 	}
-</style>	
-<div class="container-fluid sdiv">
 
+	.card3 {
+		background-color: #22a5e5;
+		border: none;
+		height: 300px;
+	}
+
+	.card4 {
+		background-color: #f2eae2;
+		border: none;
+		height: 300px;
+	}
+
+	.card5 {
+		background-color: #20c997;
+		border: none;
+		height: 300px;
+	}
+
+</style>
+<div class="container">
+	<br>
+	
+		<strong><h3>{% for items in check_user %}{{items.office_division_name}}{% endfor %}</h3></strong>
+	
 	<div class="row">
-		<div class="col-lg-6 col-md-6 col-xs-12">
-		<!-- start of office -->
-		<div class="row odiv">
-			<div class="col-lg-12 col-md-12 col-xs-12">
-				<center><img src="{% static 'basetemp/office.png' %}" class="img-responsive slogo rounded"><br><h5>{% for items in check_user %}{{items.office_division_name}}{% endfor %}</h5></center>
-			</div>
-		</div>
 
-		<br><br>
+		<div class="card col-12 col-md-6 col-lg-3">
+	        <div class="card-wrapper card1">
+	            <div class="card-box align-left">
+	            	<br>
+	                <div class="iconfont-wrapper">
+	                    <center><i class="fa fa-user-circle icons" aria-hidden="true"></i></center>
+	                </div>
+	                <center><h6 class="card-title display-6">Permanent</h6></center>
+	                <center><h6>Personnel Count:
+	                {% for items in check_user %}{{items.permanent}}{% endfor %}</h6></center>
+	            </div>
+	        </div>
+	    </div>
 
-		<!-- end of office -->
-		</div>
+	    <div class="card col-12 col-md-6 col-lg-3">
+	        <div class="card-wrapper card2">
+	            <div class="card-box align-left">
+	            	<br>
+	                <div class="iconfont-wrapper">
+	                    <center><i class="fa fa-user-circle-o icons" aria-hidden="true"></i></center>
+	                </div>
+	                <center><h6 class="card-title display-6">Coterminous</h6></center>
+	                <center><h6>Personnel Count:
+	                {% for items in check_user %}{{items.coterminus}}{% endfor %}</h6></center>
+	            </div>
+	        </div>
+	    </div>
+	    
+	    <div class="card col-12 col-md-6 col-lg-3">
+	        <div class="card-wrapper card3">
+	            <div class="card-box align-left">
+	            	<br>
+	                <div class="iconfont-wrapper">
+	                    <center><i class="fa fa-user-o icons" aria-hidden="true"></i></center>
+	                </div>
+	                <center><h6 class="card-title display-6">JO/COS</h6></center>
+	                <center><h6>Personnel Count:
+	                {% for items in check_user %}{{items.jo_cos}}{% endfor %}</h6></center>
+	            </div>
+	        </div>
+	    </div>
 
-	<div class="col-lg-6 col-md-6 col-xs-12">
-	<!-- start of down -->
-		<div class="row">
-			<div class="col-lg-6 col-md-6 col-xs-6">
-				<center><img src="{% static 'basetemp/permanent.png' %}" class="img-responsive slogo1"><br><h5>{% for items in check_user %}{{items.permanent}}{% endfor %}</h5></center>
-			</div>
+	    <div class="card col-12 col-md-6 col-lg-3">
+	        <div class="card-wrapper card4">
+	            <div class="card-box align-left">
+	            	<br>
+	                <div class="iconfont-wrapper">
+	                    <center><i class="fa fa-user icons" aria-hidden="true"></i></center>
+	                </div>
+	                <center><h6 class="card-title display-6">Casual</h6></center>
+	                <center><h6>Personnel Count:
+	                {% for items in check_user %}{{items.casual_temporary}}{% endfor %}</h6></center>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<br>
+	<div class="row">
 
-			<div class="col-lg-6 col-md-6 col-xs-6">
-				<center><img src="{% static 'basetemp/presidential.png' %}" class="img-responsive slogo1"><br><h5>{% for items in check_user %}{{items.presidential_appointee}}{% endfor %}</h5></center>
-			</div>
-		</div>
-		<br>
-		<br>
-		<div class="row">
-			<div class="col-lg-6 col-md-6 col-xs-6">
-				<center><img src="{% static 'basetemp/coterminus.png' %}" class="img-responsive slogo1"><br><h5>{% for items in check_user %}{{items.coterminus}}{% endfor %}</h5></center>
-			</div>
-
-			<div class="col-lg-6 col-md-6 col-xs-6">
-				<center><img src="{% static 'basetemp/jo.png' %}" class="img-responsive slogo1"><br><h5>{% for items in check_user %}{{items.jo_cos}}{% endfor %}</h5></center>
-			</div>
-		</div>
-		<br><br>
-		<div class="row">
-			<div class="col-lg-12 col-md-12 col-xs-12">
-				<center><img src="{% static 'basetemp/casual.png' %}" class="img-responsive slogo1"><br><h5>{% for items in check_user %}{{items.casual_temporary}}{% endfor %}</h5></center>
-			</div>
-		</div>
-
-		<!-- end of down -->
-		</div>
+		<center>
+		<div class="card col-12 col-md-12 col-lg-3">
+	        <div class="card-wrapper card5">
+	            <div class="card-box align-center">
+	            	<br>
+	                <div class="iconfont-wrapper">
+	                    <center><i class="fa fa-address-card-o icons" aria-hidden="true"></i></center>
+	                </div>
+	                <h3><small>Presidential</small></h3>
+	                <center><h2 class="card-title display-6">Appointee</h2></center>
+	                <center><h6>Personnel Count:
+	                {% for items in check_user %}{{items.presidential_appointee}}{% endfor %}</h6></center>
+	            </div>
+	        </div>
+	    </div>
+		</center>
 	</div>
 </div>
+<br>
 
 {% endblock content %}
