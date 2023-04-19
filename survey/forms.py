@@ -64,9 +64,19 @@ class hardwareform(forms.ModelForm):
 	class Meta:
 		model = Survey
 		fields = ['desktop_acer_installed', 'desktop_hp_installed', 'desktop_lenovo_installed', 'desktop_samsung_installed',
+		 'desktop_others_installed',
 		 'hardware_section', 'laptop_acer_installed', 'laptop_hp_installed', 'laptop_lenovo_installed', 'laptop_samsung_installed',
-		 'desktop_personal', 'laptop_personal', 'tablet_office', 'tablet_personal', 'mouse_office', 'mouse_personal',
-		 'keyboard_office', 'keyboard_personal', 'monitor_office', 'monitor_personal',
+		 'laptop_others_installed',
+		 'desktop_acer_personal', 'desktop_hp_personal', 'desktop_lenovo_personal', 'desktop_samsung_personal', 'desktop_others_personal',
+		 'laptop_acer_personal', 'laptop_hp_personal', 'laptop_lenovo_personal', 'laptop_samsung_personal', 'laptop_others_personal',
+		 'tablet_acer_installed', 'tablet_hp_installed', 'tablet_lenovo_installed', 'tablet_samsung_installed', 'tablet_others_installed',
+		 'tablet_acer_personal', 'tablet_hp_personal', 'tablet_lenovo_personal', 'tablet_samsung_personal', 'tablet_others_personal',
+		 'mouse_acer_installed', 'mouse_hp_installed', 'mouse_lenovo_installed', 'mouse_samsung_installed', 'mouse_others_installed',
+		 'mouse_acer_personal', 'mouse_hp_personal', 'mouse_lenovo_personal', 'mouse_samsung_personal', 'mouse_others_personal',
+		 'kb_acer_installed', 'kb_hp_installed', 'kb_lenovo_installed', 'kb_samsung_installed', 'kb_others_installed',
+		 'kb_acer_personal', 'kb_hp_personal', 'kb_lenovo_personal', 'kb_samsung_personal', 'kb_others_personal',
+		 'monitor_acer_installed', 'monitor_hp_installed', 'monitor_lenovo_installed', 'monitor_samsung_installed', 'monitor_others_installed',
+		 'monitor_acer_personal', 'monitor_hp_personal', 'monitor_lenovo_personal', 'monitor_samsung_personal', 'monitor_others_personal',
 		 'ordinaryprinter_shared', 'coloredprinter_shared', 'scanner_shared', 'speaker_shared', 'tv_shared',
 		 'projector_shared', 'camera_shared', 'microphone_shared', 'photocopier_shared',
 		 'ordinaryprinter_shared_personal', 'coloredprinter_shared_personal', 'scanner_shared_personal',
@@ -81,21 +91,70 @@ class hardwareform(forms.ModelForm):
 			'desktop_hp_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
 			'desktop_lenovo_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
 			'desktop_samsung_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'desktop_others_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
 			'hardware_section': forms.HiddenInput(attrs={'class': 'form-control fieldsize'}),
 			'laptop_acer_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
 			'laptop_hp_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
 			'laptop_lenovo_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
 			'laptop_samsung_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
-			'desktop_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
-			'laptop_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
-			'tablet_office': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
-			'tablet_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
-			'mouse_office': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
-			'mouse_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
-			'keyboard_office': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
-			'keyboard_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
-			'monitor_office': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
-			'monitor_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'laptop_others_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'desktop_acer_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'desktop_hp_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'desktop_lenovo_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'desktop_samsung_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'desktop_others_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'laptop_acer_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'laptop_hp_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'laptop_lenovo_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'laptop_samsung_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'laptop_others_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'tablet_acer_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'tablet_hp_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'tablet_lenovo_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'tablet_samsung_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'tablet_others_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'tablet_acer_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'tablet_hp_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'tablet_lenovo_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'tablet_samsung_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'tablet_others_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+
+			'mouse_acer_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'mouse_hp_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'mouse_lenovo_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'mouse_samsung_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'mouse_others_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+
+			'mouse_acer_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'mouse_hp_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'mouse_lenovo_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'mouse_samsung_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'mouse_others_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+
+			'kb_acer_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'kb_hp_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'kb_lenovo_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'kb_samsung_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'kb_others_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+
+			'kb_acer_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'kb_hp_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'kb_lenovo_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'kb_samsung_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'kb_others_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+
+			'monitor_acer_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'monitor_hp_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'monitor_lenovo_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'monitor_samsung_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'monitor_others_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+
+			'monitor_acer_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'monitor_hp_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'monitor_lenovo_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'monitor_samsung_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+			'monitor_others_personal': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
+
 			'ordinaryprinter_shared': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
 			'coloredprinter_shared': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
 			'scanner_shared': forms.NumberInput(attrs={'class': 'form-control fieldsize'}),
@@ -136,6 +195,7 @@ class hardwareform(forms.ModelForm):
 			'desktop_hp_installed': 'HP',
 			'desktop_lenovo_installed': 'Lenovo',
 			'desktop_samsung_installed': 'Samsung',
+			'desktop_others_installed': 'Others',
 
 			'laptop_acer_installed': 'Acer',
 			'laptop_hp_installed': 'HP',
@@ -152,20 +212,32 @@ class hardwareform(forms.ModelForm):
 		self.fields['desktop_hp_installed'].required = True
 		self.fields['desktop_lenovo_installed'].required = True
 		self.fields['desktop_samsung_installed'].required = True
+		self.fields['desktop_others_installed'].required = True
 		self.fields['laptop_acer_installed'].required = True
 		self.fields['laptop_hp_installed'].required = True
 		self.fields['laptop_lenovo_installed'].required = True
 		self.fields['laptop_samsung_installed'].required = True
-		self.fields['desktop_personal'].required = True
-		self.fields['laptop_personal'].required = True
-		self.fields['tablet_office'].required = True
-		self.fields['tablet_personal'].required = True
-		self.fields['mouse_office'].required = True
-		self.fields['mouse_personal'].required = True
-		self.fields['keyboard_office'].required = True
-		self.fields['keyboard_personal'].required = True
-		self.fields['monitor_office'].required = True
-		self.fields['monitor_personal'].required = True
+		self.fields['laptop_others_installed'].required = True
+		self.fields['tablet_acer_installed'].required = True
+		self.fields['tablet_hp_installed'].required = True
+		self.fields['tablet_lenovo_installed'].required = True
+		self.fields['tablet_samsung_installed'].required = True
+		self.fields['tablet_others_installed'].required = True
+		self.fields['mouse_acer_installed'].required = True
+		self.fields['mouse_hp_installed'].required = True
+		self.fields['mouse_lenovo_installed'].required = True
+		self.fields['mouse_samsung_installed'].required = True
+		self.fields['mouse_others_installed'].required = True
+		self.fields['kb_acer_installed'].required = True
+		self.fields['kb_hp_installed'].required = True
+		self.fields['kb_lenovo_installed'].required = True
+		self.fields['kb_samsung_installed'].required = True
+		self.fields['kb_others_installed'].required = True
+		self.fields['monitor_acer_installed'].required = True
+		self.fields['monitor_hp_installed'].required = True
+		self.fields['monitor_lenovo_installed'].required = True
+		self.fields['monitor_samsung_installed'].required = True
+		self.fields['monitor_others_installed'].required = True
 		self.fields['ordinaryprinter_shared'].required = True
 		self.fields['coloredprinter_shared'].required = True
 		self.fields['scanner_shared'].required = True
