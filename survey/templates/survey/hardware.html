@@ -3,7 +3,7 @@
 {% block content %}
 <style>
 	.fieldsize {
-		width: 50%;
+		width: 100px;
 	}
 
 	.formdiv {
@@ -39,6 +39,10 @@
 	  padding: 10px;
 	  color: white;
 	}
+
+	table .shared {
+		font-weight: normal;
+	}
 </style>
 <h3 class="mt-4">{{title}}</h3>
 <div class="container-fluid formdiv">
@@ -46,206 +50,476 @@
 		{% csrf_token %}
 
 		<b>Desktop Computers:</b><br>
-		Identify the number of <b>DOTr-issued Desktop Computers</b> in your division/office:<br><br>
-		1. &nbsp;<span>*</span>Please indicate the number of Desktop Computers per brand:<br>
-
+		1. Identify the number of <b>DOTr-issued</b> and <b>personal-owned</b> <b>Desktop Computers</b> in your division/office:
 		<table class="table" id = "qtbl">
 			<tr>
-				<td>
+				<th width="800">
+					
+				</th>
+				<th>
 					{{ form.desktop_acer_installed.label_tag }} 
-				</td>
-
-				<td>
-					{{ form.desktop_acer_installed }}
-				</td>
+				</th>
+				<th>
+					{{ form.desktop_hp_installed.label_tag }} 
+				</th>
+				<th>
+					{{ form.desktop_lenovo_installed.label_tag }} 
+				</th>
+				<th>
+					{{ form.desktop_samsung_installed.label_tag }}
+				</th>
+				<th>
+					{{ form.desktop_others_installed.label_tag }}
+				</th>
 			</tr>
 
 			<tr>
 				<td>
-					{{ form.desktop_hp_installed.label_tag }} 
+					A. &nbsp;<span>*</span>Please indicate the number of <b>DOTr-issued desktop computers</b> per brand:
+				</td>
+				<td>
+					{{ form.desktop_acer_installed }}
 				</td>
 
 				<td>
 					{{ form.desktop_hp_installed }}
 				</td>
-			</tr>
-
-			<tr>
-				<td>
-					{{ form.desktop_lenovo_installed.label_tag }} 
-				</td>
 
 				<td>
 					{{ form.desktop_lenovo_installed }}
 				</td>
+		
+				<td>
+					{{ form.desktop_samsung_installed }} 
+				</td>
+
+				<td>
+					{{ form.desktop_others_installed }} 
+				</td>
+
+				
 			</tr>
 
 			<tr>
 				<td>
-					{{ form.desktop_samsung_installed.label_tag }} 
+					B. &nbsp;<span>*</span>Please indicate the number of <b>personal-owned desktop computers</b> used in your division/office:
 				</td>
-
 				<td>
-					{{ form.desktop_samsung_installed }}
-
-					{{ form.hardware_section }}
+					{{form.desktop_acer_personal}}
+				</td>
+				<td>
+					{{form.desktop_hp_personal}}
+				</td>
+				<td>
+					{{form.desktop_lenovo_personal}}
+				</td>
+				<td>
+					{{form.desktop_samsung_personal}}
+				</td>
+				<td>
+					{{form.desktop_others_personal}}
 				</td>
 			</tr>
 		</table>
 
-		2. <span>*</span>Please indicate the number of <b>personal-owned desktop computers</b> used in your division/office:
-
-		<table class="table" id = "qtbl">
-			<tr>
-				<td>
-					{{form.desktop_personal}}
-				</td>
-			</tr>
-		</table>
-
+		{{ form.hardware_section }}
+		
+		<br>
 		<b>Laptop Computers:</b><br>
-		Identify the number of <b>DOTr-issued Laptop Computers</b> in your division/office:<br><br>
-		3. &nbsp;<span>*</span>Please indicate the number of Laptop Computers per brand:<br>
+		2. Identify the number of <b>DOTr-issued</b> and <b>personal-owned Laptop Computers</b> in your division/office:
 		<table class="table" id = "qtbl">
+
+			<tr>
+				<th width="800">
+					
+				</th>
+				<th>
+					{{ form.desktop_acer_installed.label_tag }} 
+				</th>
+				<th>
+					{{ form.desktop_hp_installed.label_tag }} 
+				</th>
+				<th>
+					{{ form.desktop_lenovo_installed.label_tag }} 
+				</th>
+				<th>
+					{{ form.desktop_samsung_installed.label_tag }}
+				</th>
+				<th>
+					{{ form.desktop_others_installed.label_tag }}
+				</th>
+			</tr>
+
 			<tr>
 				<td>
-					{{ form.laptop_acer_installed.label_tag }} 
+					A. &nbsp;<span>*</span>Please indicate the number of <b>DOTr-issued Laptop Computers</b> per brand:
 				</td>
-
 				<td>
 					{{ form.laptop_acer_installed }}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					{{ form.laptop_hp_installed.label_tag }} 
 				</td>
 
 				<td>
 					{{ form.laptop_hp_installed }}
 				</td>
-			</tr>
-
-			<tr>
-				<td>
-					{{ form.laptop_lenovo_installed.label_tag }} 
-				</td>
 
 				<td>
 					{{ form.laptop_lenovo_installed }}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					{{ form.laptop_samsung_installed.label_tag }} 
 				</td>
 
 				<td>
 					{{ form.laptop_samsung_installed }}
 				</td>
+
+				<td>
+					{{ form.laptop_others_installed }}
+				</td>
 			</tr>
-		</table>
 
-		4. <span>*</span>Please indicate the number of <b>personal-owned laptop</b> computers used in your division/office:
-
-		<table class="table" id = "qtbl">
 			<tr>
 				<td>
-					{{form.laptop_personal}}
+					B. <span>*</span>Please indicate the number of <b>personal-owned laptop</b> computers used in your division/office:
+				</td>
+				<td>
+					{{ form.laptop_acer_personal }}
+				</td>
+
+				<td>
+					{{ form.laptop_hp_personal }}
+				</td>
+
+				<td>
+					{{ form.laptop_lenovo_personal }}
+				</td>
+
+				<td>
+					{{ form.laptop_samsung_personal }}
+				</td>
+
+				<td>
+					{{ form.laptop_others_personal }}
 				</td>
 			</tr>
 		</table>
 
+		
+
+		<br>
 		<b>Tablets: </b><br>
-		5. <span>*</span>Identify the number of <b>DOTr-issued tablets</b> in your division/office: 
-
+		3. Identify the number of <b>DOTr-issued and personal-owned tablet computers</b> in your division/office:
 		<table class="table" id = "qtbl">
 			<tr>
+				<th width="800">
+					
+				</th>
+				<th>
+					{{ form.desktop_acer_installed.label_tag }} 
+				</th>
+				<th>
+					{{ form.desktop_hp_installed.label_tag }} 
+				</th>
+				<th>
+					{{ form.desktop_lenovo_installed.label_tag }} 
+				</th>
+				<th>
+					{{ form.desktop_samsung_installed.label_tag }}
+				</th>
+				<th>
+					{{ form.desktop_others_installed.label_tag }}
+				</th>
+			</tr>
+
+			<tr>
 				<td>
-					{{form.tablet_office}}
+					A. <span>*</span>Identify the number of <b>DOTr-issued tablets</b> in your division/office: 
+				</td>
+				<td>
+					{{ form.tablet_acer_installed }}
+				</td>
+
+				<td>
+					{{ form.tablet_hp_installed }}
+				</td>
+
+				<td>
+					{{ form.tablet_lenovo_installed }}
+				</td>
+
+				<td>
+					{{ form.tablet_samsung_installed }}
+				</td>
+
+				<td>
+					{{ form.tablet_others_installed }}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					B. <span>*</span>Identify the number of <b>personal-owned tablets</b> in your division/office: 
+				</td>
+				<td>
+					{{ form.tablet_acer_personal }}
+				</td>
+
+				<td>
+					{{ form.tablet_hp_personal }}
+				</td>
+
+				<td>
+					{{ form.tablet_lenovo_personal }}
+				</td>
+
+				<td>
+					{{ form.tablet_samsung_personal }}
+				</td>
+
+				<td>
+					{{ form.tablet_others_personal }}
 				</td>
 			</tr>
 		</table>
 
-		6. <span>*</span>Identify the number of <b>personal-owned tablets</b> in your division/office: 
 
-		<table class="table" id = "qtbl">
-			<tr>
-				<td>
-					{{form.tablet_personal}}
-				</td>
-			</tr>
-		</table>
-
+		<br>
 		<b>Mouse: </b><br>
-		7. <span>*</span>Identify the number of <b>DOTr-issued mouse</b> in your division/office: 
-
+		4. Identify the number of <b>DOTr-issued and personal-owned mouse</b> in your division/office:
 		<table class="table" id = "qtbl">
 			<tr>
+				<th width="800">
+					
+				</th>
+				<th>
+					{{ form.desktop_acer_installed.label_tag }} 
+				</th>
+				<th>
+					{{ form.desktop_hp_installed.label_tag }} 
+				</th>
+				<th>
+					{{ form.desktop_lenovo_installed.label_tag }} 
+				</th>
+				<th>
+					{{ form.desktop_samsung_installed.label_tag }}
+				</th>
+				<th>
+					{{ form.desktop_others_installed.label_tag }}
+				</th>
+			</tr>
+
+			<tr>
 				<td>
-					{{form.mouse_office}}
+					A. <span>*</span>Identify the number of <b>DOTr-issued mouse</b> in your division/office: 
+				</td>
+				<td>
+					{{ form.mouse_acer_installed }}
+				</td>
+
+				<td>
+					{{ form.mouse_hp_installed }}
+				</td>
+
+				<td>
+					{{ form.mouse_lenovo_installed }}
+				</td>
+
+				<td>
+					{{ form.mouse_samsung_installed }}
+				</td>
+
+				<td>
+					{{ form.mouse_others_installed }}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					B. <span>*</span>Identify the number of <b>personal-owned mouse</b> in your division/office: 
+				</td>
+				<td>
+					{{ form.mouse_acer_personal }}
+				</td>
+
+				<td>
+					{{ form.mouse_hp_personal }}
+				</td>
+
+				<td>
+					{{ form.mouse_lenovo_personal }}
+				</td>
+
+				<td>
+					{{ form.mouse_samsung_personal }}
+				</td>
+
+				<td>
+					{{ form.mouse_others_personal }}
 				</td>
 			</tr>
 		</table>
 
-		8. <span>*</span>Identify the number of <b>personal-owned mouse</b> in your division/office: 
-
-		<table class="table" id = "qtbl">
-			<tr>
-				<td>
-					{{form.mouse_personal}}
-				</td>
-			</tr>
-		</table>
-
+		<br>
 		<b>Keyboards: </b><br>
-		9. <span>*</span>Identify the number of <b>DOTr-issued keyboards</b> in your division/office: 
-
+		5. Identify the number of <b>DOTr-issued and personal-owned keyboards</b> in your division/office:
 		<table class="table" id = "qtbl">
 			<tr>
+				<th width="800">
+					
+				</th>
+				<th>
+					{{ form.desktop_acer_installed.label_tag }} 
+				</th>
+				<th>
+					{{ form.desktop_hp_installed.label_tag }} 
+				</th>
+				<th>
+					{{ form.desktop_lenovo_installed.label_tag }} 
+				</th>
+				<th>
+					{{ form.desktop_samsung_installed.label_tag }}
+				</th>
+				<th>
+					{{ form.desktop_others_installed.label_tag }}
+				</th>
+			</tr>
+
+			<tr>
 				<td>
-					{{form.keyboard_office}}
+					A. <span>*</span>Identify the number of <b>DOTr-issued keyboards</b> in your division/office: 
+				</td>
+				<td>
+					{{ form.kb_acer_installed }}
+				</td>
+
+				<td>
+					{{ form.kb_hp_installed }}
+				</td>
+
+				<td>
+					{{ form.kb_lenovo_installed }}
+				</td>
+
+				<td>
+					{{ form.kb_samsung_installed }}
+				</td>
+
+				<td>
+					{{ form.kb_others_installed }}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					B. <span>*</span>Identify the number of <b>personal-owned keyboards</b> in your division/office: 
+				</td>
+				<td>
+					{{ form.kb_acer_personal }}
+				</td>
+
+				<td>
+					{{ form.kb_hp_personal }}
+				</td>
+
+				<td>
+					{{ form.kb_lenovo_personal }}
+				</td>
+
+				<td>
+					{{ form.kb_samsung_personal }}
+				</td>
+
+				<td>
+					{{ form.kb_others_personal }}
 				</td>
 			</tr>
 		</table>
 
-		10. <span>*</span>Identify the number of <b>personal-owned keyboards</b> in your division/office: 
-
-		<table class="table" id = "qtbl">
-			<tr>
-				<td>
-					{{form.keyboard_personal}}
-				</td>
-			</tr>
-		</table>
-
+		<br>
 		<b>Monitors: </b><br>
-		11. <span>*</span>Identify the number of <b>DOTr-issued monitors </b>in your division/office: 
-
+		6. Identify the number of <b>DOTr-issued and personal-owned monitors</b> in your division/office:
 		<table class="table" id = "qtbl">
 			<tr>
+				<th width="800">
+					
+				</th>
+				<th>
+					{{ form.desktop_acer_installed.label_tag }} 
+				</th>
+				<th>
+					{{ form.desktop_hp_installed.label_tag }} 
+				</th>
+				<th>
+					{{ form.desktop_lenovo_installed.label_tag }} 
+				</th>
+				<th>
+					{{ form.desktop_samsung_installed.label_tag }}
+				</th>
+				<th>
+					{{ form.desktop_others_installed.label_tag }}
+				</th>
+			</tr>
+
+			<tr>
 				<td>
-					{{form.monitor_office}}
+					A. <span>*</span>Identify the number of <b>DOTr-issued monitors</b> in your division/office: 
+				</td>
+				<td>
+					{{ form.monitor_acer_installed }}
+				</td>
+
+				<td>
+					{{ form.monitor_hp_installed }}
+				</td>
+
+				<td>
+					{{ form.monitor_lenovo_installed }}
+				</td>
+
+				<td>
+					{{ form.monitor_samsung_installed }}
+				</td>
+
+				<td>
+					{{ form.monitor_others_installed }}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					B. <span>*</span>Identify the number of <b>personal-owned monitors</b> in your division/office: 
+				</td>
+				<td>
+					{{ form.monitor_acer_personal }}
+				</td>
+
+				<td>
+					{{ form.monitor_hp_personal }}
+				</td>
+
+				<td>
+					{{ form.monitor_lenovo_personal }}
+				</td>
+
+				<td>
+					{{ form.monitor_samsung_personal }}
+				</td>
+
+				<td>
+					{{ form.monitor_others_personal }}
 				</td>
 			</tr>
 		</table>
-
-		12. <span>*</span>Identify the number of <b>personal-owned monitors </b>in your division/office: 
-
-		<table class="table" id = "qtbl">
-			<tr>
-				<td>
-					{{form.monitor_personal}}
-				</td>
-			</tr>
-		</table>
+		
 
 		<b>Shared Devices: </b><br>
-		13. <span>*</span>Identify and indicate the number of <b>DOTr-issued shared devices</b> in your office.
-
+		
 		<table class="table" id = "qtbl">
+			<tr>
+				<th width="600" class="shared">
+					7. <span>*</span>Identify and indicate the number of <b>DOTr-issued shared devices</b> in your office.
+				</th>
+				<th>
+					
+				</th>
+			</tr>
 			<tr>
 				<td>
 					Ordinary Printer:
@@ -327,9 +601,18 @@
 			</tr>
 		</table>
 
-		14. <span>*</span>Identify and indicate the number of <b>personal-owned shared devices </b>in your office.
+		
 
 		<table class="table" id = "qtbl">
+			<tr>
+				<th width="600" class="shared">
+					8. <span>*</span>Identify and indicate the number of <b>personal-owned shared devices </b>in your office.
+				</th>
+
+				<th>
+					
+				</th>
+			</tr>
 			<tr>
 				<td>
 					Ordinary Printer:
@@ -411,9 +694,17 @@
 			</tr>
 		</table>
 
-		15. Identify the type of equipment/s <b>you need</b> in your office/division and indicate the number of preferred units per equipment:
+		
 
 		<table class="table" id = "qtbl">
+			<tr>
+				<th width="600" class="shared">
+					9. Identify the type of equipment/s <b>you need</b> in your office/division and indicate the number of preferred units per equipment:
+				</th>
+				<th>
+					
+				</th>
+			</tr>
 			<tr>
 				<td>
 					Desktop Computer:
@@ -543,7 +834,7 @@
 			</tr>
 		</table>
 
-		16. <span>*</span>Any <b>comments and suggestions</b> to improve the hardware setup in your division/office:
+		10. <span>*</span>Any <b>comments and suggestions</b> to improve the hardware setup in your division/office:
 
 		<table class="table" id = "qtbl">
 			<tr>
