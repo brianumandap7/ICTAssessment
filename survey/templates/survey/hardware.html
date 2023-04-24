@@ -43,6 +43,13 @@
 	table .shared {
 		font-weight: normal;
 	}
+
+	.custom {
+		padding-top: 7px;
+		padding-bottom: 7px;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
 </style>
 <h3 class="mt-4">{{title}}</h3>
 <div class="container-fluid formdiv">
@@ -76,33 +83,46 @@
 			<tr>
 				<td>
 					A. &nbsp;<span>*</span>Please indicate the number of <b>DOTr-issued desktop computers</b> per brand:
+					<span id="desktop_acer_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="desktop_hp_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="desktop_lenovo_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="desktop_samsung_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="desktop_others_installed_alert" class="alert-danger custom" style="display:none;"></span>
 				</td>
 				<td>
 					{{ form.desktop_acer_installed }}
+					
 				</td>
 
 				<td>
 					{{ form.desktop_hp_installed }}
+					
 				</td>
 
 				<td>
 					{{ form.desktop_lenovo_installed }}
+					
 				</td>
 		
 				<td>
 					{{ form.desktop_samsung_installed }} 
+					
 				</td>
 
 				<td>
 					{{ form.desktop_others_installed }} 
-				</td>
-
-				
+					
+				</td>		
 			</tr>
 
 			<tr>
 				<td>
 					B. &nbsp;<span>*</span>Please indicate the number of <b>personal-owned desktop computers</b> used in your division/office:
+					<span id="desktop_acer_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="desktop_hp_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="desktop_lenovo_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="desktop_samsung_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="desktop_others_personal_alert" class="alert-danger custom" style="display:none;"></span>
 				</td>
 				<td>
 					{{form.desktop_acer_personal}}
@@ -153,6 +173,11 @@
 			<tr>
 				<td>
 					A. &nbsp;<span>*</span>Please indicate the number of <b>DOTr-issued Laptop Computers</b> per brand:
+					<span id="laptop_acer_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="laptop_hp_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="laptop_lenovo_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="laptop_samsung_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="laptop_others_installed_alert" class="alert-danger custom" style="display:none;"></span>
 				</td>
 				<td>
 					{{ form.laptop_acer_installed }}
@@ -178,6 +203,11 @@
 			<tr>
 				<td>
 					B. <span>*</span>Please indicate the number of <b>personal-owned laptop</b> computers used in your division/office:
+					<span id="laptop_acer_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="laptop_hp_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="laptop_lenovo_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="laptop_samsung_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="laptop_others_personal_alert" class="alert-danger custom" style="display:none;"></span>
 				</td>
 				<td>
 					{{ form.laptop_acer_personal }}
@@ -231,6 +261,11 @@
 			<tr>
 				<td>
 					A. <span>*</span>Identify the number of <b>DOTr-issued tablets</b> in your division/office: 
+					<span id="tablet_acer_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="tablet_hp_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="tablet_lenovo_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="tablet_samsung_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="tablet_others_installed_alert" class="alert-danger custom" style="display:none;"></span>
 				</td>
 				<td>
 					{{ form.tablet_acer_installed }}
@@ -256,6 +291,11 @@
 			<tr>
 				<td>
 					B. <span>*</span>Identify the number of <b>personal-owned tablets</b> in your division/office: 
+					<span id="tablet_acer_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="tablet_hp_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="tablet_lenovo_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="tablet_samsung_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="tablet_others_personal_alert" class="alert-danger custom" style="display:none;"></span>
 				</td>
 				<td>
 					{{ form.tablet_acer_personal }}
@@ -308,6 +348,11 @@
 			<tr>
 				<td>
 					A. <span>*</span>Identify the number of <b>DOTr-issued mouse</b> in your division/office: 
+					<span id="mouse_acer_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="mouse_hp_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="mouse_lenovo_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="mouse_samsung_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="mouse_others_installed_alert" class="alert-danger custom" style="display:none;"></span>
 				</td>
 				<td>
 					{{ form.mouse_acer_installed }}
@@ -333,6 +378,11 @@
 			<tr>
 				<td>
 					B. <span>*</span>Identify the number of <b>personal-owned mouse</b> in your division/office: 
+					<span id="mouse_acer_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="mouse_hp_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="mouse_lenovo_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="mouse_samsung_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="mouse_others_personal_alert" class="alert-danger custom" style="display:none;"></span>
 				</td>
 				<td>
 					{{ form.mouse_acer_personal }}
@@ -384,6 +434,11 @@
 			<tr>
 				<td>
 					A. <span>*</span>Identify the number of <b>DOTr-issued keyboards</b> in your division/office: 
+					<span id="kb_acer_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="kb_hp_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="kb_lenovo_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="kb_samsung_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="kb_others_installed_alert" class="alert-danger custom" style="display:none;"></span>
 				</td>
 				<td>
 					{{ form.kb_acer_installed }}
@@ -409,6 +464,11 @@
 			<tr>
 				<td>
 					B. <span>*</span>Identify the number of <b>personal-owned keyboards</b> in your division/office: 
+					<span id="kb_acer_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="kb_hp_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="kb_lenovo_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="kb_samsung_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="kb_others_personal_alert" class="alert-danger custom" style="display:none;"></span>
 				</td>
 				<td>
 					{{ form.kb_acer_personal }}
@@ -460,6 +520,11 @@
 			<tr>
 				<td>
 					A. <span>*</span>Identify the number of <b>DOTr-issued monitors</b> in your division/office: 
+					<span id="monitor_acer_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="monitor_hp_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="monitor_lenovo_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="monitor_samsung_installed_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="monitor_others_installed_alert" class="alert-danger custom" style="display:none;"></span>
 				</td>
 				<td>
 					{{ form.monitor_acer_installed }}
@@ -485,6 +550,11 @@
 			<tr>
 				<td>
 					B. <span>*</span>Identify the number of <b>personal-owned monitors</b> in your division/office: 
+					<span id="monitor_acer_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="monitor_hp_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="monitor_lenovo_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="monitor_samsung_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="monitor_others_personal_alert" class="alert-danger custom" style="display:none;"></span>
 				</td>
 				<td>
 					{{ form.monitor_acer_personal }}
@@ -515,6 +585,15 @@
 			<tr>
 				<th width="600" class="shared">
 					7. <span>*</span>Identify and indicate the number of <b>DOTr-issued shared devices</b> in your office.
+					<span id="ordinaryprinter_shared_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="coloredprinter_shared_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="scanner_shared_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="speaker_shared_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="tv_shared_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="projector_shared_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="camera_shared_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="microphone_shared_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="photocopier_shared_alert" class="alert-danger custom" style="display:none;"></span>
 				</th>
 				<th>
 					
@@ -870,6 +949,715 @@
 	  // Update the content of the container element with the calculated percentage
 	  scrollPercentageElement.textContent = "Page Scroll: " + Math.round(scrolledPercentage) + "%";
 
+	});
+
+	var acerInstalled = document.getElementById("id_desktop_acer_installed");
+	var hpInstalled = document.getElementById("id_desktop_hp_installed");
+	var lenovoInstalled = document.getElementById("id_desktop_lenovo_installed");
+	var samsungInstalled = document.getElementById("id_desktop_samsung_installed");
+	var othersInstalled = document.getElementById("id_desktop_others_installed");
+
+	var acerPersonal = document.getElementById("id_desktop_acer_personal");
+	var hpPersonal = document.getElementById("id_desktop_hp_personal");
+	var lenovoPersonal = document.getElementById("id_desktop_lenovo_personal");
+	var samsungPersonal = document.getElementById("id_desktop_samsung_personal");
+	var othersPersonal = document.getElementById("id_desktop_others_personal");
+
+	var lacerInstalled = document.getElementById("id_laptop_acer_installed");
+	var lhpInstalled = document.getElementById("id_laptop_hp_installed");
+	var llenovoInstalled = document.getElementById("id_laptop_lenovo_installed");
+	var lsamsungInstalled = document.getElementById("id_laptop_samsung_installed");
+	var lothersInstalled = document.getElementById("id_laptop_others_installed");
+
+	var lacerPersonal = document.getElementById("id_laptop_acer_personal");
+	var lhpPersonal = document.getElementById("id_laptop_hp_personal");
+	var llenovoPersonal = document.getElementById("id_laptop_lenovo_personal");
+	var lsamsungPersonal = document.getElementById("id_laptop_samsung_personal");
+	var lothersPersonal = document.getElementById("id_laptop_others_personal");
+
+	var tacerInstalled = document.getElementById("id_tablet_acer_installed");
+	var thpInstalled = document.getElementById("id_tablet_hp_installed");
+	var tlenovoInstalled = document.getElementById("id_tablet_lenovo_installed");
+	var tsamsungInstalled = document.getElementById("id_tablet_samsung_installed");
+	var tothersInstalled = document.getElementById("id_tablet_others_installed");
+
+	var tacerPersonal = document.getElementById("id_tablet_acer_personal");
+	var thpPersonal = document.getElementById("id_tablet_hp_personal");
+	var tlenovoPersonal = document.getElementById("id_tablet_lenovo_personal");
+	var tsamsungPersonal = document.getElementById("id_tablet_samsung_personal");
+	var tothersPersonal = document.getElementById("id_tablet_others_personal");
+
+	var macerInstalled = document.getElementById("id_mouse_acer_installed");
+	var mhpInstalled = document.getElementById("id_mouse_hp_installed");
+	var mlenovoInstalled = document.getElementById("id_mouse_lenovo_installed");
+	var msamsungInstalled = document.getElementById("id_mouse_samsung_installed");
+	var mothersInstalled = document.getElementById("id_mouse_others_installed");
+
+	var macerPersonal = document.getElementById("id_mouse_acer_personal");
+	var mhpPersonal = document.getElementById("id_mouse_hp_personal");
+	var mlenovoPersonal = document.getElementById("id_mouse_lenovo_personal");
+	var msamsungPersonal = document.getElementById("id_mouse_samsung_personal");
+	var mothersPersonal = document.getElementById("id_mouse_others_personal");
+
+	var kacerInstalled = document.getElementById("id_kb_acer_installed");
+	var khpInstalled = document.getElementById("id_kb_hp_installed");
+	var klenovoInstalled = document.getElementById("id_kb_lenovo_installed");
+	var ksamsungInstalled = document.getElementById("id_kb_samsung_installed");
+	var kothersInstalled = document.getElementById("id_kb_others_installed");
+
+	var kacerPersonal = document.getElementById("id_kb_acer_personal");
+	var khpPersonal = document.getElementById("id_kb_hp_personal");
+	var klenovoPersonal = document.getElementById("id_kb_lenovo_personal");
+	var ksamsungPersonal = document.getElementById("id_kb_samsung_personal");
+	var kothersPersonal = document.getElementById("id_kb_others_personal");
+
+	var mnacerInstalled = document.getElementById("id_monitor_acer_installed");
+	var mnhpInstalled = document.getElementById("id_monitor_hp_installed");
+	var mnlenovoInstalled = document.getElementById("id_monitor_lenovo_installed");
+	var mnsamsungInstalled = document.getElementById("id_monitor_samsung_installed");
+	var mnothersInstalled = document.getElementById("id_monitor_others_installed");
+
+	var mnacerPersonal = document.getElementById("id_monitor_acer_personal");
+	var mnhpPersonal = document.getElementById("id_monitor_hp_personal");
+	var mnlenovoPersonal = document.getElementById("id_monitor_lenovo_personal");
+	var mnsamsungPersonal = document.getElementById("id_monitor_samsung_personal");
+	var mnothersPersonal = document.getElementById("id_monitor_others_personal");
+
+	var op = document.getElementById("id_ordinaryprinter_shared");
+	var cp = document.getElementById("id_coloredprinter_shared");
+
+	var sc = document.getElementById("id_scanner_shared");
+	var sp = document.getElementById("id_speaker_shared");
+
+	var tv = document.getElementById("id_tv_shared");
+	var pj = document.getElementById("id_projector_shared");
+
+	var cm = document.getElementById("id_camera_shared");
+	var mc = document.getElementById("id_microphone_shared");
+
+	var pc = document.getElementById("id_photocopier_shared");
+
+
+
+	acerInstalled.addEventListener("input", function() {
+		if (acerInstalled.value === "") {
+			document.getElementById("desktop_acer_installed_alert").style.display = "block";
+			document.getElementById("desktop_acer_installed_alert").textContent = "Acer field is required. Input 0 if none.";
+		} else {
+			document.getElementById("desktop_acer_installed_alert").style.display = "none";
+		}
+	});
+
+	hpInstalled.addEventListener("input", function() {
+		if (hpInstalled.value === "") {
+			document.getElementById("desktop_hp_installed_alert").style.display = "block";
+			document.getElementById("desktop_hp_installed_alert").textContent = "HP field is required. Input 0 if none.";
+		} else {
+			document.getElementById("desktop_hp_installed_alert").style.display = "none";
+		}
+	});
+
+	lenovoInstalled.addEventListener("input", function() {
+		if (lenovoInstalled.value === "") {
+			document.getElementById("desktop_lenovo_installed_alert").style.display = "block";
+			document.getElementById("desktop_lenovo_installed_alert").textContent = "Lenovo field is required. Input 0 if none.";
+		} else {
+			document.getElementById("desktop_lenovo_installed_alert").style.display = "none";
+		}
+	});
+
+	samsungInstalled.addEventListener("input", function() {
+		if (samsungInstalled.value === "") {
+			document.getElementById("desktop_samsung_installed_alert").style.display = "block";
+			document.getElementById("desktop_samsung_installed_alert").textContent = "Samsung field is required. Input 0 if none.";
+		} else {
+			document.getElementById("desktop_samsung_installed_alert").style.display = "none";
+		}
+	});
+
+	othersInstalled.addEventListener("input", function() {
+		if (othersInstalled.value === "") {
+			document.getElementById("desktop_others_installed_alert").style.display = "block";
+			document.getElementById("desktop_others_installed_alert").textContent = "Others field is required. Input 0 if none.";
+		} else {
+			document.getElementById("desktop_others_installed_alert").style.display = "none";
+		}
+	});
+
+	acerPersonal.addEventListener("input", function() {
+		if (acerPersonal.value === "") {
+			document.getElementById("desktop_acer_personal_alert").style.display = "block";
+			document.getElementById("desktop_acer_personal_alert").textContent = "Acer field is required. Input 0 if none.";
+		} else {
+			document.getElementById("desktop_acer_personal_alert").style.display = "none";
+		}
+	});
+
+	hpPersonal.addEventListener("input", function() {
+		if (hpPersonal.value === "") {
+			document.getElementById("desktop_hp_personal_alert").style.display = "block";
+			document.getElementById("desktop_hp_personal_alert").textContent = "HP field is required. Input 0 if none.";
+		} else {
+			document.getElementById("desktop_hp_personal_alert").style.display = "none";
+		}
+	});
+
+	lenovoPersonal.addEventListener("input", function() {
+		if (lenovoPersonal.value === "") {
+			document.getElementById("desktop_lenovo_personal_alert").style.display = "block";
+			document.getElementById("desktop_lenovo_personal_alert").textContent = "Lenovo field is required. Input 0 if none.";
+		} else {
+			document.getElementById("desktop_lenovo_personal_alert").style.display = "none";
+		}
+	});
+
+	samsungPersonal.addEventListener("input", function() {
+		if (samsungPersonal.value === "") {
+			document.getElementById("desktop_samsung_personal_alert").style.display = "block";
+			document.getElementById("desktop_samsung_personal_alert").textContent = "Samsung field is required. Input 0 if none.";
+		} else {
+			document.getElementById("desktop_samsung_personal_alert").style.display = "none";
+		}
+	});
+
+	othersPersonal.addEventListener("input", function() {
+		if (othersPersonal.value === "") {
+			document.getElementById("desktop_others_personal_alert").style.display = "block";
+			document.getElementById("desktop_others_personal_alert").textContent = "Others field is required. Input 0 if none.";
+		} else {
+			document.getElementById("desktop_others_personal_alert").style.display = "none";
+		}
+	});
+
+	lacerInstalled.addEventListener("input", function() {
+		if (lacerInstalled.value === "") {
+			document.getElementById("laptop_acer_installed_alert").style.display = "block";
+			document.getElementById("laptop_acer_installed_alert").textContent = "Acer field is required. Input 0 if none.";
+		} else {
+			document.getElementById("laptop_acer_installed_alert").style.display = "none";
+		}
+	});
+
+	lhpInstalled.addEventListener("input", function() {
+		if (lhpInstalled.value === "") {
+			document.getElementById("laptop_hp_installed_alert").style.display = "block";
+			document.getElementById("laptop_hp_installed_alert").textContent = "HP field is required. Input 0 if none.";
+		} else {
+			document.getElementById("laptop_hp_installed_alert").style.display = "none";
+		}
+	});
+
+	llenovoInstalled.addEventListener("input", function() {
+		if (llenovoInstalled.value === "") {
+			document.getElementById("laptop_lenovo_installed_alert").style.display = "block";
+			document.getElementById("laptop_lenovo_installed_alert").textContent = "Lenovo field is required. Input 0 if none.";
+		} else {
+			document.getElementById("laptop_lenovo_installed_alert").style.display = "none";
+		}
+	});
+
+	lsamsungInstalled.addEventListener("input", function() {
+		if (lsamsungInstalled.value === "") {
+			document.getElementById("laptop_samsung_installed_alert").style.display = "block";
+			document.getElementById("laptop_samsung_installed_alert").textContent = "Samsung field is required. Input 0 if none.";
+		} else {
+			document.getElementById("laptop_samsung_installed_alert").style.display = "none";
+		}
+	});
+
+	lothersInstalled.addEventListener("input", function() {
+		if (lothersInstalled.value === "") {
+			document.getElementById("laptop_others_installed_alert").style.display = "block";
+			document.getElementById("laptop_others_installed_alert").textContent = "Others field is required. Input 0 if none.";
+		} else {
+			document.getElementById("laptop_others_installed_alert").style.display = "none";
+		}
+	});
+
+	lacerPersonal.addEventListener("input", function() {
+		if (lacerPersonal.value === "") {
+			document.getElementById("laptop_acer_personal_alert").style.display = "block";
+			document.getElementById("laptop_acer_personal_alert").textContent = "Acer field is required. Input 0 if none.";
+		} else {
+			document.getElementById("laptop_acer_personal_alert").style.display = "none";
+		}
+	});
+
+	lhpPersonal.addEventListener("input", function() {
+		if (lhpPersonal.value === "") {
+			document.getElementById("laptop_hp_personal_alert").style.display = "block";
+			document.getElementById("laptop_hp_personal_alert").textContent = "HP field is required. Input 0 if none.";
+		} else {
+			document.getElementById("laptop_hp_personal_alert").style.display = "none";
+		}
+	});
+
+	llenovoPersonal.addEventListener("input", function() {
+		if (llenovoPersonal.value === "") {
+			document.getElementById("laptop_lenovo_personal_alert").style.display = "block";
+			document.getElementById("laptop_lenovo_personal_alert").textContent = "Lenovo field is required. Input 0 if none.";
+		} else {
+			document.getElementById("laptop_lenovo_personal_alert").style.display = "none";
+		}
+	});
+
+	lsamsungPersonal.addEventListener("input", function() {
+		if (lsamsungPersonal.value === "") {
+			document.getElementById("laptop_samsung_personal_alert").style.display = "block";
+			document.getElementById("laptop_samsung_personal_alert").textContent = "Samsung field is required. Input 0 if none.";
+		} else {
+			document.getElementById("laptop_samsung_personal_alert").style.display = "none";
+		}
+	});
+
+	lothersPersonal.addEventListener("input", function() {
+		if (lothersPersonal.value === "") {
+			document.getElementById("laptop_others_personal_alert").style.display = "block";
+			document.getElementById("laptop_others_personal_alert").textContent = "Others field is required. Input 0 if none.";
+		} else {
+			document.getElementById("laptop_others_personal_alert").style.display = "none";
+		}
+	});
+
+	tacerInstalled.addEventListener("input", function() {
+		if (tacerInstalled.value === "") {
+			document.getElementById("tablet_acer_installed_alert").style.display = "block";
+			document.getElementById("tablet_acer_installed_alert").textContent = "Acer field is required. Input 0 if none.";
+		} else {
+			document.getElementById("tablet_acer_installed_alert").style.display = "none";
+		}
+	});
+
+	thpInstalled.addEventListener("input", function() {
+		if (thpInstalled.value === "") {
+			document.getElementById("tablet_hp_installed_alert").style.display = "block";
+			document.getElementById("tablet_hp_installed_alert").textContent = "HP field is required. Input 0 if none.";
+		} else {
+			document.getElementById("tablet_hp_installed_alert").style.display = "none";
+		}
+	});
+
+	tlenovoInstalled.addEventListener("input", function() {
+		if (tlenovoInstalled.value === "") {
+			document.getElementById("tablet_lenovo_installed_alert").style.display = "block";
+			document.getElementById("tablet_lenovo_installed_alert").textContent = "Lenovo field is required. Input 0 if none.";
+		} else {
+			document.getElementById("tablet_lenovo_installed_alert").style.display = "none";
+		}
+	});
+
+	tsamsungInstalled.addEventListener("input", function() {
+		if (tsamsungInstalled.value === "") {
+			document.getElementById("tablet_samsung_installed_alert").style.display = "block";
+			document.getElementById("tablet_samsung_installed_alert").textContent = "Samsung field is required. Input 0 if none.";
+		} else {
+			document.getElementById("tablet_samsung_installed_alert").style.display = "none";
+		}
+	});
+
+	tothersInstalled.addEventListener("input", function() {
+		if (tothersInstalled.value === "") {
+			document.getElementById("tablet_others_installed_alert").style.display = "block";
+			document.getElementById("tablet_others_installed_alert").textContent = "Others field is required. Input 0 if none.";
+		} else {
+			document.getElementById("tablet_others_installed_alert").style.display = "none";
+		}
+	});
+
+	tacerPersonal.addEventListener("input", function() {
+		if (tacerPersonal.value === "") {
+			document.getElementById("tablet_acer_personal_alert").style.display = "block";
+			document.getElementById("tablet_acer_personal_alert").textContent = "Acer field is required. Input 0 if none.";
+		} else {
+			document.getElementById("tablet_acer_personal_alert").style.display = "none";
+		}
+	});
+
+	thpPersonal.addEventListener("input", function() {
+		if (thpPersonal.value === "") {
+			document.getElementById("tablet_hp_personal_alert").style.display = "block";
+			document.getElementById("tablet_hp_personal_alert").textContent = "HP field is required. Input 0 if none.";
+		} else {
+			document.getElementById("tablet_hp_personal_alert").style.display = "none";
+		}
+	});
+
+	tlenovoPersonal.addEventListener("input", function() {
+		if (tlenovoPersonal.value === "") {
+			document.getElementById("tablet_lenovo_personal_alert").style.display = "block";
+			document.getElementById("tablet_lenovo_personal_alert").textContent = "Lenovo field is required. Input 0 if none.";
+		} else {
+			document.getElementById("tablet_lenovo_personal_alert").style.display = "none";
+		}
+	});
+
+	tsamsungPersonal.addEventListener("input", function() {
+		if (tsamsungPersonal.value === "") {
+			document.getElementById("tablet_samsung_personal_alert").style.display = "block";
+			document.getElementById("tablet_samsung_personal_alert").textContent = "Samsung field is required. Input 0 if none.";
+		} else {
+			document.getElementById("tablet_samsung_personal_alert").style.display = "none";
+		}
+	});
+
+	tothersPersonal.addEventListener("input", function() {
+		if (tothersPersonal.value === "") {
+			document.getElementById("tablet_others_personal_alert").style.display = "block";
+			document.getElementById("tablet_others_personal_alert").textContent = "Others field is required. Input 0 if none.";
+		} else {
+			document.getElementById("tablet_others_personal_alert").style.display = "none";
+		}
+	});
+
+	macerInstalled.addEventListener("input", function() {
+		if (macerInstalled.value === "") {
+			document.getElementById("mouse_acer_installed_alert").style.display = "block";
+			document.getElementById("mouse_acer_installed_alert").textContent = "Acer field is required. Input 0 if none.";
+		} else {
+			document.getElementById("mouse_acer_installed_alert").style.display = "none";
+		}
+	});
+
+	mhpInstalled.addEventListener("input", function() {
+		if (mhpInstalled.value === "") {
+			document.getElementById("mouse_hp_installed_alert").style.display = "block";
+			document.getElementById("mouse_hp_installed_alert").textContent = "HP field is required. Input 0 if none.";
+		} else {
+			document.getElementById("mouse_hp_installed_alert").style.display = "none";
+		}
+	});
+
+	mlenovoInstalled.addEventListener("input", function() {
+		if (mlenovoInstalled.value === "") {
+			document.getElementById("mouse_lenovo_installed_alert").style.display = "block";
+			document.getElementById("mouse_lenovo_installed_alert").textContent = "Lenovo field is required. Input 0 if none.";
+		} else {
+			document.getElementById("mouse_lenovo_installed_alert").style.display = "none";
+		}
+	});
+
+	msamsungInstalled.addEventListener("input", function() {
+		if (msamsungInstalled.value === "") {
+			document.getElementById("mouse_samsung_installed_alert").style.display = "block";
+			document.getElementById("mouse_samsung_installed_alert").textContent = "Samsung field is required. Input 0 if none.";
+		} else {
+			document.getElementById("mouse_samsung_installed_alert").style.display = "none";
+		}
+	});
+
+	mothersInstalled.addEventListener("input", function() {
+		if (mothersInstalled.value === "") {
+			document.getElementById("mouse_others_installed_alert").style.display = "block";
+			document.getElementById("mouse_others_installed_alert").textContent = "Others field is required. Input 0 if none.";
+		} else {
+			document.getElementById("mouse_others_installed_alert").style.display = "none";
+		}
+	});
+
+	macerPersonal.addEventListener("input", function() {
+		if (macerPersonal.value === "") {
+			document.getElementById("mouse_acer_personal_alert").style.display = "block";
+			document.getElementById("mouse_acer_personal_alert").textContent = "Acer field is required. Input 0 if none.";
+		} else {
+			document.getElementById("mouse_acer_personal_alert").style.display = "none";
+		}
+	});
+
+	mhpPersonal.addEventListener("input", function() {
+		if (mhpPersonal.value === "") {
+			document.getElementById("mouse_hp_personal_alert").style.display = "block";
+			document.getElementById("mouse_hp_personal_alert").textContent = "HP field is required. Input 0 if none.";
+		} else {
+			document.getElementById("mouse_hp_personal_alert").style.display = "none";
+		}
+	});
+
+	mlenovoPersonal.addEventListener("input", function() {
+		if (mlenovoPersonal.value === "") {
+			document.getElementById("mouse_lenovo_personal_alert").style.display = "block";
+			document.getElementById("mouse_lenovo_personal_alert").textContent = "Lenovo field is required. Input 0 if none.";
+		} else {
+			document.getElementById("mouse_lenovo_personal_alert").style.display = "none";
+		}
+	});
+
+	msamsungPersonal.addEventListener("input", function() {
+		if (msamsungPersonal.value === "") {
+			document.getElementById("mouse_samsung_personal_alert").style.display = "block";
+			document.getElementById("mouse_samsung_personal_alert").textContent = "Samsung field is required. Input 0 if none.";
+		} else {
+			document.getElementById("mouse_samsung_personal_alert").style.display = "none";
+		}
+	});
+
+	mothersPersonal.addEventListener("input", function() {
+		if (mothersPersonal.value === "") {
+			document.getElementById("mouse_others_personal_alert").style.display = "block";
+			document.getElementById("mouse_others_personal_alert").textContent = "Others field is required. Input 0 if none.";
+		} else {
+			document.getElementById("mouse_others_personal_alert").style.display = "none";
+		}
+	});
+
+	kacerInstalled.addEventListener("input", function() {
+		if (kacerInstalled.value === "") {
+			document.getElementById("kb_acer_installed_alert").style.display = "block";
+			document.getElementById("kb_acer_installed_alert").textContent = "Acer field is required. Input 0 if none.";
+		} else {
+			document.getElementById("kb_acer_installed_alert").style.display = "none";
+		}
+	});
+
+	khpInstalled.addEventListener("input", function() {
+		if (khpInstalled.value === "") {
+			document.getElementById("kb_hp_installed_alert").style.display = "block";
+			document.getElementById("kb_hp_installed_alert").textContent = "HP field is required. Input 0 if none.";
+		} else {
+			document.getElementById("kb_hp_installed_alert").style.display = "none";
+		}
+	});
+
+	klenovoInstalled.addEventListener("input", function() {
+		if (klenovoInstalled.value === "") {
+			document.getElementById("kb_lenovo_installed_alert").style.display = "block";
+			document.getElementById("kb_lenovo_installed_alert").textContent = "Lenovo field is required. Input 0 if none.";
+		} else {
+			document.getElementById("kb_lenovo_installed_alert").style.display = "none";
+		}
+	});
+
+	ksamsungInstalled.addEventListener("input", function() {
+		if (ksamsungInstalled.value === "") {
+			document.getElementById("kb_samsung_installed_alert").style.display = "block";
+			document.getElementById("kb_samsung_installed_alert").textContent = "Samsung field is required. Input 0 if none.";
+		} else {
+			document.getElementById("kb_samsung_installed_alert").style.display = "none";
+		}
+	});
+
+	kothersInstalled.addEventListener("input", function() {
+		if (kothersInstalled.value === "") {
+			document.getElementById("kb_others_installed_alert").style.display = "block";
+			document.getElementById("kb_others_installed_alert").textContent = "Others field is required. Input 0 if none.";
+		} else {
+			document.getElementById("kb_others_installed_alert").style.display = "none";
+		}
+	});
+
+	kacerPersonal.addEventListener("input", function() {
+		if (kacerPersonal.value === "") {
+			document.getElementById("kb_acer_personal_alert").style.display = "block";
+			document.getElementById("kb_acer_personal_alert").textContent = "Acer field is required. Input 0 if none.";
+		} else {
+			document.getElementById("kb_acer_personal_alert").style.display = "none";
+		}
+	});
+
+	khpPersonal.addEventListener("input", function() {
+		if (khpPersonal.value === "") {
+			document.getElementById("kb_hp_personal_alert").style.display = "block";
+			document.getElementById("kb_hp_personal_alert").textContent = "HP field is required. Input 0 if none.";
+		} else {
+			document.getElementById("kb_hp_personal_alert").style.display = "none";
+		}
+	});
+
+	klenovoPersonal.addEventListener("input", function() {
+		if (klenovoPersonal.value === "") {
+			document.getElementById("kb_lenovo_personal_alert").style.display = "block";
+			document.getElementById("kb_lenovo_personal_alert").textContent = "Lenovo field is required. Input 0 if none.";
+		} else {
+			document.getElementById("kb_lenovo_personal_alert").style.display = "none";
+		}
+	});
+
+	ksamsungPersonal.addEventListener("input", function() {
+		if (ksamsungPersonal.value === "") {
+			document.getElementById("kb_samsung_personal_alert").style.display = "block";
+			document.getElementById("kb_samsung_personal_alert").textContent = "Samsung field is required. Input 0 if none.";
+		} else {
+			document.getElementById("kb_samsung_personal_alert").style.display = "none";
+		}
+	});
+
+	kothersPersonal.addEventListener("input", function() {
+		if (kothersPersonal.value === "") {
+			document.getElementById("kb_others_personal_alert").style.display = "block";
+			document.getElementById("kb_others_personal_alert").textContent = "Others field is required. Input 0 if none.";
+		} else {
+			document.getElementById("kb_others_personal_alert").style.display = "none";
+		}
+	});
+
+	mnacerInstalled.addEventListener("input", function() {
+		if (mnacerInstalled.value === "") {
+			document.getElementById("monitor_acer_installed_alert").style.display = "block";
+			document.getElementById("monitor_acer_installed_alert").textContent = "Acer field is required. Input 0 if none.";
+		} else {
+			document.getElementById("monitor_acer_installed_alert").style.display = "none";
+		}
+	});
+
+	mnhpInstalled.addEventListener("input", function() {
+		if (mnhpInstalled.value === "") {
+			document.getElementById("monitor_hp_installed_alert").style.display = "block";
+			document.getElementById("monitor_hp_installed_alert").textContent = "HP field is required. Input 0 if none.";
+		} else {
+			document.getElementById("monitor_hp_installed_alert").style.display = "none";
+		}
+	});
+
+	mnlenovoInstalled.addEventListener("input", function() {
+		if (mnlenovoInstalled.value === "") {
+			document.getElementById("monitor_lenovo_installed_alert").style.display = "block";
+			document.getElementById("monitor_lenovo_installed_alert").textContent = "Lenovo field is required. Input 0 if none.";
+		} else {
+			document.getElementById("monitor_lenovo_installed_alert").style.display = "none";
+		}
+	});
+
+	mnsamsungInstalled.addEventListener("input", function() {
+		if (mnsamsungInstalled.value === "") {
+			document.getElementById("monitor_samsung_installed_alert").style.display = "block";
+			document.getElementById("monitor_samsung_installed_alert").textContent = "Samsung field is required. Input 0 if none.";
+		} else {
+			document.getElementById("monitor_samsung_installed_alert").style.display = "none";
+		}
+	});
+
+	mnothersInstalled.addEventListener("input", function() {
+		if (mnothersInstalled.value === "") {
+			document.getElementById("monitor_others_installed_alert").style.display = "block";
+			document.getElementById("monitor_others_installed_alert").textContent = "Others field is required. Input 0 if none.";
+		} else {
+			document.getElementById("monitor_others_installed_alert").style.display = "none";
+		}
+	});
+
+	mnacerPersonal.addEventListener("input", function() {
+		if (mnacerPersonal.value === "") {
+			document.getElementById("monitor_acer_personal_alert").style.display = "block";
+			document.getElementById("monitor_acer_personal_alert").textContent = "Acer field is required. Input 0 if none.";
+		} else {
+			document.getElementById("monitor_acer_personal_alert").style.display = "none";
+		}
+	});
+
+	mnhpPersonal.addEventListener("input", function() {
+		if (mnhpPersonal.value === "") {
+			document.getElementById("monitor_hp_personal_alert").style.display = "block";
+			document.getElementById("monitor_hp_personal_alert").textContent = "HP field is required. Input 0 if none.";
+		} else {
+			document.getElementById("monitor_hp_personal_alert").style.display = "none";
+		}
+	});
+
+	mnlenovoPersonal.addEventListener("input", function() {
+		if (mnlenovoPersonal.value === "") {
+			document.getElementById("monitor_lenovo_personal_alert").style.display = "block";
+			document.getElementById("monitor_lenovo_personal_alert").textContent = "Lenovo field is required. Input 0 if none.";
+		} else {
+			document.getElementById("monitor_lenovo_personal_alert").style.display = "none";
+		}
+	});
+
+	mnsamsungPersonal.addEventListener("input", function() {
+		if (mnsamsungPersonal.value === "") {
+			document.getElementById("monitor_samsung_personal_alert").style.display = "block";
+			document.getElementById("monitor_samsung_personal_alert").textContent = "Samsung field is required. Input 0 if none.";
+		} else {
+			document.getElementById("monitor_samsung_personal_alert").style.display = "none";
+		}
+	});
+
+	mnothersPersonal.addEventListener("input", function() {
+		if (mnothersPersonal.value === "") {
+			document.getElementById("monitor_others_personal_alert").style.display = "block";
+			document.getElementById("monitor_others_personal_alert").textContent = "Others field is required. Input 0 if none.";
+		} else {
+			document.getElementById("monitor_others_personal_alert").style.display = "none";
+		}
+	});
+
+	op.addEventListener("input", function() {
+		if (op.value === "") {
+			document.getElementById("ordinaryprinter_shared_alert").style.display = "block";
+			document.getElementById("ordinaryprinter_shared_alert").textContent = "Ordinary printer field is required. Input 0 if none.";
+		} else {
+			document.getElementById("ordinaryprinter_shared_alert").style.display = "none";
+		}
+	});
+
+	cp.addEventListener("input", function() {
+		if (cp.value === "") {
+			document.getElementById("coloredprinter_shared_alert").style.display = "block";
+			document.getElementById("coloredprinter_shared_alert").textContent = "Colored printer field is required. Input 0 if none.";
+		} else {
+			document.getElementById("coloredprinter_shared_alert").style.display = "none";
+		}
+	});
+
+	sc.addEventListener("input", function() {
+		if (sc.value === "") {
+			document.getElementById("scanner_shared_alert").style.display = "block";
+			document.getElementById("scanner_shared_alert").textContent = "Scanner field is required. Input 0 if none.";
+		} else {
+			document.getElementById("scanner_shared_alert").style.display = "none";
+		}
+	});
+
+	sp.addEventListener("input", function() {
+		if (sp.value === "") {
+			document.getElementById("speaker_shared_alert").style.display = "block";
+			document.getElementById("speaker_shared_alert").textContent = "Speaker field is required. Input 0 if none.";
+		} else {
+			document.getElementById("speaker_shared_alert").style.display = "none";
+		}
+	});
+
+	tv.addEventListener("input", function() {
+		if (tv.value === "") {
+			document.getElementById("tv_shared_alert").style.display = "block";
+			document.getElementById("tv_shared_alert").textContent = "TV/Big Monitor field is required. Input 0 if none.";
+		} else {
+			document.getElementById("tv_shared_alert").style.display = "none";
+		}
+	});
+
+	pj.addEventListener("input", function() {
+		if (pj.value === "") {
+			document.getElementById("projector_shared_alert").style.display = "block";
+			document.getElementById("projector_shared_alert").textContent = "Projector field is required. Input 0 if none.";
+		} else {
+			document.getElementById("projector_shared_alert").style.display = "none";
+		}
+	});
+
+	cm.addEventListener("input", function() {
+		if (cm.value === "") {
+			document.getElementById("camera_shared_alert").style.display = "block";
+			document.getElementById("camera_shared_alert").textContent = "Camera field is required. Input 0 if none.";
+		} else {
+			document.getElementById("camera_shared_alert").style.display = "none";
+		}
+	});
+
+	mc.addEventListener("input", function() {
+		if (mc.value === "") {
+			document.getElementById("microphone_shared_alert").style.display = "block";
+			document.getElementById("microphone_shared_alert").textContent = "Microphone field is required. Input 0 if none.";
+		} else {
+			document.getElementById("microphone_shared_alert").style.display = "none";
+		}
+	});
+
+	pc.addEventListener("input", function() {
+		if (pc.value === "") {
+			document.getElementById("photocopier_shared_alert").style.display = "block";
+			document.getElementById("photocopier_shared_alert").textContent = "Photo-copier field is required. Input 0 if none.";
+		} else {
+			document.getElementById("photocopier_shared_alert").style.display = "none";
+		}
 	});
 
 </script>
