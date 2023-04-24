@@ -1,0 +1,49 @@
+{% extends "basetemp/indexbase.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+	.fieldsize {
+		width: 150%;
+	}
+
+	.formdiv {
+		margin-top: 20px;
+	}
+
+	.dbtn {
+		width: 150px;
+	}
+
+	span {
+		color: red;
+	}
+	table {
+		margin-bottom: 20px;
+	}
+</style>
+<h3 class="mt-4">{{title}}</h3>
+<div class="container-fluid formdiv">
+	<form method="post">
+		{% csrf_token %}
+				<div class="form-group row">
+					<h6>How Familiar are you with saving files in a selected folder in your desktop or laptop computers?</h6><br>
+					{{ form.saving_files_familiar|as_crispy_field }}<br><br>
+				<h6>How Familiar are you with creating and naming folders in your desktop or laptop computers?</h6><br>
+					{{ form.creating_and_naming_folders_familiar|as_crispy_field }}
+				</div>
+				<div class="form-group row">
+					<h6><b>Online Workspaces</b></h6><br>
+					<h6>Identify your skill competency in using <b>Google Workspace</b>:</h1>
+					Gmail{{ form.gmail_familiar|as_crispy_field }}
+					Meet{{ form.meet_familiar|as_crispy_field }}
+					Calendar{{ form.calendar_familiar|as_crispy_field }}
+				</div>
+			</div>
+
+		<button type="submit" class="btn btn-primary dbtn">Update</button>
+		<a href="/survey/" class="btn btn-danger dbtn">Go back</a>
+	</form>	
+		
+</div>
+{% endblock content %}

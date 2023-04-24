@@ -9,6 +9,26 @@ class office_division(models.Model):
 
     def __str__(self):
         return str(self.office_division_name)
+    
+class ProfessionalToolsOption(models.Model):
+    title = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+    
+
+class CompetencyScale(models.Model):
+    title = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+    
+
+class ICTTrainingPrograms(models.Model):
+    title = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
 
 class Survey(models.Model):
     survey_id = models.AutoField(primary_key=True)
@@ -153,6 +173,20 @@ class Survey(models.Model):
     storage_section = models.IntegerField(blank=True, null=True, default = 0)
     competencies_section = models.IntegerField(blank=True, null=True, default = 0)
     trainings_section = models.IntegerField(blank=True, null=True, default = 0)
+
+    dotr_issued_professional_tools_installed = models.ManyToManyField(ProfessionalToolsOption, blank=True, related_name='dotr_issued_professional_tools_installed')
+    personal_owned_professional_tools_installed = models.ManyToManyField(ProfessionalToolsOption, blank=True, related_name='personal_owned_professional_tools_installed')
+    professional_tools_needed = models.ManyToManyField(ProfessionalToolsOption, null=True, blank=True, related_name='professional_tools_needed')
+
+    saving_files_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='saving_files_familiar')
+    creating_and_naming_folders_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='creating_and_naming_folders_familiar')
+    gmail_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='gmail_familiar')
+    meet_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='meet_familiar')
+    calendar_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='calendar_familiar')
+    
+
+    ict_trainings_taken = models.ManyToManyField(ICTTrainingPrograms, null=True, blank=True, related_name='ict_trainings_taken')
+    ict_trainings_interests = models.ManyToManyField(ICTTrainingPrograms, null=True, blank=True, related_name='ict_trainings_interests')
 
     def __str__(self):
         return str(self.survey_id)+" "+str(self.user)
