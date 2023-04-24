@@ -1,0 +1,44 @@
+{% extends "basetemp/indexbase.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+	.fieldsize {
+		width: 150%;
+	}
+
+	.formdiv {
+		margin-top: 20px;
+	}
+
+	.dbtn {
+		width: 150px;
+	}
+
+	span {
+		color: red;
+	}
+	table {
+		margin-bottom: 20px;
+	}
+</style>
+<h3 class="mt-4">{{title}}</h3>
+<div class="container-fluid formdiv">
+	<form method="post">
+		{% csrf_token %}
+		<div class="form-group row">
+			<h6><b>ICT Training Programs</b></h6><br>
+			<h6>What ICT Trainings have you taken before?</h6>
+			{{ form.ict_trainings_taken|as_crispy_field }}
+		</div>
+		<div class="form-group row">
+			<h6>What ICT Trainings are you interested in?</h6>
+			{{ form.ict_trainings_interests|as_crispy_field }}
+		</div>
+
+		<button type="submit" class="btn btn-primary dbtn">Update</button>
+		<a href="/survey/" class="btn btn-danger dbtn">Go back</a>
+	</form>	
+		
+</div>
+{% endblock content %}

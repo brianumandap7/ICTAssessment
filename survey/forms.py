@@ -1,5 +1,6 @@
 from django import forms
-from .models import Survey, office_division
+from .models import Survey, ProfessionalToolsOption, CompetencyScale, ICTTrainingPrograms
+from crispy_forms.helper import FormHelper
 
 class demographicsform(forms.ModelForm):
 	class Meta:
@@ -259,4 +260,47 @@ class hardwareform(forms.ModelForm):
 		self.fields['hardware_comments'].required = True
 
 
+class SoftwareForm(forms.ModelForm):
+    dotr_issued_professional_tools_installed = forms.ModelMultipleChoiceField(queryset=ProfessionalToolsOption.objects.all(), widget=forms.CheckboxSelectMultiple)
+    personal_owned_professional_tools_installed = forms.ModelMultipleChoiceField(queryset=ProfessionalToolsOption.objects.all(), widget=forms.CheckboxSelectMultiple)
+    professional_tools_needed = forms.ModelMultipleChoiceField(queryset=ProfessionalToolsOption.objects.all(), widget=forms.CheckboxSelectMultiple)
 
+    class Meta:
+        model = Survey
+        fields = ['dotr_issued_professional_tools_installed', 'personal_owned_professional_tools_installed', 'professional_tools_needed']
+	
+    def __init__(self,*args, **kwargs):
+	    super(SoftwareForm, self).__init__(*args, **kwargs)
+	    self.helper = FormHelper(self)
+	    self.helper.form_show_labels = False
+
+
+class CompetenciesForm(forms.ModelForm):
+    saving_files_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect)
+    creating_and_naming_folders_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect)
+    gmail_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect)
+    meet_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect)
+    calendar_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect)
+
+    class Meta:
+        model = Survey
+        fields = ['saving_files_familiar', 'creating_and_naming_folders_familiar', 'gmail_familiar', 'meet_familiar', 'calendar_familiar']
+	
+    def __init__(self,*args, **kwargs):
+	    super(CompetenciesForm, self).__init__(*args, **kwargs)
+	    self.helper = FormHelper(self)
+	    self.helper.form_show_labels = False
+		
+
+class ICTTrainingsForm(forms.ModelForm):
+    ict_trainings_taken = forms.ModelMultipleChoiceField(queryset=ICTTrainingPrograms.objects.all(), widget=forms.CheckboxSelectMultiple)
+    ict_trainings_interests = forms.ModelMultipleChoiceField(queryset=ICTTrainingPrograms.objects.all(), widget=forms.CheckboxSelectMultiple)
+
+    class Meta:
+        model = Survey
+        fields = ['ict_trainings_taken', 'ict_trainings_interests']
+	
+    def __init__(self,*args, **kwargs):
+	    super(ICTTrainingsForm, self).__init__(*args, **kwargs)
+	    self.helper = FormHelper(self)
+	    self.helper.form_show_labels = False
