@@ -24,6 +24,18 @@
 	  padding: 10px;
 	  color: white;
 	}
+
+	.custom {
+		width: 90%;
+		padding-top: 7px;
+		padding-bottom: 7px;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
+	span {
+		color: red;
+	}
 </style>
 <h3 class="mt-4">{{title}}</h3>
 <div class="container-fluid formdiv">
@@ -34,72 +46,81 @@
 		<table class="table">
 							<tr>
 								<td>
-									<strong>{{form.office_division_name.label_tag}}</strong>
+									<span>*</span> <strong>{{form.office_division_name.label_tag}}</strong>
 									{{form.office_division_name}}
 									{{form.demographics_section}}
-				
+									<span id="office_division_name_alert" class="alert-danger custom" style="display:none;"></span>
 								</td>
 								<td>
-									<strong>{{form.presidential_appointee.label_tag}}</strong>
+									<span>*</span> <strong>{{form.presidential_appointee.label_tag}}</strong>
 									{{form.presidential_appointee}}
+									<span id="presidential_appointee_alert" class="alert-danger custom" style="display:none;"></span>
 								</td>
 							</tr>
 				
 							<tr>
 								<td>
-									<strong>{{form.permanent.label_tag}}</strong>
+									<span>*</span> <strong>{{form.permanent.label_tag}}</strong>
 									{{form.permanent}}
+									<span id="permanent_alert" class="alert-danger custom" style="display:none;">
 								</td>
 				
 								<td>
-									<strong>{{form.coterminus.label_tag}}</strong>
+									<span>*</span> <strong>{{form.coterminus.label_tag}}</strong>
 									{{form.coterminus}}
+									<span id="coterminus_alert" class="alert-danger custom" style="display:none;">
 								</td>
 								
 							</tr>
 				
 							<tr>
 								<td>
-									<strong>{{form.jo_cos.label_tag}}</strong>
+									<span>*</span> <strong>{{form.jo_cos.label_tag}}</strong>
 									{{form.jo_cos}}
+									<span id="jo_cos_alert" class="alert-danger custom" style="display:none;">
 								</td>
 								<td>
-									<strong>{{form.casual_temporary.label_tag}}</strong>
+									<span>*</span> <strong>{{form.casual_temporary.label_tag}}</strong>
 									{{form.casual_temporary}}
+									<span id="casual_temporary_alert" class="alert-danger custom" style="display:none;">
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<strong>Gender: </strong><br><small>(Define the number of male and female personnel)</small>
+									<span>*</span> <strong>Gender: </strong><br><small>(Define the number of male and female personnel)</small>
 								</td>
 							</tr>
 							<tr>
 								<td>
 									
-									<strong>{{form.male.label_tag}}</strong>
+									<span>*</span> <strong>{{form.male.label_tag}}</strong>
 									{{form.male}}
+									<span id="male_alert" class="alert-danger custom" style="display:none;">
 								</td>
 				
 								<td>
 									
-									<strong>{{form.female.label_tag}}</strong>
+									<span>*</span> <strong>{{form.female.label_tag}}</strong>
 									{{form.female}}
+									<span id="female_alert" class="alert-danger custom" style="display:none;">
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<strong>Age Bracket:</strong><br><small>(Define the number of personnel per age bracket)</small>
+									<span>*</span> <strong>Age Bracket:</strong><br><small>(Define the number of personnel per age bracket)</small>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<strong>{{form.age_20_24.label_tag}}</strong>
+									<span>*</span> <strong>{{form.age_20_24.label_tag}}</strong>
 									{{form.age_20_24}}
+									<span id="age_20_24_alert" class="alert-danger custom" style="display:none;">
 								</td>
 
 								<td>
-									<strong>{{form.age_25_34.label_tag}}</strong>
+									<span>*</span> <strong>{{form.age_25_34.label_tag}}</strong>
 									{{form.age_25_34}}
+									<span id="age_25_34_alert" class="alert-danger custom" style="display:none;">
 								</td>
 							</tr>
 				
@@ -107,13 +128,15 @@
 							<tr>
 								<td>
 									
-									<strong>{{form.age_35_44.label_tag}}</strong>
+									<span>*</span> <strong>{{form.age_35_44.label_tag}}</strong>
 									{{form.age_35_44}}
+									<span id="age_35_44_alert" class="alert-danger custom" style="display:none;">
 								</td>
 
 								<td>
-									<strong>{{form.age_45_54.label_tag}}</strong>
+									<span>*</span> <strong>{{form.age_45_54.label_tag}}</strong>
 									{{form.age_45_54}}
+									<span id="age_45_54_alert" class="alert-danger custom" style="display:none;">
 								</td>
 							</tr>
 
@@ -121,8 +144,9 @@
 
 							<tr>
 								<td>
-									<strong>{{form.age_55_above.label_tag}}</strong>
+									<span>*</span> <strong>{{form.age_55_above.label_tag}}</strong>
 									{{form.age_55_above}}
+									<span id="age_55_above_alert" class="alert-danger custom" style="display:none;">
 								</td>
 							</tr>
 						</table>
@@ -153,5 +177,151 @@
 
 	});
 
+	var officeDivisionNameInput = document.getElementById("id_office_division_name");
+	var presidentialAppointeeInput = document.getElementById("id_presidential_appointee");
+	var permanentInput = document.getElementById("id_permanent");
+	var coterminusInput = document.getElementById("id_coterminus");
+	var joCosInput = document.getElementById("id_jo_cos");
+	var casualTemporaryInput = document.getElementById("id_casual_temporary");
+	var maleInput = document.getElementById("id_male");
+	var femaleInput = document.getElementById("id_female");
+	var age2024Input = document.getElementById("id_age_20_24");
+	var age2534Input = document.getElementById("id_age_25_34");
+	var age3544Input = document.getElementById("id_age_35_44");
+	var age4554Input = document.getElementById("id_age_45_54");
+	var age55AboveInput = document.getElementById("id_age_55_above");
+
+	officeDivisionNameInput.addEventListener("input", function() {
+		if (officeDivisionNameInput.value === "") {
+			document.getElementById("office_division_name_alert").style.display = "block";
+			document.getElementById("office_division_name_alert").textContent = "This field is required.";
+		} else {
+			document.getElementById("office_division_name_alert").style.display = "none";
+		}
+	});
+
+	presidentialAppointeeInput.addEventListener("input", function() {
+		if (presidentialAppointeeInput.value === "") {
+			document.getElementById("presidential_appointee_alert").style.display = "block";
+			document.getElementById("presidential_appointee_alert").textContent = "This field is required. Input 0 (Zero) if none.";
+		} else {
+			document.getElementById("presidential_appointee_alert").style.display = "none";
+		}
+
+	});
+
+	permanentInput.addEventListener("input", function() {
+		if (permanentInput.value === "") {
+			document.getElementById("permanent_alert").style.display = "block";
+			document.getElementById("permanent_alert").textContent = "This field is required. Input 0 (Zero) if none.";
+		} else {
+			document.getElementById("permanent_alert").style.display = "none";
+		}
+
+	});
+
+	coterminusInput.addEventListener("input", function() {
+		if (coterminusInput.value === "") {
+			document.getElementById("coterminus_alert").style.display = "block";
+			document.getElementById("coterminus_alert").textContent = "This field is required. Input 0 (Zero) if none.";
+		} else {
+			document.getElementById("coterminus_alert").style.display = "none";
+		}
+
+	});
+
+	joCosInput.addEventListener("input", function() {
+		if (joCosInput.value === "") {
+			document.getElementById("jo_cos_alert").style.display = "block";
+			document.getElementById("jo_cos_alert").textContent = "This field is required. Input 0 (Zero) if none.";
+		} else {
+			document.getElementById("jo_cos_alert").style.display = "none";
+		}
+
+	});
+
+	casualTemporaryInput.addEventListener("input", function() {
+		if (casualTemporaryInput.value === "") {
+			document.getElementById("casual_temporary_alert").style.display = "block";
+			document.getElementById("casual_temporary_alert").textContent = "This field is required. Input 0 (Zero) if none.";
+		} else {
+			document.getElementById("casual_temporary_alert").style.display = "none";
+		}
+
+	});
+
+	maleInput.addEventListener("input", function() {
+		if (maleInput.value === "") {
+			document.getElementById("male_alert").style.display = "block";
+			document.getElementById("male_alert").textContent = "This field is required. Input 0 (Zero) if none.";
+		} else {
+			document.getElementById("male_alert").style.display = "none";
+		}
+
+	});
+
+	femaleInput.addEventListener("input", function() {
+		if (femaleInput.value === "") {
+			document.getElementById("female_alert").style.display = "block";
+			document.getElementById("female_alert").textContent = "This field is required. Input 0 (Zero) if none.";
+		} else {
+			document.getElementById("female_alert").style.display = "none";
+		}
+
+	});
+
+	age2024Input.addEventListener("input", function() {
+		if (age2024Input.value === "") {
+			document.getElementById("age_20_24_alert").style.display = "block";
+			document.getElementById("age_20_24_alert").textContent = "This field is required. Input 0 (Zero) if none.";
+		} else {
+			document.getElementById("age_20_24_alert").style.display = "none";
+		}
+
+	});
+
+	age2534Input.addEventListener("input", function() {
+		if (age2534Input.value === "") {
+			document.getElementById("age_25_34_alert").style.display = "block";
+			document.getElementById("age_25_34_alert").textContent = "This field is required. Input 0 (Zero) if none.";
+		} else {
+			document.getElementById("age_25_34_alert").style.display = "none";
+		}
+
+	});
+
+	age3544Input.addEventListener("input", function() {
+		if (age3544Input.value === "") {
+			document.getElementById("age_35_44_alert").style.display = "block";
+			document.getElementById("age_35_44_alert").textContent = "This field is required. Input 0 (Zero) if none.";
+		} else {
+			document.getElementById("age_35_44_alert").style.display = "none";
+		}
+
+	});
+
+	age4554Input.addEventListener("input", function() {
+		if (age4554Input.value === "") {
+			document.getElementById("age_45_54_alert").style.display = "block";
+			document.getElementById("age_45_54_alert").textContent = "This field is required. Input 0 (Zero) if none.";
+		} else {
+			document.getElementById("age_45_54_alert").style.display = "none";
+		}
+
+	});
+
+	age55AboveInput.addEventListener("input", function() {
+		if (age55AboveInput.value === "") {
+			document.getElementById("age_55_above_alert").style.display = "block";
+			document.getElementById("age_55_above_alert").textContent = "This field is required. Input 0 (Zero) if none.";
+		} else {
+			document.getElementById("age_55_above_alert").style.display = "none";
+		}
+
+	});
+
+
 </script>
+
+
 {% endblock content %}
