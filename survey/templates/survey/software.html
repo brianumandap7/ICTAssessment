@@ -1,0 +1,237 @@
+{% extends "basetemp/indexbase.html" %}
+{% load static %}
+{% block content %}
+<style>
+	.formdiv {
+		margin-top: 20px;
+	}
+
+	.dbtn {
+		width: 150px;
+	}
+
+	span {
+		color: red;
+	}
+	table {
+		margin-bottom: 20px;
+	}
+
+	#scrollPercentage {
+	  position: fixed;
+	  top: 60px;
+	  right: 0;
+	  font-size: 16px;
+	  color: #000;
+	  background-color: #007BFF;
+	  padding: 10px;
+	  color: white;
+	}
+	.others {
+		width: 10%;
+	}
+
+</style>
+<h3 class="mt-4">{{title}}</h3>
+<div class="container-fluid formdiv">
+	<form method="post" id="softwareform">
+		{% csrf_token %}
+
+		<div class="form-group row">
+			<b>Professional Tools</b>
+			<h6>1. Identify any <b>DOTr-issued and personal-owned professional tool/software</b> you are <b>currently using</b> in your office/division:</h6><br><br>
+			<h6>&nbsp;&nbsp;&nbsp;&nbsp;A. DOTr-issued professional tool/software:</h6>
+
+			{% for checkbox in form.dotr_issued_professional_tools_installed %}
+			    <div class="checkbox">
+			      {% if checkbox.choice_label == 'Others' %}
+			        <label style="margin-left: 50px;">
+			          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			          {{form.dotr_issued_professional_tools_installed_others}}
+			        </label>
+			        
+			      {% else %}
+			        <label style="margin-left: 50px;">
+			          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			      {% endif %}
+			    </div>
+			{% endfor %}
+		</div>
+		<div class="form-group row">
+			<h6>&nbsp;&nbsp;&nbsp;&nbsp;B. Personal-owned professional tool/software:</h6>
+
+			{% for checkbox in form.personal_owned_professional_tools_installed %}
+			    <div class="checkbox">
+			      {% if checkbox.choice_label == 'Others' %}
+			        <label style="margin-left: 50px;">
+			          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			        {{form.personal_owned_professional_tools_installed_others}}
+			      {% else %}
+			        <label style="margin-left: 50px;">
+			          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			      {% endif %}
+			    </div>
+			{% endfor %}
+
+		</div>
+		<div class="form-group row">
+			<h6>2. Identify any professional tool/software <b>needed</b> in your office/division. </h6>
+
+			{% for checkbox in form.professional_tools_needed %}
+			    <div class="checkbox">
+			      {% if checkbox.choice_label == 'Others' %}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			        {{form.professional_tools_needed_others}}
+			      {% else %}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			      {% endif %}
+			    </div>
+			{% endfor %}
+		</div>
+		<br>
+		<div class="form-group row">
+			<b>Communication Tools</b>
+			<h6>3. Identify the current Communication tools you are using in your division/office.</h6>
+			{% for checkbox in form.communication_tools_installed %}
+			    <div class="checkbox">
+			      {% if checkbox.choice_label == 'Others' %}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			        {{form.communication_tools_installed_others}}
+			      {% else %}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			      {% endif %}
+			    </div>
+			{% endfor %}
+		</div>
+
+		<div class="form-group row">
+			<h6>4. Identify the current Communication tools needed in your division/office.</h6>
+			{% for checkbox in form.communication_tools_needed %}
+			    <div class="checkbox">
+			      {% if checkbox.choice_label == 'Others' %}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			        {{form.communication_tools_needed_others}}
+			      {% else %}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			      {% endif %}
+			    </div>
+			{% endfor %}
+		</div>
+
+		<div class="form-group row">
+			<b>Office Productivity Software</b>
+			<h6>5. Identify any <b>DOTr-issued and personal-owned office productivity software</b> you are <b>currently using</b> in your office/division:</h6><br><br>
+			<h6>&nbsp;&nbsp;&nbsp;&nbsp;A. DOTr-issued office producitivity software:</h6>
+
+			{% for checkbox in form.dotr_issued_productivity_installed %}
+			    <div class="checkbox">
+			      {% if checkbox.choice_label == 'Others' %}
+			        <label style="margin-left: 50px;">
+			          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			        {{form.dotr_issued_productivity_installed_others}}
+			      {% else %}
+			        <label style="margin-left: 50px;">
+			          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			      {% endif %}
+			    </div>
+			{% endfor %}
+		</div>
+
+		<div class="form-group row">
+			<h6>&nbsp;&nbsp;&nbsp;&nbsp;B. Personal-owned office productivity software:</h6>
+
+			{% for checkbox in form.personal_owned_productivity_installed %}
+			    <div class="checkbox">
+			      {% if checkbox.choice_label == 'Others' %}
+			        <label style="margin-left: 50px;">
+			          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			        {{form.personal_owned_productivity_installed_others}}
+			      {% else %}
+			        <label style="margin-left: 50px;">
+			          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			      {% endif %}
+			    </div>
+			{% endfor %}
+
+		</div>
+
+		<div class="form-group row">
+			<h6>6. Identify the current productivity software products <b>needed</b> in your office/division.</h6>
+			{% for checkbox in form.productivity_needed %}
+			    <div class="checkbox">
+			      {% if checkbox.choice_label == 'Others' %}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			        {{form.productivity_needed_others}}
+			      {% else %}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			      {% endif %}
+			    </div>
+			{% endfor %}
+		</div>
+
+		<div class="form-group row">
+			<h6>7. <span>*</span>Any comments and suggestions on the software currently installed in your division/office:</h6>
+			<div class="container-fluid">
+				{{form.software_comments}}
+			</div>
+		</div>
+
+		{{form.software_section}}
+		<button type="submit" class="btn btn-primary dbtn">Update</button>
+		<a href="/survey/" class="btn btn-danger dbtn">Go back</a>
+	</form>	
+
+	<div id="scrollPercentage">Page Scroll: 0%&nbsp;&nbsp;&nbsp;</div>
+	<br>
+</div>
+
+<script>
+	// Get the container element
+	var scrollPercentageElement = document.getElementById("scrollPercentage");
+
+	// Add a scroll event listener to the window
+	window.addEventListener("scroll", function() {
+	  // Calculate the percentage of the webpage scrolled
+	  var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+	  var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+	  var scrolledPercentage = (scrollTop / (scrollHeight - window.innerHeight)) * 100;
+
+	  // Update the content of the container element with the calculated percentage
+	  scrollPercentageElement.textContent = "Page Scroll: " + Math.round(scrolledPercentage) + "%";
+
+	});
+</script>
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}
