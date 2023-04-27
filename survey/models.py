@@ -30,6 +30,37 @@ class ICTTrainingPrograms(models.Model):
     def __str__(self):
         return self.title
 
+class ProfessionalToolsOption(models.Model):
+    title = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+class CommunicationToolsOption(models.Model):
+    title = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+class ProductivityOption(models.Model):
+    title = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+class CompetencyScale(models.Model):
+    title = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+    
+
+class ICTTrainingPrograms(models.Model):
+    title = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
 class Survey(models.Model):
     survey_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
@@ -174,9 +205,25 @@ class Survey(models.Model):
     competencies_section = models.IntegerField(blank=True, null=True, default = 0)
     trainings_section = models.IntegerField(blank=True, null=True, default = 0)
 
+
     dotr_issued_professional_tools_installed = models.ManyToManyField(ProfessionalToolsOption, blank=True, related_name='dotr_issued_professional_tools_installed')
+    dotr_issued_professional_tools_installed_others = models.CharField(max_length=255, blank=True, null= True)
+    communication_tools_installed = models.ManyToManyField(CommunicationToolsOption, blank=True, related_name='communication_tools_installed')
+    communication_tools_installed_others = models.CharField(max_length=255, blank=True, null= True)
+    communication_tools_needed = models.ManyToManyField(CommunicationToolsOption, blank=True, related_name='communication_tools_needed')
+    communication_tools_needed_others = models.CharField(max_length=255, blank=True, null= True)
     personal_owned_professional_tools_installed = models.ManyToManyField(ProfessionalToolsOption, blank=True, related_name='personal_owned_professional_tools_installed')
-    professional_tools_needed = models.ManyToManyField(ProfessionalToolsOption, null=True, blank=True, related_name='professional_tools_needed')
+    personal_owned_professional_tools_installed_others = models.CharField(max_length=255, blank=True, null= True)
+    professional_tools_needed = models.ManyToManyField(ProfessionalToolsOption, blank=True, related_name='professional_tools_needed')
+    professional_tools_needed_others = models.CharField(max_length=255, blank=True, null= True)
+    dotr_issued_productivity_installed = models.ManyToManyField(ProductivityOption, blank=True, related_name='dotr_issued_productivity_installed')
+    personal_owned_productivity_installed = models.ManyToManyField(ProductivityOption, blank=True, related_name='personal_owned_productivity_installed')
+    dotr_issued_productivity_installed_others = models.CharField(max_length=255, blank=True, null= True)
+    personal_owned_productivity_installed_others = models.CharField(max_length=255, blank=True, null= True)
+    productivity_needed = models.ManyToManyField(ProductivityOption, blank=True, related_name='productivity_needed')
+    productivity_needed_others = models.CharField(max_length=255, blank=True, null= True)
+
+    software_comments = models.CharField(max_length=255, blank=True, null=True)
 
     saving_files_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='saving_files_familiar')
     creating_and_naming_folders_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='creating_and_naming_folders_familiar')
@@ -185,8 +232,8 @@ class Survey(models.Model):
     calendar_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='calendar_familiar')
     
 
-    ict_trainings_taken = models.ManyToManyField(ICTTrainingPrograms, null=True, blank=True, related_name='ict_trainings_taken')
-    ict_trainings_interests = models.ManyToManyField(ICTTrainingPrograms, null=True, blank=True, related_name='ict_trainings_interests')
+    ict_trainings_taken = models.ManyToManyField(ICTTrainingPrograms, blank=True, related_name='ict_trainings_taken')
+    ict_trainings_interests = models.ManyToManyField(ICTTrainingPrograms, blank=True, related_name='ict_trainings_interests')
 
     def __str__(self):
         return str(self.survey_id)+" "+str(self.user)

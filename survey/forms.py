@@ -1,6 +1,7 @@
 from django import forms
-from .models import Survey, ProfessionalToolsOption, CompetencyScale, ICTTrainingPrograms
+from .models import Survey, ProfessionalToolsOption, CompetencyScale, ICTTrainingPrograms, CommunicationToolsOption, ProductivityOption
 from crispy_forms.helper import FormHelper
+from django.core.exceptions import ValidationError
 
 class demographicsform(forms.ModelForm):
 	class Meta:
@@ -259,6 +260,79 @@ class hardwareform(forms.ModelForm):
 		self.fields['photocopier_shared_personal'].required = True
 		self.fields['hardware_comments'].required = True
 
+class SoftwareForm(forms.ModelForm):
+    dotr_issued_professional_tools_installed = forms.ModelMultipleChoiceField(queryset=ProfessionalToolsOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
+    personal_owned_professional_tools_installed = forms.ModelMultipleChoiceField(queryset=ProfessionalToolsOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
+    professional_tools_needed = forms.ModelMultipleChoiceField(queryset=ProfessionalToolsOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
+    communication_tools_installed = forms.ModelMultipleChoiceField(queryset=CommunicationToolsOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
+    communication_tools_needed = forms.ModelMultipleChoiceField(queryset=CommunicationToolsOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
+    communication_tools_installed_others = forms.CharField(required=False)
+    communication_tools_needed_others = forms.CharField(required=False)
+    dotr_issued_professional_tools_installed_others = forms.CharField(required=False)
+    personal_owned_professional_tools_installed_others = forms.CharField(required=False)
+    professional_tools_needed_others = forms.CharField(required=False)
+    dotr_issued_productivity_installed = forms.ModelMultipleChoiceField(queryset=ProductivityOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
+    dotr_issued_productivity_installed_others = forms.CharField(required=False)
+    personal_owned_productivity_installed = forms.ModelMultipleChoiceField(queryset=ProductivityOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
+    personal_owned_productivity_installed_others = forms.CharField(required=False)
+    productivity_needed = forms.ModelMultipleChoiceField(queryset=ProductivityOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
+    productivity_needed_others = forms.CharField(required=False)
+
+    class Meta:
+        model = Survey
+        fields = ['dotr_issued_professional_tools_installed', 'personal_owned_professional_tools_installed', 'professional_tools_needed', 'software_section',
+        'communication_tools_installed', 'communication_tools_needed',
+        'communication_tools_installed_others', 'communication_tools_needed_others',
+        'dotr_issued_professional_tools_installed_others', 'personal_owned_professional_tools_installed_others',
+        'professional_tools_needed_others',
+        'dotr_issued_productivity_installed', 'dotr_issued_productivity_installed_others',
+        'personal_owned_productivity_installed', 'personal_owned_productivity_installed_others', 'productivity_needed', 'productivity_needed_others',
+        'software_comments',]
+        
+        widgets = {
+			'software_section': forms.HiddenInput(attrs={'class': 'form-control fieldsize'}),
+			'software_comments': forms.Textarea(attrs={'class': 'form-control'}),
+		}
+    def __init__(self,*args, **kwargs):
+    	initial_data = kwargs.get('initial', {})
+    	initial_data['software_section'] = 1
+    	kwargs['initial'] = initial_data
+    	super(SoftwareForm, self).__init__(*args, **kwargs)
+    	self.helper = FormHelper(self)
+    	self.helper.form_show_labels = False
+    	self.fields['software_comments'].required = True
+    	
+
+
+class CompetenciesForm(forms.ModelForm):
+    saving_files_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect)
+    creating_and_naming_folders_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect)
+    gmail_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect)
+    meet_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect)
+    calendar_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect)
+
+    class Meta:
+        model = Survey
+        fields = ['saving_files_familiar', 'creating_and_naming_folders_familiar', 'gmail_familiar', 'meet_familiar', 'calendar_familiar']
+	
+    def __init__(self,*args, **kwargs):
+	    super(CompetenciesForm, self).__init__(*args, **kwargs)
+	    self.helper = FormHelper(self)
+	    self.helper.form_show_labels = False
+		
+
+class ICTTrainingsForm(forms.ModelForm):
+    ict_trainings_taken = forms.ModelMultipleChoiceField(queryset=ICTTrainingPrograms.objects.all(), widget=forms.CheckboxSelectMultiple)
+    ict_trainings_interests = forms.ModelMultipleChoiceField(queryset=ICTTrainingPrograms.objects.all(), widget=forms.CheckboxSelectMultiple)
+
+    class Meta:
+        model = Survey
+        fields = ['ict_trainings_taken', 'ict_trainings_interests']
+	
+    def __init__(self,*args, **kwargs):
+	    super(ICTTrainingsForm, self).__init__(*args, **kwargs)
+	    self.helper = FormHelper(self)
+	    self.helper.form_show_labels = False
 
 class SoftwareForm(forms.ModelForm):
     dotr_issued_professional_tools_installed = forms.ModelMultipleChoiceField(queryset=ProfessionalToolsOption.objects.all(), widget=forms.CheckboxSelectMultiple)

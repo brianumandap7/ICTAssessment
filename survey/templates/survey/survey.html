@@ -351,9 +351,10 @@
 				      </div>
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				        	{% for i in check_user %}
+				        {% for i in check_user %}
 							<a href="/survey/software/{{i.survey_id}}" class="btn btn-info">Proceed</a>
-							{% endfor %}
+						{% endfor %}
+
 				      </div>
 				    </div>
 				  </div>
@@ -464,9 +465,9 @@
 				      </div>
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							{% for i in check_user %}
+				        {% for i in check_user %}
 							<a href="/survey/competencies/{{i.survey_id}}" class="btn btn-info">Proceed</a>
-							{% endfor %}
+						{% endfor %}
 				      </div>
 				    </div>
 				  </div>
@@ -521,9 +522,10 @@
 				      </div>
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							{% for i in check_user %}
+				        {% for i in check_user %}
 							<a href="/survey/ict_trainings/{{i.survey_id}}" class="btn btn-info">Proceed</a>
-							{% endfor %}
+						{% endfor %}
+
 				      </div>
 				    </div>
 				  </div>
