@@ -9,6 +9,26 @@ class office_division(models.Model):
 
     def __str__(self):
         return str(self.office_division_name)
+    
+class ProfessionalToolsOption(models.Model):
+    title = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+    
+
+class CompetencyScale(models.Model):
+    title = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+    
+
+class ICTTrainingPrograms(models.Model):
+    title = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
 
 class ProfessionalToolsOption(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
@@ -214,6 +234,7 @@ class Survey(models.Model):
 
     ict_trainings_taken = models.ManyToManyField(ICTTrainingPrograms, blank=True, related_name='ict_trainings_taken')
     ict_trainings_interests = models.ManyToManyField(ICTTrainingPrograms, blank=True, related_name='ict_trainings_interests')
+
     def __str__(self):
         return str(self.survey_id)+" "+str(self.user)
 

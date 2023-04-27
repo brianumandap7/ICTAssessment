@@ -97,7 +97,7 @@ class Software(LoginRequiredMixin, UpdateView):
     form_class = SoftwareForm
     template_name = 'survey/software.html'
     success_url = reverse_lazy('survey:dash')
-
+    
     def get_context_data(self, **kwargs):
         context = super(Software, self).get_context_data(**kwargs)
         context['title'] = 'Software'
@@ -127,5 +127,31 @@ class ICTTrainings(LoginRequiredMixin, UpdateView):
         context['title'] = 'ICT Trainings'
         return context
 
+    def get_context_data(self, **kwargs):
+        context = super(Software, self).get_context_data(**kwargs)
+        context['title'] = 'Software'
+        return context
 
 
+class Competencies(LoginRequiredMixin, UpdateView):
+    model = Survey
+    form_class = CompetenciesForm
+    template_name = 'survey/competencies.html'
+    success_url = reverse_lazy('survey:dash')
+
+    def get_context_data(self, **kwargs):
+        context = super(Competencies, self).get_context_data(**kwargs)
+        context['title'] = 'Competencies'
+        return context
+
+
+class ICTTrainings(LoginRequiredMixin, UpdateView):
+    model = Survey
+    form_class = ICTTrainingsForm
+    template_name = 'survey/ict_trainings.html'
+    success_url = reverse_lazy('survey:dash')
+
+    def get_context_data(self, **kwargs):
+        context = super(ICTTrainings, self).get_context_data(**kwargs)
+        context['title'] = 'ICT Trainings'
+        return context
