@@ -30,12 +30,6 @@ class ICTTrainingPrograms(models.Model):
     def __str__(self):
         return self.title
 
-class ProfessionalToolsOption(models.Model):
-    title = models.CharField(max_length=255, blank=True, null=True)
-
-    def __str__(self):
-        return self.title
-
 class CommunicationToolsOption(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
 
@@ -48,19 +42,24 @@ class ProductivityOption(models.Model):
     def __str__(self):
         return self.title
 
-class CompetencyScale(models.Model):
+class StorageOption(models.Model):
+    title = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+class OnlineStorageOption(models.Model):
+    title = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+class BackupStorageOption(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return self.title
     
-
-class ICTTrainingPrograms(models.Model):
-    title = models.CharField(max_length=255, blank=True, null=True)
-
-    def __str__(self):
-        return self.title
-
 class Survey(models.Model):
     survey_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
@@ -224,6 +223,25 @@ class Survey(models.Model):
     productivity_needed_others = models.CharField(max_length=255, blank=True, null= True)
 
     software_comments = models.CharField(max_length=255, blank=True, null=True)
+
+    dotr_storage = models.ManyToManyField(StorageOption, blank=True, related_name='dotr_storage')
+    dotr_sotrage_others = models.CharField(max_length=255, blank=True, null= True)
+    personal_storage = models.ManyToManyField(StorageOption, blank=True, related_name='personal_storage')
+    personal_storage_others = models.CharField(max_length=255, blank=True, null= True)
+    storage_need = models.ManyToManyField(StorageOption, blank=True, related_name='storage_need')
+    storage_need_others = models.CharField(max_length=255, blank=True, null= True)
+
+    dotr_online_storage = models.ManyToManyField(OnlineStorageOption, blank=True, related_name='dotr_online_storage')
+    personal_online_storage = models.ManyToManyField(OnlineStorageOption, blank=True, related_name='personal_online_storage')
+    online_storage_need = models.ManyToManyField(OnlineStorageOption, blank=True, related_name='online_storage_need')
+
+    backup_storage = models.ManyToManyField(BackupStorageOption, blank=True, related_name='backup_storage')
+    backup_storage_others = models.CharField(max_length=255, blank=True, null= True)
+
+    backup_storage_need = models.ManyToManyField(BackupStorageOption, blank=True, related_name='backup_storage_need')
+    backup_storage_need_others = models.CharField(max_length=255, blank=True, null= True)
+
+    storage_comments = models.CharField(max_length=255, blank=True, null=True)
 
     saving_files_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='saving_files_familiar')
     creating_and_naming_folders_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='creating_and_naming_folders_familiar')

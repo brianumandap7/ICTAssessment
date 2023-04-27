@@ -1,5 +1,5 @@
 from django import forms
-from .models import Survey, ProfessionalToolsOption, CompetencyScale, ICTTrainingPrograms, CommunicationToolsOption, ProductivityOption
+from .models import Survey, ProfessionalToolsOption, CompetencyScale, ICTTrainingPrograms, CommunicationToolsOption, ProductivityOption, StorageOption, OnlineStorageOption, BackupStorageOption
 from crispy_forms.helper import FormHelper
 from django.core.exceptions import ValidationError
 
@@ -334,47 +334,39 @@ class ICTTrainingsForm(forms.ModelForm):
 	    self.helper = FormHelper(self)
 	    self.helper.form_show_labels = False
 
-class SoftwareForm(forms.ModelForm):
-    dotr_issued_professional_tools_installed = forms.ModelMultipleChoiceField(queryset=ProfessionalToolsOption.objects.all(), widget=forms.CheckboxSelectMultiple)
-    personal_owned_professional_tools_installed = forms.ModelMultipleChoiceField(queryset=ProfessionalToolsOption.objects.all(), widget=forms.CheckboxSelectMultiple)
-    professional_tools_needed = forms.ModelMultipleChoiceField(queryset=ProfessionalToolsOption.objects.all(), widget=forms.CheckboxSelectMultiple)
 
-    class Meta:
-        model = Survey
-        fields = ['dotr_issued_professional_tools_installed', 'personal_owned_professional_tools_installed', 'professional_tools_needed']
-	
-    def __init__(self,*args, **kwargs):
-	    super(SoftwareForm, self).__init__(*args, **kwargs)
-	    self.helper = FormHelper(self)
-	    self.helper.form_show_labels = False
+class StorageForm(forms.ModelForm):
+	dotr_storage = forms.ModelMultipleChoiceField(queryset=StorageOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
+	personal_storage = forms.ModelMultipleChoiceField(queryset=StorageOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
+	dotr_storage_others = forms.CharField(required=False)
+	personal_storage_others = forms.CharField(required=False)
+	storage_need = forms.ModelMultipleChoiceField(queryset=StorageOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
+	storage_need_others = forms.CharField(required=False)
+	dotr_online_storage = forms.ModelMultipleChoiceField(queryset=OnlineStorageOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
+	personal_online_storage = forms.ModelMultipleChoiceField(queryset=OnlineStorageOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
+	online_storage_need = forms.ModelMultipleChoiceField(queryset=OnlineStorageOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
+	backup_storage = forms.ModelMultipleChoiceField(queryset=BackupStorageOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
+	backup_storage_others = forms.CharField(required=False)
+	backup_storage_need = forms.ModelMultipleChoiceField(queryset=BackupStorageOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
+	backup_storage_need_others = forms.CharField(required=False)
 
+	class Meta:
+		model = Survey
+		fields = ['dotr_storage', 'personal_storage', 'storage_section', 'storage_need', 'dotr_storage_others',
+		'personal_storage_others', 'storage_need_others', 'dotr_online_storage', 'personal_online_storage',
+		'online_storage_need', 'backup_storage', 'backup_storage_others', 'backup_storage_need', 'backup_storage_need_others',
+		'storage_comments',]
 
-class CompetenciesForm(forms.ModelForm):
-    saving_files_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect)
-    creating_and_naming_folders_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect)
-    gmail_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect)
-    meet_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect)
-    calendar_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect)
+		widgets = {
+			'storage_section': forms.HiddenInput(attrs={'class': 'form-control fieldsize'}),
+			'storage_comments': forms.Textarea(attrs={'class': 'form-control'}),
+		}
 
-    class Meta:
-        model = Survey
-        fields = ['saving_files_familiar', 'creating_and_naming_folders_familiar', 'gmail_familiar', 'meet_familiar', 'calendar_familiar']
-	
-    def __init__(self,*args, **kwargs):
-	    super(CompetenciesForm, self).__init__(*args, **kwargs)
-	    self.helper = FormHelper(self)
-	    self.helper.form_show_labels = False
-		
-
-class ICTTrainingsForm(forms.ModelForm):
-    ict_trainings_taken = forms.ModelMultipleChoiceField(queryset=ICTTrainingPrograms.objects.all(), widget=forms.CheckboxSelectMultiple)
-    ict_trainings_interests = forms.ModelMultipleChoiceField(queryset=ICTTrainingPrograms.objects.all(), widget=forms.CheckboxSelectMultiple)
-
-    class Meta:
-        model = Survey
-        fields = ['ict_trainings_taken', 'ict_trainings_interests']
-	
-    def __init__(self,*args, **kwargs):
-	    super(ICTTrainingsForm, self).__init__(*args, **kwargs)
-	    self.helper = FormHelper(self)
-	    self.helper.form_show_labels = False
+	def __init__(self,*args, **kwargs):
+		initial_data = kwargs.get('initial', {})
+		initial_data['storage_section'] = 1
+		kwargs['initial'] = initial_data
+		super(StorageForm, self).__init__(*args, **kwargs)
+		self.helper = FormHelper(self)
+		self.helper.form_show_labels = False
+		self.fields['storage_comments'].required = True

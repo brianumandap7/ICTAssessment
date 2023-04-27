@@ -1,7 +1,12 @@
 {% extends "basetemp/indexbase.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block content %}
 <style>
+	.fieldsize {
+		width: 150%;
+	}
+
 	.formdiv {
 		margin-top: 20px;
 	}
@@ -27,10 +32,6 @@
 	  padding: 10px;
 	  color: white;
 	}
-	.others {
-		width: 10%;
-	}
-
 </style>
 <h3 class="mt-4">{{title}}</h3>
 <div class="container-fluid formdiv">
@@ -39,20 +40,20 @@
   Please select at least one option for the questions containing checkboxes.
 </div>
 
-	<form method="post" id="softwareform" onsubmit="return validateForm()">
+	<form method="post" onsubmit="return validateForm()">
 		{% csrf_token %}
-
 		<div class="form-group row">
-			<b>Professional Tools</b>
-			<h6>1. <span>*</span>Identify any <b>DOTr-issued and personal-owned professional tool/software</b> you are <b>currently using</b> in your office/division:</h6><br><br>
-			<h6>&nbsp;&nbsp;&nbsp;&nbsp;A. DOTr-issued professional tool/software:</h6>
+			<br>
+			<h6><b>Currently used Storage Products and Applications</b></h6><br><br>
+			<h6>1. <span>*</span>Identify and Select any DOTr-issued and Personal-owned Storage you use to store local documents, reports, and other important files necessary to your office.</h6>
 
-			{% for checkbox in form.dotr_issued_professional_tools_installed %}
+			<h6>&nbsp;&nbsp;&nbsp;&nbsp;A. DOTr-issued Storage</h6>
+			{% for checkbox in form.dotr_storage %}
 			    <div class="checkbox">
 			      {% if checkbox.choice_label == 'Others' %}
 			        <label style="margin-left: 50px;">
 			          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
-			          {{form.dotr_issued_professional_tools_installed_others}}
+			          {{form.dotr_storage_others}}
 			        </label>
 			        
 			      {% else %}
@@ -62,94 +63,18 @@
 			      {% endif %}
 			    </div>
 			{% endfor %}
-		</div>
-		<div class="form-group row">
-			<h6>&nbsp;&nbsp;&nbsp;&nbsp;B. Personal-owned professional tool/software:</h6>
+			</div>
 
-			{% for checkbox in form.personal_owned_professional_tools_installed %}
+			<div class="form-group row">
+			<h6>&nbsp;&nbsp;&nbsp;&nbsp;B. Personal-Owned Storage</h6>
+			{% for checkbox in form.personal_storage %}
 			    <div class="checkbox">
 			      {% if checkbox.choice_label == 'Others' %}
 			        <label style="margin-left: 50px;">
 			          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			          {{form.personal_storage_others}}
 			        </label>
-			        {{form.personal_owned_professional_tools_installed_others}}
-			      {% else %}
-			        <label style="margin-left: 50px;">
-			          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
-			        </label>
-			      {% endif %}
-			    </div>
-			{% endfor %}
-
-		</div>
-		<div class="form-group row">
-			<h6>2. <span>*</span>Identify any professional tool/software <b>needed</b> in your office/division. </h6>
-
-			{% for checkbox in form.professional_tools_needed %}
-			    <div class="checkbox">
-			      {% if checkbox.choice_label == 'Others' %}
-			        <label style="margin-left: 30px;">
-			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
-			        </label>
-			        {{form.professional_tools_needed_others}}
-			      {% else %}
-			        <label style="margin-left: 30px;">
-			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
-			        </label>
-			      {% endif %}
-			    </div>
-			{% endfor %}
-		</div>
-		<br>
-		<div class="form-group row">
-			<b>Communication Tools</b>
-			<h6>3. <span>*</span>Identify the current Communication tools you are using in your division/office.</h6>
-			{% for checkbox in form.communication_tools_installed %}
-			    <div class="checkbox">
-			      {% if checkbox.choice_label == 'Others' %}
-			        <label style="margin-left: 30px;">
-			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
-			        </label>
-			        {{form.communication_tools_installed_others}}
-			      {% else %}
-			        <label style="margin-left: 30px;">
-			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
-			        </label>
-			      {% endif %}
-			    </div>
-			{% endfor %}
-		</div>
-
-		<div class="form-group row">
-			<h6>4. <span>*</span>Identify the current Communication tools needed in your division/office.</h6>
-			{% for checkbox in form.communication_tools_needed %}
-			    <div class="checkbox">
-			      {% if checkbox.choice_label == 'Others' %}
-			        <label style="margin-left: 30px;">
-			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
-			        </label>
-			        {{form.communication_tools_needed_others}}
-			      {% else %}
-			        <label style="margin-left: 30px;">
-			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
-			        </label>
-			      {% endif %}
-			    </div>
-			{% endfor %}
-		</div>
-
-		<div class="form-group row">
-			<b>Office Productivity Software</b>
-			<h6>5. <span>*</span>Identify any <b>DOTr-issued and personal-owned office productivity software</b> you are <b>currently using</b> in your office/division:</h6><br><br>
-			<h6>&nbsp;&nbsp;&nbsp;&nbsp;A. DOTr-issued office producitivity software:</h6>
-
-			{% for checkbox in form.dotr_issued_productivity_installed %}
-			    <div class="checkbox">
-			      {% if checkbox.choice_label == 'Others' %}
-			        <label style="margin-left: 50px;">
-			          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
-			        </label>
-			        {{form.dotr_issued_productivity_installed_others}}
+			        
 			      {% else %}
 			        <label style="margin-left: 50px;">
 			          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
@@ -157,21 +82,78 @@
 			      {% endif %}
 			    </div>
 			{% endfor %}
+			</div>
+		
+
+		<div class="form-group row">
+			<h6>2. <span>*</span>Select the type of external storage device/s you need in your office.</h6>
+
+			{% for checkbox in form.storage_need %}
+			    <div class="checkbox">
+			      {% if checkbox.choice_label == 'Others' %}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			        {{form.storage_need_others}}
+			      {% else %}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			      {% endif %}
+			    </div>
+			{% endfor %}
 		</div>
 
 		<div class="form-group row">
-			<h6>&nbsp;&nbsp;&nbsp;&nbsp;B. Personal-owned office productivity software:</h6>
+			<br>
+			<h6>3. <span>*</span>Identify and Select the DOTr-issued and Personal-owned Online Storage Products you use for collaborative work in your office/division.</h6>
 
-			{% for checkbox in form.personal_owned_productivity_installed %}
+			<h6>&nbsp;&nbsp;&nbsp;&nbsp;A. DOTr-issued Online Storage Products</h6>
+			{% for checkbox in form.dotr_online_storage %}
 			    <div class="checkbox">
-			      {% if checkbox.choice_label == 'Others' %}
 			        <label style="margin-left: 50px;">
 			          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
 			        </label>
-			        {{form.personal_owned_productivity_installed_others}}
-			      {% else %}
+			    </div>
+			{% endfor %}
+			</div>
+
+			<div class="form-group row">
+			<h6>&nbsp;&nbsp;&nbsp;&nbsp;B. Personal-Owned Online Storage Products</h6>
+			{% for checkbox in form.personal_online_storage %}
+			    <div class="checkbox">
 			        <label style="margin-left: 50px;">
 			          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			    </div>
+			{% endfor %}
+		</div>
+
+		<div class="form-group row">
+			<h6>4. <span>*</span>Select the type of online storage product/s you need in your office </h6>
+
+			{% for checkbox in form.online_storage_need %}
+				<div class="checkbox">
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			    </div>
+			{% endfor %}
+		</div>
+
+		<div class="form-group row">
+			<h6>5. <span>*</span>Identify and Select the Storage you <b>use</b> to backup your local documents, reports, and other important files necessary to your office.</h6>
+
+			{% for checkbox in form.backup_storage %}
+			    <div class="checkbox">
+			      {% if checkbox.choice_label == 'Others' %}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			        {{form.backup_storage_others}}
+			      {% else %}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
 			        </label>
 			      {% endif %}
 			    </div>
@@ -180,14 +162,15 @@
 		</div>
 
 		<div class="form-group row">
-			<h6>6. <span>*</span>Identify the current productivity software products <b>needed</b> in your office/division.</h6>
-			{% for checkbox in form.productivity_needed %}
+			<h6>6. <span>*</span>Identify and Select the Storage you <b>need</b> to backup your local documents, reports, and other important files necessary to your office.</h6>
+
+			{% for checkbox in form.backup_storage_need %}
 			    <div class="checkbox">
 			      {% if checkbox.choice_label == 'Others' %}
 			        <label style="margin-left: 30px;">
 			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
 			        </label>
-			        {{form.productivity_needed_others}}
+			        {{form.backup_storage_need_others}}
 			      {% else %}
 			        <label style="margin-left: 30px;">
 			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
@@ -195,22 +178,23 @@
 			      {% endif %}
 			    </div>
 			{% endfor %}
+			
 		</div>
 
 		<div class="row">
-			<h6>7. <span>*</span>Any comments and suggestions on the software currently installed in your division/office:</h6>
+			<h6>7. <span>*</span>Any comments and suggestions on the Storage Products currently in use in your division/office:</h6>
 			<div class="container-fluid">
-				{{form.software_comments}}
+				{{form.storage_comments}}
 			</div>
 		</div>
 
-		{{form.software_section}}
+		{{form.storage_section}}
 		<button type="submit" class="btn btn-primary dbtn">Update</button>
 		<a href="/survey/" class="btn btn-danger dbtn">Go back</a>
+		<br>
+		<br>
 	</form>	
-
 	<div id="scrollPercentage">Page Scroll: 0%&nbsp;&nbsp;&nbsp;</div>
-	<br>
 </div>
 
 <script>
@@ -252,3 +236,4 @@
   }
 </script>
 {% endblock content %}
+
