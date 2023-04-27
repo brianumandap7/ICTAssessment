@@ -28,9 +28,9 @@ from django.contrib import messages
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import Survey, office_division
+from .models import Survey, office_division, CommunicationToolsOption, ProductivityOption, StorageOption, OnlineStorageOption, BackupStorageOption
 
-from .forms import demographicsform, hardwareform, SoftwareForm, CompetenciesForm, ICTTrainingsForm, CommunicationToolsOption, ProductivityOption
+from .forms import demographicsform, hardwareform, SoftwareForm, CompetenciesForm, ICTTrainingsForm, StorageForm
 
 from django.urls import reverse_lazy
 # Create your views here.
@@ -103,6 +103,16 @@ class Software(LoginRequiredMixin, UpdateView):
         context['title'] = 'Software'
         return context
 
+class Storage(LoginRequiredMixin, UpdateView):
+    model = Survey
+    form_class = StorageForm
+    template_name = 'survey/storage.html'
+    success_url = reverse_lazy('survey:dash')
+    
+    def get_context_data(self, **kwargs):
+        context = super(Storage, self).get_context_data(**kwargs)
+        context['title'] = 'Storage'
+        return context
 
 class Competencies(LoginRequiredMixin, UpdateView):
     model = Survey
