@@ -1,5 +1,5 @@
 from django import forms
-from .models import Survey, ProfessionalToolsOption, CompetencyScale, ICTTrainingPrograms, CommunicationToolsOption, ProductivityOption, StorageOption, OnlineStorageOption, BackupStorageOption
+from .models import Survey, ProfessionalToolsOption, CompetencyScale, ICTTrainingPrograms, CommunicationToolsOption, ProductivityOption, StorageOption, OnlineStorageOption, BackupStorageOption, OnlineOption
 from crispy_forms.helper import FormHelper
 from django.core.exceptions import ValidationError
 
@@ -305,34 +305,99 @@ class SoftwareForm(forms.ModelForm):
 
 
 class CompetenciesForm(forms.ModelForm):
-    saving_files_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect)
-    creating_and_naming_folders_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect)
-    gmail_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect)
-    meet_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect)
-    calendar_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect)
+
+    turning_on_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    network_cable_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    network_wifi_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    usb_printer_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    wireless_printer_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    saving_files_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    creating_folders_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    copying_deleting_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    installing_software = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    file_types_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    unzip_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    file_search_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    connect_device_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    
+    access_email_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    sending_email_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    add_attachments_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    add_signatures_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    mailing_list_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    
+    gmail_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    meet_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    calendar_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    drive_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    docs_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    sheets_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    sliders_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    forms_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    sites_familiar= forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    keep_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+
+    outlook_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    teams_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    onedrive_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    word_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    excel_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    ppt_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    forms2_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    sharepoint_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    onenote_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    powerbi_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+
+    online_options = forms.ModelChoiceField(queryset=OnlineOption.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
 
     class Meta:
         model = Survey
-        fields = ['saving_files_familiar', 'creating_and_naming_folders_familiar', 'gmail_familiar', 'meet_familiar', 'calendar_familiar']
-	
+        fields = ['turning_on_familiar', 'network_cable_familiar', 'network_wifi_familiar', 'usb_printer_familiar',
+        'wireless_printer_familiar', 'saving_files_familiar', 'creating_folders_familiar', 'copying_deleting_familiar',
+        'installing_software', 'file_types_familiar', 'unzip_familiar', 'file_search_familiar', 'connect_device_familiar',
+        'gmail_familiar', 'meet_familiar', 'calendar_familiar', 'competencies_section', 'competencies_comments',
+        'access_email_familiar', 'sending_email_familiar', 'add_attachments_familiar', 'add_signatures_familiar',
+        'mailing_list_familiar',
+        'drive_familiar', 'docs_familiar', 'sheets_familiar', 'sliders_familiar', 'forms_familiar',
+        'sites_familiar', 'keep_familiar',
+        'outlook_familiar', 'teams_familiar', 'onedrive_familiar', 'word_familiar', 'excel_familiar',
+        'ppt_familiar', 'forms2_familiar', 'sharepoint_familiar', 'onenote_familiar', 'powerbi_familiar', 'online_options',]
+
+        widgets = {
+			'competencies_section': forms.HiddenInput(attrs={'class': 'form-control fieldsize'}),
+			'competencies_comments': forms.Textarea(attrs={'class': 'form-control'}),
+		}
     def __init__(self,*args, **kwargs):
-	    super(CompetenciesForm, self).__init__(*args, **kwargs)
-	    self.helper = FormHelper(self)
-	    self.helper.form_show_labels = False
+    	initial_data = kwargs.get('initial', {})
+    	initial_data['competencies_section'] = 1
+    	kwargs['initial'] = initial_data
+    	super(CompetenciesForm, self).__init__(*args, **kwargs)
+    	self.helper = FormHelper(self)
+    	self.helper.form_show_labels = False
 		
 
 class ICTTrainingsForm(forms.ModelForm):
-    ict_trainings_taken = forms.ModelMultipleChoiceField(queryset=ICTTrainingPrograms.objects.all(), widget=forms.CheckboxSelectMultiple)
-    ict_trainings_interests = forms.ModelMultipleChoiceField(queryset=ICTTrainingPrograms.objects.all(), widget=forms.CheckboxSelectMultiple)
-
+    ict_trainings_taken = forms.ModelMultipleChoiceField(queryset=ICTTrainingPrograms.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
+    ict_trainings_interests = forms.ModelMultipleChoiceField(queryset=ICTTrainingPrograms.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
+    ict_trainings_taken_others = forms.CharField(required=False)
+    ict_trainings_interests_others = forms.CharField(required=False)
     class Meta:
         model = Survey
-        fields = ['ict_trainings_taken', 'ict_trainings_interests']
+        fields = ['ict_trainings_taken', 'ict_trainings_interests', 'ict_trainings_taken_others',
+        'ict_trainings_interests_others', 'ict_training_comments', 'trainings_section']
+
+        widgets = {
+			'trainings_section': forms.HiddenInput(attrs={'class': 'form-control fieldsize'}),
+			'ict_training_comments': forms.Textarea(attrs={'class': 'form-control'}),
+		}
 	
     def __init__(self,*args, **kwargs):
-	    super(ICTTrainingsForm, self).__init__(*args, **kwargs)
-	    self.helper = FormHelper(self)
-	    self.helper.form_show_labels = False
+    	initial_data = kwargs.get('initial', {})
+    	initial_data['trainings_section'] = 1
+    	kwargs['initial'] = initial_data
+    	super(ICTTrainingsForm, self).__init__(*args, **kwargs)
+    	self.helper = FormHelper(self)
+    	self.helper.form_show_labels = False
 
 
 class StorageForm(forms.ModelForm):
