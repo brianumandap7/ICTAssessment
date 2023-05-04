@@ -59,6 +59,12 @@ class BackupStorageOption(models.Model):
 
     def __str__(self):
         return self.title
+
+class OnlineOption(models.Model):
+    title = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
     
 class Survey(models.Model):
     survey_id = models.AutoField(primary_key=True)
@@ -243,15 +249,60 @@ class Survey(models.Model):
 
     storage_comments = models.CharField(max_length=255, blank=True, null=True)
 
+    ict_trainings_taken = models.ManyToManyField(ICTTrainingPrograms, blank=True, related_name='ict_trainings_taken')
+    ict_trainings_taken_others = models.CharField(max_length=255, blank=True, null=True)
+
+    ict_trainings_interests = models.ManyToManyField(ICTTrainingPrograms, blank=True, related_name='ict_trainings_interests')
+    ict_trainings_interests_others = models.CharField(max_length=255, blank=True, null=True)
+
+    ict_training_comments = models.CharField(max_length=255, blank=True, null=True)
+
+
+    turning_on_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='turning_on_familiar')
+    network_cable_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='network_cable_familiar')
+    network_wifi_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='network_wifi_familiar')
+    usb_printer_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='usb_printer_familiar')
+    wireless_printer_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='wireless_printer_familiar')
+
     saving_files_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='saving_files_familiar')
-    creating_and_naming_folders_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='creating_and_naming_folders_familiar')
+    creating_folders_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='creating_and_naming_folders_familiar')
+    copying_deleting_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='copying_and_deleting_familiar')
+    installing_software = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='installing_software')
+    file_types_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='file_types_familiar')
+    unzip_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='unzip_familiar')
+    file_search_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='file_search_familiar')
+    connect_device_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='connect_device_familiar')
+    
+    access_email_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='access_email_familiar')
+    sending_email_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='sending_email_familiar')
+    add_attachments_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='add_attachments_familiar')
+    add_signatures_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='add_signatures_familiar')
+    mailing_list_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='mailing_list_familiar')
+
     gmail_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='gmail_familiar')
     meet_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='meet_familiar')
     calendar_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='calendar_familiar')
-    
+    drive_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='drive_familiar')
+    docs_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='docs_familiar')
+    sheets_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='sheets_familiar')
+    sliders_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='sliders_familiar')
+    forms_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='forms_familiar')
+    sites_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='sites_familiar')
+    keep_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='keep_familiar')
 
-    ict_trainings_taken = models.ManyToManyField(ICTTrainingPrograms, blank=True, related_name='ict_trainings_taken')
-    ict_trainings_interests = models.ManyToManyField(ICTTrainingPrograms, blank=True, related_name='ict_trainings_interests')
+    outlook_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='outlook_familiar')
+    teams_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='teams_familiar')
+    onedrive_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='onedrive_familiar')
+    word_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='word_familiar')
+    excel_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='excel_familiar')
+    ppt_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='ppt_familiar')
+    forms2_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='forms2_familiar')
+    sharepoint_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='sharepoint_familiar')
+    onenote_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='onenote_familiar')
+    powerbi_familiar = models.ForeignKey(CompetencyScale, on_delete=models.CASCADE, null=True, blank=True, related_name='powerbi_familiar')
+    
+    online_options = models.ForeignKey(OnlineOption, on_delete=models.CASCADE, null=True, blank=True, related_name='online_options')
+    competencies_comments = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return str(self.survey_id)+" "+str(self.user)

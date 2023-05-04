@@ -3,6 +3,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <style>
+
 	.fieldsize {
 		width: 150%;
 	}
@@ -21,29 +22,742 @@
 	table {
 		margin-bottom: 20px;
 	}
+
+	#scrollPercentage {
+	  position: fixed;
+	  top: 60px;
+	  right: 0;
+	  font-size: 16px;
+	  color: #000;
+	  background-color: #007BFF;
+	  padding: 10px;
+	  color: white;
+	}
+
+	.mainform {
+		margin-top: 40px;
+	}
+
+	.skills {
+		margin-top: 20px;
+	}
+
+	table tr:last-child td {
+	  border-bottom: none;
+	}
+
+	.email {
+		margin-top: 20px;
+	}
+	.google {
+		margin-top: 10px;
+	}
+	.micro {
+		margin-top: 20px;
+		margin-bottom: 30px;
+	}
+	.online {
+		margin-top: 20px;
+	}
 </style>
 <h3 class="mt-4">{{title}}</h3>
+
 <div class="container-fluid formdiv">
-	<form method="post">
+	<div class="alert alert-danger" id="error-message" style="display: none;">
+	  Please select at least one option for the questions containing radiobuttons.
+	</div>
+	<p><b>Competencies</b> refer  to the practical or theoretical understanding of a subject; mastery levels will be based on the following types:</p>
+
+	<p><b>1. Not Very Familiar</b> - has very little to no experience and may be unfamiliar with the basic features and interface.</p>
+
+	<p><b>2. Not Familiar</b> - has some basic familiarity and can perform simple tasks, such as navigating the interface, opening and closing applications, and accessing settings</p>
+
+	<p><b>3. Familiar</b> - has extensive experience and can use it in complex and challenging situations.</p>
+
+	<p><b>4. Very Familiar</b> - has a deep understanding and are knowledgeable about the latest updates and features and can implement them to improve productivity and efficiency.</p>
+
+	<form method="post" onsubmit="return validateForm()" class="mainform">
 		{% csrf_token %}
-				<div class="form-group row">
-					<h6>How Familiar are you with saving files in a selected folder in your desktop or laptop computers?</h6><br>
-					{{ form.saving_files_familiar|as_crispy_field }}<br><br>
-				<h6>How Familiar are you with creating and naming folders in your desktop or laptop computers?</h6><br>
-					{{ form.creating_and_naming_folders_familiar|as_crispy_field }}
-				</div>
-				<div class="form-group row">
-					<h6><b>Online Workspaces</b></h6><br>
-					<h6>Identify your skill competency in using <b>Google Workspace</b>:</h1>
-					Gmail{{ form.gmail_familiar|as_crispy_field }}
-					Meet{{ form.meet_familiar|as_crispy_field }}
-					Calendar{{ form.calendar_familiar|as_crispy_field }}
+			<div class="form-group row">
+			<table class="table">
+				<tr>
+					<th width="50%">
+						General Computer Operations
+					</th>
+					<th>
+						Very Familiar
+					</th>
+					<th>
+						Familiar
+					</th>
+					<th>
+						Not Familiar
+					</th>
+					<th>
+						Not Very Familiar
+					</th>
+				</tr>
+				
+				<tr class="form-group">
+					<td>
+						1.<span>*</span> How Familiar are you in turning on/off a computer?
+					</td>
+				{% for radio in form.turning_on_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						2.<span>*</span> How Familiar are you with connecting network cable/ethernet cable in a computer?	
+					</td>
+				{% for radio in form.network_cable_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+				
+				<tr class="form-group">
+					<td>
+						3.<span>*</span> How Familiar are you with connecting to a WIFI network?
+					</td>
+					
+				{% for radio in form.network_wifi_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						4.<span>*</span> How Familiar are you in connecting a printer in your computer thru a printer cable (USB AB Cable)?
+					</td>
+					
+				{% for radio in form.usb_printer_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						5.<span>*</span> How Familiar are you with connecting a printer wirelessly (thru network) to your computer?
+					</td>
+					
+				{% for radio in form.wireless_printer_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+			</table>
+
+			<table class="table skills">
+				<tr>
+					<th width="50%">
+						Skills in Windows FIle Explorer
+					</th>
+					<th>
+						Very Familiar
+					</th>
+					<th>
+						Familiar
+					</th>
+					<th>
+						Not Familiar
+					</th>
+					<th>
+						Not Very Familiar
+					</th>
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						6.<span>*</span> How Familiar are you with saving files in a selected folder in your desktop or laptop computers?
+					</td>
+					
+				{% for radio in form.saving_files_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						7.<span>*</span> How Familiar are you with creating and naming folders in your desktop or laptop computers?
+					</td>
+					
+				{% for radio in form.creating_folders_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						8.<span>*</span> How Familiar are you with copying, deleting, cutting, and renaming files in your desktop or laptop computers?
+					</td>
+					
+				{% for radio in form.copying_deleting_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						9.<span>*</span> How Familiar are you with installing software applications to your computer?
+					</td>
+					
+				{% for radio in form.installing_software %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+
+				<tr class="form-group">
+					<td>
+						10.<span>*</span> How Familiar are you in recognizing various file types in your computer (png, jpg, ppt, csv, etc)?
+					</td>
+					
+				{% for radio in form.file_types_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						11.<span>*</span> How Familiar are you with zipping and unzipping compressed files/folders in your computer?
+					</td>
+					
+				{% for radio in form.unzip_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+				
+				<tr class="form-group">
+					<td>
+						12.<span>*</span> How Familiar are you with performing complex file searches on your computer?
+					</td>
+					
+				{% for radio in form.file_search_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						13.<span>*</span> How Familiar are you with connecting new devices in your computer (eg. mouse, keyboards, printers, scanners, etc)?
+					</td>
+					
+				{% for radio in form.connect_device_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+			</table>
+
+			<table class="table email">
+				<tr>
+					<th width="50%">
+						Skills in Email Applications
+					</th>
+					<th>
+						Very Familiar
+					</th>
+					<th>
+						Familiar
+					</th>
+					<th>
+						Not Familiar
+					</th>
+					<th>
+						Not Very Familiar
+					</th>
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						14.<span>*</span> How Familiar are you with accessing emails?
+					</td>
+					
+				{% for radio in form.access_email_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						15.<span>*</span> How Familiar are you with creating and sending emails?
+					</td>
+					
+				{% for radio in form.sending_email_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						16.<span>*</span> How Familiar are you with adding attachments to emails?
+					</td>
+					
+				{% for radio in form.add_attachments_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						17.<span>*</span> How Familiar are you with adding signatures to emails?
+					</td>
+					
+				{% for radio in form.add_signatures_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						18.<span>*</span> How Familiar are you with creating mailing lists and groups?
+					</td>
+					
+				{% for radio in form.mailing_list_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+			</table>
+
+			<b class="online">Online WorkSpaces</b>
+			<table class="table google">
+				<tr>
+					<th width="50%">
+						
+						19.<span>*</span> Identify your skill competency in using Google Workspace
+					</th>
+					<th>
+						Very Familiar
+					</th>
+					<th>
+						Familiar
+					</th>
+					<th>
+						Not Familiar
+					</th>
+					<th>
+						Not Very Familiar
+					</th>
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						A. Gmail
+					</td>
+					
+				{% for radio in form.gmail_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						B. Meet
+					</td>
+					
+				{% for radio in form.meet_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						C. Calendar
+					</td>
+					
+				{% for radio in form.calendar_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						D. Drive
+					</td>
+					
+				{% for radio in form.drive_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						E. Docs
+					</td>
+					
+				{% for radio in form.docs_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						F. Sheets
+					</td>
+					
+				{% for radio in form.sheets_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						G. Sliders
+					</td>
+					
+				{% for radio in form.sliders_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						H. Forms
+					</td>
+					
+				{% for radio in form.forms_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						I. Sites
+					</td>
+					
+				{% for radio in form.sites_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						J. Keep
+					</td>
+					
+				{% for radio in form.keep_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+			</table>
+
+			<table class="table micro">
+				<tr>
+					<th width="50%">
+						20.<span>*</span> Identify your skill competency in using Micporosoft 365
+					</th>
+					<th>
+						Very Familiar
+					</th>
+					<th>
+						Familiar
+					</th>
+					<th>
+						Not Familiar
+					</th>
+					<th>
+						Not Very Familiar
+					</th>
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						A. Outlook
+					</td>
+					
+				{% for radio in form.outlook_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						B. Teams
+					</td>
+					
+				{% for radio in form.teams_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						C. OneDrive
+					</td>
+					
+				{% for radio in form.onedrive_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						D. Word
+					</td>
+					
+				{% for radio in form.word_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						E. Excel
+					</td>
+					
+				{% for radio in form.excel_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						F. PowerPoint
+					</td>
+					
+				{% for radio in form.ppt_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						G. Forms
+					</td>
+					
+				{% for radio in form.forms2_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						H. SharePoint
+					</td>
+					
+				{% for radio in form.sharepoint_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						I. OneNote
+					</td>
+					
+				{% for radio in form.onenote_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+
+				<tr class="form-group">
+					<td>
+						J. PowerBI
+					</td>
+					
+				{% for radio in form.powerbi_familiar %}
+				
+					<td>
+						<center>{{ radio.tag }}</center>
+					</td>
+				
+				{% endfor %}
+				</tr>
+			</table>
+
+			<div class="form-group row container">
+				<h6>21. <span>*</span>If you are to choose between Google Workspace and Microsoft 365, which service do you prefer?</h6>
+
+				{% for checkbox in form.online_options %}
+				    <div class="checkbox">
+				        <label style="margin-left: 30px;">
+				          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+				        </label>
+				    </div>
+				{% endfor %}
+			</div>
+
+			<div class="row">
+				<h6>22. <span>*</span>Any comments and suggestions on how to improve the ICT competencies of the personnel in you office/division:</h6>
+				<div class="container-fluid">
+					{{form.competencies_comments}}
 				</div>
 			</div>
+			{{form.competencies_section}}
+		</div>
+			
 
 		<button type="submit" class="btn btn-primary dbtn">Update</button>
 		<a href="/survey/" class="btn btn-danger dbtn">Go back</a>
+		<div id="scrollPercentage">Page Scroll: 0%&nbsp;&nbsp;&nbsp;</div>
 	</form>	
-		
+	
+	<script>
+	// Get the container element
+	var scrollPercentageElement = document.getElementById("scrollPercentage");
+
+	// Add a scroll event listener to the window
+	window.addEventListener("scroll", function() {
+	  // Calculate the percentage of the webpage scrolled
+	  var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+	  var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+	  var scrolledPercentage = (scrollTop / (scrollHeight - window.innerHeight)) * 100;
+
+	  // Update the content of the container element with the calculated percentage
+	  scrollPercentageElement.textContent = "Page Scroll: " + Math.round(scrolledPercentage) + "%";
+
+	});
+</script>
+
+
+
 </div>
+<br>
+
 {% endblock content %}

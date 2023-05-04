@@ -21,24 +21,112 @@
 	table {
 		margin-bottom: 20px;
 	}
+
+	#scrollPercentage {
+	  position: fixed;
+	  top: 60px;
+	  right: 0;
+	  font-size: 16px;
+	  color: #000;
+	  background-color: #007BFF;
+	  padding: 10px;
+	  color: white;
+	}
 </style>
 <h3 class="mt-4">{{title}}</h3>
 <div class="container-fluid formdiv">
-	<form method="post">
+	<div class="alert alert-danger" id="error-message" style="display: none;">
+	  Please select at least one option for the questions containing checkboxes.
+	</div>
+	<form method="post" onsubmit="return validateForm()">
 		{% csrf_token %}
 		<div class="form-group row">
-			<h6><b>ICT Training Programs</b></h6><br>
-			<h6>What ICT Trainings have you taken before?</h6>
-			{{ form.ict_trainings_taken|as_crispy_field }}
+			<h6>1. <span>*</span>What ICT Trainings have you taken before?</h6>
+
+			{% for checkbox in form.ict_trainings_taken %}
+			    <div class="checkbox">
+			      {% if checkbox.choice_label == 'Others' %}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			        {{form.ict_trainings_taken_others}}
+			      {% else %}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			      {% endif %}
+			    </div>
+			{% endfor %}
 		</div>
+		
 		<div class="form-group row">
-			<h6>What ICT Trainings are you interested in?</h6>
-			{{ form.ict_trainings_interests|as_crispy_field }}
+			<h6>2. <span>*</span>What ICT Trainings are you interested in?</h6>
+
+			{% for checkbox in form.ict_trainings_interests %}
+			    <div class="checkbox">
+			      {% if checkbox.choice_label == 'Others' %}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			        {{form.ict_trainings_interests_others}}
+			      {% else %}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        </label>
+			      {% endif %}
+			    </div>
+			{% endfor %}
 		</div>
 
+		<div class="row">
+			<h6>3. <span>*</span>Any comments, suggestions, and recommendations on the ICT Trainings provided and to be provided for your division/office:</h6>
+			<div class="container-fluid">
+				{{form.ict_training_comments}}
+			</div>
+		</div>
+		{{form.trainings_section}}
 		<button type="submit" class="btn btn-primary dbtn">Update</button>
 		<a href="/survey/" class="btn btn-danger dbtn">Go back</a>
 	</form>	
-		
+	<div id="scrollPercentage">Page Scroll: 0%&nbsp;&nbsp;&nbsp;</div>
 </div>
+
+<script>
+	// Get the container element
+	var scrollPercentageElement = document.getElementById("scrollPercentage");
+
+	// Add a scroll event listener to the window
+	window.addEventListener("scroll", function() {
+	  // Calculate the percentage of the webpage scrolled
+	  var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+	  var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+	  var scrolledPercentage = (scrollTop / (scrollHeight - window.innerHeight)) * 100;
+
+	  // Update the content of the container element with the calculated percentage
+	  scrollPercentageElement.textContent = "Page Scroll: " + Math.round(scrolledPercentage) + "%";
+
+	});
+</script>
+
+<script>
+  function validateForm() {
+    var questionContainers = document.querySelectorAll('.form-group');
+    for (var i = 0; i < questionContainers.length; i++) {
+      var checkboxes = questionContainers[i].querySelectorAll('input[type=checkbox]');
+      var checked = false;
+      for (var j = 0; j < checkboxes.length; j++) {
+        if (checkboxes[j].checked) {
+          checked = true;
+          break;
+        } 
+      }
+      if (!checked) {
+        document.getElementById('error-message').style.display = 'block';
+        window.scrollTo(0, 0);
+        return false;
+      }
+    }
+    return true;
+  }
+</script>
 {% endblock content %}

@@ -28,7 +28,7 @@ from django.contrib import messages
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import Survey, office_division, CommunicationToolsOption, ProductivityOption, StorageOption, OnlineStorageOption, BackupStorageOption
+from .models import Survey, office_division, CommunicationToolsOption, ProductivityOption, StorageOption, OnlineStorageOption, BackupStorageOption, OnlineOption
 
 from .forms import demographicsform, hardwareform, SoftwareForm, CompetenciesForm, ICTTrainingsForm, StorageForm
 
@@ -151,7 +151,7 @@ class Competencies(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(Competencies, self).get_context_data(**kwargs)
-        context['title'] = 'Competencies'
+        context['title'] = 'ICT Competencies'
         return context
 
 
