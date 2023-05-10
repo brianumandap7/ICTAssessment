@@ -72,19 +72,158 @@
         .loadlogo {
             width: 100px;
         }
+
+        .list-group-item i, 
+        .list-group-item span {
+          display: inline-block;
+          vertical-align: middle;
+          padding-right: 15px;
+        }
+
+        .list-group-item i {
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+
+        .list-group-item i {
+          font-size: 15px;
+          width: 20px;
+          height: 20px;
+
+        }
+
+        .done {
+          background-color: green;
+          color: white;
+          padding-left: 12px;
+          padding-right: 12px;
+          padding-top: 3px;
+          padding-bottom: 3px;
+
+        }
+
+        .pen {
+          background-color: red;
+          color: white;
+          padding-left: 5px;
+          padding-right: 5px;
+          padding-top: 3px;
+          padding-bottom: 3px;
+
+        }
+
+        .ch {
+          font-size: 20px;
+          color: green;
+        }
+
+        .pending {
+          color: red;
+        }
+       .active {
+          background-color: gray !important;
+        }
+
+        .active::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 10%;
+          height: 100%;
+          background-color: #17a2b8;
+          opacity: 10;
+        }
     </style>
     <body>
 
         <div class="d-flex justify-content" id="wrapper">
             <!-- Sidebar-->
-            <div class="border-end bg-white" id="sidebar-wrapper">
+            <div class="border-end bg-white" id="sidebar-wrapper" class="sbar">
                 <div class="sidebar-heading border-bottom bg-light"><a href="/"><img class="dotrlogo1" src="{% static 'basetemp/dotr_logo.png' %}" alt="AdminLTELogo" height="160" width="160"></a><br>ICT Needs Assessment</div>
                 <div class="list-group list-group-flush">
                     <br>
-                    <a class="list-group-item list-group-item-action list-group-item p-3" href="/"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home</a>
-                    <a class="list-group-item list-group-item-action list-group-item p-3" href="/survey/profile"><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;Profile</a>
+                    <a class="list-group-item list-group-item-action list-group-item p-3 {% if sec == 1 %}active{% endif %}" href="/"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home</a>
+                    
+
+                    <button class="list-group-item list-group-item-action list-group-item p-3" type="button" data-toggle="collapse" data-target="#menu-collapse" aria-expanded="false" aria-controls="menu-collapse">
+                    <i class="fa fa-bars" aria-hidden="true"></i>&nbsp;Survey Menu
+                    </button>
+
+                    <div class="collapse show" id="menu-collapse">
+
+                      <a class="list-group-item list-group-item-action list-group-item p-3 submenu {% if sec == 2 %}active{% endif %}" href="#" data-toggle="modal" data-target="#demographics"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Demographics<br>
+                        {% for items in check_user %}
+                            {% if items.demographics_section == 0 %}
+                              <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+                            {% else %}
+                              <i class="fa fa-check-circle ch" aria-hidden="true"></i>
+                            {% endif %}
+
+                            {% empty %}
+                              <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+                          {% endfor %}
+                      </a>
+                      <a class="list-group-item list-group-item-action list-group-item p-3 submenu {% if sec == 3 %}active{% endif %}" href="#" data-toggle="modal" data-target="#hardware"><i class="fa fa-laptop" aria-hidden="true"></i>&nbsp;Hardware<br>
+                          {% for items in check_user %}
+                            {% if items.hardware_section == 0 %}
+                              <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+                            {% else %}
+                              <i class="fa fa-check-circle ch" aria-hidden="true"></i>
+                            {% endif %}
+
+                            {% empty %}
+                              <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+                          {% endfor %}
+                      </a>
+                      <a class="list-group-item list-group-item-action list-group-item p-3 submenu {% if sec == 4 %}active{% endif %}" href="#" data-toggle="modal" data-target="#software"><i class="fa fa-whatsapp" aria-hidden="true"></i>&nbsp;Software<br>
+                          {% for items in check_user %}
+                            {% if items.software_section == 0 %}
+                              <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+                            {% else %}
+                              <i class="fa fa-check-circle ch" aria-hidden="true"></i>
+                            {% endif %}
+
+                            {% empty %}
+                              <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+                          {% endfor %}</a>
+                      <a class="list-group-item list-group-item-action list-group-item p-3 submenu {% if sec == 5 %}active{% endif %}" href="#" data-toggle="modal" data-target="#storage"><i class="fa fa-hdd-o" aria-hidden="true"></i>&nbsp;Storage<br>
+                          {% for items in check_user %}
+                            {% if items.storage_section == 0 %}
+                              <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+                            {% else %}
+                              <i class="fa fa-check-circle ch" aria-hidden="true"></i>
+                            {% endif %}
+
+                            {% empty %}
+                              <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+                          {% endfor %}</a>
+                      <a class="list-group-item list-group-item-action list-group-item p-3 submenu {% if sec == 6 %}active{% endif %}" href="#" data-toggle="modal" data-target="#competencies"><i class="fa fa-pie-chart" aria-hidden="true"></i>&nbsp;ICT Competencies<br>
+                          {% for items in check_user %}
+                            {% if items.competencies_section == 0 %}
+                              <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+                            {% else %}
+                              <i class="fa fa-check-circle ch" aria-hidden="true"></i>
+                            {% endif %}
+
+                            {% empty %}
+                              <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+                          {% endfor %}</a>
+                      <a class="list-group-item list-group-item-action list-group-item p-3 submenu {% if sec == 7 %}active{% endif %}" href="#" data-toggle="modal" data-target="#trainings"><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;ICT Trainings<br>
+                          {% for items in check_user %}
+                            {% if items.trainings_section == 0 %}
+                              <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+                            {% else %}
+                              <i class="fa fa-check-circle ch" aria-hidden="true"></i>
+                            {% endif %}
+
+                            {% empty %}
+                              <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+                          {% endfor %}</a>
+                    </div>
                     <br>
-                    <a class="list-group-item list-group-item-action list-group-item p-3" href = "#" data-toggle="modal" data-target="#lmodal"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Logout</a>
+
+                    
 
 
                     <div class="modal fade" id="lmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -147,6 +286,287 @@
           
           
         </div>
+
+        <!-- demographics -->
+        <div class="modal fade" id="demographics" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Demographics</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p class="text-justify">Demographics is gathered to allow the MIS to describe, and better analyze the data in order to come up with the best decision/s relevant to the needs of each service and personnel.</p>
+
+                <br>
+
+                {% for items in check_user %}
+            {% if items.demographics_section == 0 %}
+              Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+            {% else %}
+              Done <i class="fa fa-check-circle ch" aria-hidden="true"></i>
+
+              <br>
+
+              <p>You have already submitted your answers for this section. Click Proceed to check or edit your answers.</p>
+            {% endif %}
+
+            {% empty %}
+              Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+          {% endfor %}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                {% for i in check_user %}
+                <a href="/survey/demographics/{{i.survey_id}}" class="btn btn-info">Proceed</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>  
+        <!-- end of demographics -->
+
+        <!-- hardware -->
+        <div class="modal fade" id="hardware" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Currently Installed Hardware Products</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p class="text-justify">Hardware refers to the external and internal devices and equipment that enable you to perform major functions such as input, output, storage, communication, processing, and more.</p>
+                <br>
+
+                {% for items in check_user %}
+            {% if items.hardware_section == 0 %}
+              Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+            {% else %}
+              Done <i class="fa fa-check-circle ch" aria-hidden="true"></i>
+
+              <br>
+
+              <p>You have already submitted your answers for this section. Click Proceed to check or edit your answers.</p>
+            {% endif %}
+
+            {% empty %}
+              Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+            {% endfor %}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                {% for i in check_user %}
+                <a href="/survey/hardware/{{i.survey_id}}" class="btn btn-info">Proceed</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>  
+        <!-- end of hardware -->
+
+        <!-- software -->
+        <div class="modal fade" id="software" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Currently Installed Software Products</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p class="text-justify">Software is a generic term used to refer to applications, scripts and programs that run on a device used for productivity purposes in the office/division.</p>
+                <br>
+
+                {% for items in check_user %}
+            {% if items.software_section == 0 %}
+              Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+            {% else %}
+              Done <i class="fa fa-check-circle ch" aria-hidden="true"></i>
+
+              <br>
+
+              <p>You have already submitted your answers for this section. Click Proceed to check or edit your answers.</p>
+            {% endif %}
+
+            {% empty %}
+              Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+            {% endfor %}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                {% for i in check_user %}
+              <a href="/survey/software/{{i.survey_id}}" class="btn btn-info">Proceed</a>
+            {% endfor %}
+
+              </div>
+            </div>
+          </div>
+        </div>  
+        <!-- end of software -->
+
+        <!-- storage -->
+        <div class="modal fade" id="storage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Currently Used Storage Products</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p class="text-justify">Storage is a physical device or a virtual product used to store digital data and applications which may be in the form of images, video, audio, etc.</p>
+
+                <br>
+
+                {% for items in check_user %}
+            {% if items.storage_section == 0 %}
+              Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+            {% else %}
+              Done <i class="fa fa-check-circle ch" aria-hidden="true"></i>
+
+              <br>
+
+              <p>You have already submitted your answers for this section. Click Proceed to check or edit your answers.</p>
+            {% endif %}
+
+            {% empty %}
+              Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+            {% endfor %}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                {% for i in check_user %}
+                <a href="/survey/storage/{{i.survey_id}}" class="btn btn-info">Proceed</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>  
+        <!-- end of storage -->
+
+        <!-- competencies -->
+        <div class="modal fade" id="competencies" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ICT Competencies</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p class="text-justify">Competencies refer  to the practical or theoretical understanding of a subject.</p>
+                <br>
+
+                {% for items in check_user %}
+            {% if items.competencies_section == 0 %}
+              Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+            {% else %}
+              Done <i class="fa fa-check-circle ch" aria-hidden="true"></i>
+
+              <br>
+
+              <p>You have already submitted your answers for this section. Click Proceed to check or edit your answers.</p>
+            {% endif %}
+
+            {% empty %}
+              Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+            {% endfor %}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                {% for i in check_user %}
+              <a href="/survey/competencies/{{i.survey_id}}" class="btn btn-info">Proceed</a>
+            {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>  
+        <!-- end of competencies -->
+
+        <!-- trainings -->
+        <div class="modal fade" id="trainings" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ICT Training Programs</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p class="text-justify">Training is a planned sequence and combination of activities designed to equip employees with knowledge and skills to become better professionals.</p>
+                <br>
+
+                {% for items in check_user %}
+            {% if items.trainings_section == 0 %}
+              Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+            {% else %}
+              Done <i class="fa fa-check-circle ch" aria-hidden="true"></i>
+
+              <br>
+
+              <p>You have already submitted your answers for this section. Click Proceed to check or edit your answers.</p>
+            {% endif %}
+
+            {% empty %}
+              Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+            {% endfor %}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                {% for i in check_user %}
+              <a href="/survey/ict_trainings/{{i.survey_id}}" class="btn btn-info">Proceed</a>
+            {% endfor %}
+
+              </div>
+            </div>
+          </div>
+        </div>  
+        <!-- end of trainings -->
+
+        <!-- privacy -->
+        <div class="modal fade" id="privacy" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Data Privacy</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p class="text-justify">This document is designed to facilitate collection of information necessary for understanding the IT infrastructure in various offices in the Department of Transportation (DOTr). The data will be used for documentation and as a basis in the decision-making process. Your information will only be disclosed to authorized parties inside the organization and will not be disclosed to any third party organization without your permission.</p>
+
+                {% for items in check_user %}
+            {% if items.privacy_section == 0 %}
+              Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+            {% else %}
+              Done <i class="fa fa-check-circle ch" aria-hidden="true"></i>
+
+              <br>
+
+              <p>You have already agreed to the Terms and Conditions of the this system to gather informattion and use them for the ICT Needs Assessment.</p>
+            {% endif %}
+
+            {% empty %}
+              Pending <i class="fa fa-bookmark pending" aria-hidden="true"></i>
+            {% endfor %}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                
+              </div>
+            </div>
+          </div>
+        \</div>  
+        <!-- end of privacy -->
 
         
 

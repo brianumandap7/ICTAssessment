@@ -63,9 +63,7 @@
 <h3 class="mt-4">{{title}}</h3>
 
 <div class="container-fluid formdiv">
-	<div class="alert alert-danger" id="error-message" style="display: none;">
-	  Please select at least one option for the questions containing radiobuttons.
-	</div>
+	
 	<p><b>Competencies</b> refer  to the practical or theoretical understanding of a subject; mastery levels will be based on the following types:</p>
 
 	<p><b>1. Not Very Familiar</b> - has very little to no experience and may be unfamiliar with the basic features and interface.</p>
@@ -76,7 +74,12 @@
 
 	<p><b>4. Very Familiar</b> - has a deep understanding and are knowledgeable about the latest updates and features and can implement them to improve productivity and efficiency.</p>
 
-	<form method="post" onsubmit="return validateForm()" class="mainform">
+
+	<div id="alert" class="alert alert-danger d-none" role="alert">
+	  Please select an option.
+	</div>
+
+	<form method="post" class="mainform">
 		{% csrf_token %}
 			<div class="form-group row">
 			<table class="table">
@@ -554,7 +557,7 @@
 			<table class="table micro">
 				<tr>
 					<th width="50%">
-						20.<span>*</span> Identify your skill competency in using Micporosoft 365
+						20.<span>*</span> Identify your skill competency in using Microsoft 365
 					</th>
 					<th>
 						Very Familiar
@@ -738,7 +741,7 @@
 		<div id="scrollPercentage">Page Scroll: 0%&nbsp;&nbsp;&nbsp;</div>
 	</form>	
 	
-	<script>
+<script>
 	// Get the container element
 	var scrollPercentageElement = document.getElementById("scrollPercentage");
 
@@ -754,6 +757,8 @@
 
 	});
 </script>
+
+
 
 
 

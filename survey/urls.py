@@ -15,4 +15,5 @@ urlpatterns = [
   path('software/<int:pk>', login_required(views.Software.as_view()), name='Software'),
   path('competencies/<int:pk>', login_required(views.Competencies.as_view()), name='Competencies'),
   path('ict_trainings/<int:pk>', login_required(views.ICTTrainings.as_view()), name='ICTTrainings'),
+  path('simple_upload/', staff_member_required(views.simple_upload.as_view()), name='simple_upload'),
 ]	
