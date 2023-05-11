@@ -1,2 +1,4 @@
 django-crispy-forms
 Pillow
+tablib
+django-import-export

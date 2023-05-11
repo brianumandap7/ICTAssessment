@@ -306,7 +306,7 @@ class SoftwareForm(forms.ModelForm):
 
 class CompetenciesForm(forms.ModelForm):
 
-    turning_on_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    turning_on_familiar  = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input', 'required': False}))
     network_cable_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
     network_wifi_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
     usb_printer_familiar = forms.ModelChoiceField(queryset=CompetencyScale.objects.all(), widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))

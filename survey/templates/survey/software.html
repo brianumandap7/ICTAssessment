@@ -1,6 +1,23 @@
 {% extends "basetemp/indexbase.html" %}
 {% load static %}
 {% block content %}
+{% for i in check_user %}
+	{% if i.privacy_section == 0 %}
+	<script>
+		window.location.href = "/";
+	</script>
+	{% endif %}
+
+	{% if i.survey_id != pk %}
+	<script>
+		window.location.href = "/";
+	</script>
+	{% endif %}
+	{% empty %}
+	<script>
+		window.location.href = "/";
+	</script>
+{% endfor %}
 <style>
 	.formdiv {
 		margin-top: 20px;

@@ -1,6 +1,23 @@
 {% extends "basetemp/indexbase.html" %}
 {% load static %}
 {% block content %}
+{% for i in check_user %}
+	{% if i.privacy_section == 0 %}
+	<script>
+		window.location.href = "/";
+	</script>
+	{% endif %}
+
+	{% if i.survey_id != pk %}
+	<script>
+		window.location.href = "/";
+	</script>
+	{% endif %}
+	{% empty %}
+	<script>
+		window.location.href = "/";
+	</script>
+{% endfor %}
 <style>
 	.fieldsize {
 		width: 100px;
@@ -51,7 +68,7 @@
 		padding-right: 5px;
 	}
 </style>
-<h3 class="mt-4">{{title}}</h3>
+<h3 class="mt-4">{{title}} {{pk}}</h3>
 <div class="container-fluid formdiv">
 	<form method="post" class="form">
 		{% csrf_token %}

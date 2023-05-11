@@ -1,0 +1,40 @@
+{% extends "basetemp/indexbase.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<style>
+	form {
+		width: 500px;
+		height: 700px;
+		margin-top: 100px;
+	}
+</style>
+<section>
+	<div class="container-fluid">
+		<center>
+			<form method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				<table class="table">
+					<tbody>
+						<tr>
+							<td>
+								Bulk Upload Users
+							</td>
+							<td>
+								<input type="file" name="myfile" required>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="submit" name="submit" value="Upload Users" class="btn btn-info">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</center>
+	</div>
+</section>
+
+{% endblock content %}
