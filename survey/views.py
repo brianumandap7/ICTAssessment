@@ -114,6 +114,7 @@ class demographics(UpdateView):
         context['title'] = 'Demographics'
         context['check_user'] = Survey.objects.filter(user = self.request.user)
         context['sec'] = 2
+        context['pk'] = self.kwargs.get('pk')
 
         return context
 
@@ -139,6 +140,7 @@ class hardware(UpdateView):
         context['title'] = 'Hardware'
         context['check_user'] = Survey.objects.filter(user = self.request.user)
         context['sec'] = 3
+        context['pk'] = self.kwargs.get('pk')
 
         return context
 
@@ -153,6 +155,7 @@ class Software(LoginRequiredMixin, UpdateView):
         context['title'] = 'Software'
         context['check_user'] = Survey.objects.filter(user = self.request.user)
         context['sec'] = 4
+        context['pk'] = self.kwargs.get('pk')
         return context
 
 class Storage(LoginRequiredMixin, UpdateView):
@@ -166,6 +169,7 @@ class Storage(LoginRequiredMixin, UpdateView):
         context['title'] = 'Storage'
         context['check_user'] = Survey.objects.filter(user = self.request.user)
         context['sec'] = 5
+        context['pk'] = self.kwargs.get('pk')
         return context
 
 class Competencies(LoginRequiredMixin, UpdateView):
@@ -179,6 +183,7 @@ class Competencies(LoginRequiredMixin, UpdateView):
         context['title'] = 'Competencies'
         context['check_user'] = Survey.objects.filter(user = self.request.user)
         context['sec'] = 6
+        context['pk'] = self.kwargs.get('pk')
         return context
 
 
@@ -193,6 +198,7 @@ class ICTTrainings(LoginRequiredMixin, UpdateView):
         context['title'] = 'ICT Trainings'
         context['check_user'] = Survey.objects.filter(user = self.request.user)
         context['sec'] = 7
+        context['pk'] = self.kwargs.get('pk')
         return context
 
 

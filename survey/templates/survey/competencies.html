@@ -2,6 +2,23 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
+{% for i in check_user %}
+	{% if i.privacy_section == 0 %}
+	<script>
+		window.location.href = "/";
+	</script>
+	{% endif %}
+
+	{% if i.survey_id != pk %}
+	<script>
+		window.location.href = "/";
+	</script>
+	{% endif %}
+	{% empty %}
+	<script>
+		window.location.href = "/";
+	</script>
+{% endfor %}
 <style>
 
 	.fieldsize {
