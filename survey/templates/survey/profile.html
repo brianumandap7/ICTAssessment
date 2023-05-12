@@ -1,132 +1,74 @@
 {% extends "basetemp/indexbase.html" %}
 {% load static %}
 {% block content %}
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-
-	.card1 {
-		background-color: #fe6571;
-		border: none;
-		height: 300px;
-	}
-
-	.card {
-		border: none;
-	}
-
-	.icons {
-		font-size: 100px;
-	}
-
-	.card2 {
-		background-color: #ffcc00;
-		border: none;
-		height: 300px;
-	}
-
-	.card3 {
-		background-color: #22a5e5;
-		border: none;
-		height: 300px;
-	}
-
-	.card4 {
-		background-color: #f2eae2;
-		border: none;
-		height: 300px;
-	}
-
-	.card5 {
-		background-color: #20c997;
-		border: none;
-		height: 300px;
-	}
-
+    .text-muted.small a {
+        text-decoration: none;
+        color: black;
+    }
 </style>
-<div class="container">
-	<br>
-	
-		<strong><h3>{% for items in check_user %}{{items.office_division_name}}{% endfor %}</h3></strong>
-	
-	<div class="row">
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card mb-5" style="border-radius: 15px;">
+        {% for items in check_user %}
+          <div class="card-body p-4">
+            <h3 class="mb-3">{{items.office_division_name}}</h3>
+            <p class="small mb-0"><i class="far fa-star fa-lg"></i> <span class="mx-2">|</span>
+              <strong>Department of Transportation</strong> | The Columbia Tower, Ortigas Avenue, Mandaluyong City</p>
+              
+            <div class="col-lg-8 col-md-8 col-xs-8 chrt">
+              <canvas id="myChart"></canvas>
+            </div>
 
-		<div class="card col-12 col-md-6 col-lg-3">
-	        <div class="card-wrapper card1">
-	            <div class="card-box align-left">
-	            	<br>
-	                <div class="iconfont-wrapper">
-	                    <center><i class="fa fa-user-circle icons" aria-hidden="true"></i></center>
-	                </div>
-	                <center><h6 class="card-title display-6">Permanent</h6></center>
-	                <center><h6>Personnel Count:
-	                {% for items in check_user %}{{items.permanent}}{% endfor %}</h6></center>
-	            </div>
-	        </div>
-	    </div>
+            <hr class="my-4">
+            <div class="d-flex justify-content-start align-items-center">
+              <p class="mb-0 text-uppercase"><i class="fa fa-facebook me-2"></i> <span
+                  class="text-muted small"><a href="https://www.facebook.com/DOTrPH" target="_blank">FB Page</a></span></p>
+              <p class="mb-0 text-uppercase"><i class="fa fa-globe ms-4 me-2"></i> <span
+                  class="text-muted small"><a href="https://www.dotr.gov.ph">Official Website</a><span class="ms-3 me-4">|</span></p>
+              
+                <img src="{% static 'basetemp/dotricon.png' %}" alt="avatar"
+                  class="img-fluid rounded-circle me-3" width="35">
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+ 
 
-	    <div class="card col-12 col-md-6 col-lg-3">
-	        <div class="card-wrapper card2">
-	            <div class="card-box align-left">
-	            	<br>
-	                <div class="iconfont-wrapper">
-	                    <center><i class="fa fa-user-circle-o icons" aria-hidden="true"></i></center>
-	                </div>
-	                <center><h6 class="card-title display-6">Coterminous</h6></center>
-	                <center><h6>Personnel Count:
-	                {% for items in check_user %}{{items.coterminus}}{% endfor %}</h6></center>
-	            </div>
-	        </div>
-	    </div>
-	    
-	    <div class="card col-12 col-md-6 col-lg-3">
-	        <div class="card-wrapper card3">
-	            <div class="card-box align-left">
-	            	<br>
-	                <div class="iconfont-wrapper">
-	                    <center><i class="fa fa-user-o icons" aria-hidden="true"></i></center>
-	                </div>
-	                <center><h6 class="card-title display-6">JO/COS</h6></center>
-	                <center><h6>Personnel Count:
-	                {% for items in check_user %}{{items.jo_cos}}{% endfor %}</h6></center>
-	            </div>
-	        </div>
-	    </div>
+      </div>
+    </div>
+  </div>
 
-	    <div class="card col-12 col-md-6 col-lg-3">
-	        <div class="card-wrapper card4">
-	            <div class="card-box align-left">
-	            	<br>
-	                <div class="iconfont-wrapper">
-	                    <center><i class="fa fa-user icons" aria-hidden="true"></i></center>
-	                </div>
-	                <center><h6 class="card-title display-6">Casual</h6></center>
-	                <center><h6>Personnel Count:
-	                {% for items in check_user %}{{items.casual_temporary}}{% endfor %}</h6></center>
-	            </div>
-	        </div>
-	    </div>
-	</div>
-	<br>
-	<div class="row">
 
-		<center>
-		<div class="card col-12 col-md-12 col-lg-3">
-	        <div class="card-wrapper card5">
-	            <div class="card-box align-center">
-	            	<br>
-	                <div class="iconfont-wrapper">
-	                    <center><i class="fa fa-address-card-o icons" aria-hidden="true"></i></center>
-	                </div>
-	                <h3><small>Presidential</small></h3>
-	                <center><h2 class="card-title display-6">Appointee</h2></center>
-	                <center><h6>Personnel Count:
-	                {% for items in check_user %}{{items.presidential_appointee}}{% endfor %}</h6></center>
-	            </div>
-	        </div>
-	    </div>
-		</center>
-	</div>
-</div>
-<br>
+<script>
+ const config = {
+  type: 'pie',
+  data: {
+    datasets: [{
+      data: [1, 2, 3, 4, 5, 6],
+      backgroundColor: [
+      '#007BFF', '#DC3545', '#FFC107', '#343A40', '#28A745', '#6C757D'
+      ],
+      label: 'Population'
+    }],
+    labels: ['On-Going', 'Suspended', 'Cancelled', 'Terminated', 'Completed', 'On Request']
+  },
+  options: {
+    responsive: true
+  } 
+  };
+
+  window.onload = function() {
+    var ctx = document.getElementById('myChart').getContext('2d');
+    window.myPie = new Chart(ctx, config);
+  };
+</script>
+
+</section>
+
+
 
 {% endblock content %}

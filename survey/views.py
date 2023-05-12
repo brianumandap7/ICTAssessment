@@ -86,15 +86,18 @@ class simple_upload(View):
                 return render (request, '/')
             imported_data = dataset.load(new_person.read(),format = 'xlsx')
             for data in imported_data:
-                db = User()
-                db.username = data[1]
-                pw = data[2]
-                db.set_password(pw)
-                db.email = data[3]
-                db.first_name = data[4]
-                db.last_name = data[5]
-                db.is_staff = data[6]
-                db.save()
+                username = data[1]
+                if User.objects.filter(username=username).exists():
+                    continue
+                user = User.objects.create_user(
+                    username=username,
+                    email=data[3],
+                    first_name=data[4],
+                    last_name=data[5],
+                    is_staff=data[6]
+                )
+                user.set_password(data[2])
+                user.save()
 
             return HttpResponseRedirect('/survey/')
         
