@@ -26,10 +26,10 @@ class demographicsform(forms.ModelForm):
 		}
 
 		labels = {
-			'office_division_name': 'Office/Divison Name',
+			'office_division_name': 'Office/Division Name',
 			'presidential_appointee': 'Number of Presidential Appointees',
 			'permanent': 'Number of Permanent Employees',
-			'coterminus': 'Number of Coterminous Employees',
+			'coterminus': 'Number of Co-terminous Employees',
 			'jo_cos': 'Number of JO/COS Employees',
 			'casual_temporary': 'Number of Casual/Temporary Employees',
 			'male': 'Number of Male Personnel',

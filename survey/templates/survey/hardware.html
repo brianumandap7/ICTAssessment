@@ -68,7 +68,7 @@
 		padding-right: 5px;
 	}
 </style>
-<h3 class="mt-4">{{title}} {{pk}}</h3>
+<h3 class="mt-4">{{title}}</h3>
 <div class="container-fluid formdiv">
 	<form method="post" class="form">
 		{% csrf_token %}
@@ -689,7 +689,7 @@
 
 			<tr>
 				<td>
-					Photo-copier:
+					Photocopier:
 				</td>
 				<td>
 					{{form.photocopier_shared}}
@@ -782,7 +782,7 @@
 
 			<tr>
 				<td>
-					Photo-copier:
+					Photocopier:
 				</td>
 				<td>
 					{{form.photocopier_shared_personal}}
@@ -922,7 +922,7 @@
 
 			<tr>
 				<td>
-					Photo-copier:
+					Photocopier:
 				</td>
 				<td>
 					{{form.photocopier_need}}
@@ -942,7 +942,7 @@
 			</tr>
 		</table>
 		<button type="submit" class="btn btn-primary dbtn">Update</button>
-		<a href="/survey/" class="btn btn-danger dbtn">Go back</a>
+		<a href="/survey/" class="btn btn-danger dbtn">Back</a>
 
 	</form>	
 
@@ -1671,7 +1671,7 @@
 	pc.addEventListener("input", function() {
 		if (pc.value === "") {
 			document.getElementById("photocopier_shared_alert").style.display = "block";
-			document.getElementById("photocopier_shared_alert").textContent = "Photo-copier field is required. Input 0 if none.";
+			document.getElementById("photocopier_shared_alert").textContent = "Photocopier field is required. Input 0 if none.";
 		} else {
 			document.getElementById("photocopier_shared_alert").style.display = "none";
 		}

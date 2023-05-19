@@ -62,7 +62,7 @@
 		<div class="form-group row">
 			<br>
 			<h6><b>Currently used Storage Products and Applications</b></h6><br><br>
-			<h6>1. <span>*</span>Identify and Select any DOTr-issued and Personal-owned Storage you use to store local documents, reports, and other important files necessary to your office.</h6>
+			<h6>1. <span>*</span>Identify and select any DOTr-issued and Personal-owned Storage you use to store local documents, reports, and other important files necessary to your office.</h6>
 
 			<h6>&nbsp;&nbsp;&nbsp;&nbsp;A. DOTr-issued Storage</h6>
 			{% for checkbox in form.dotr_storage %}
@@ -83,7 +83,7 @@
 			</div>
 
 			<div class="form-group row">
-			<h6>&nbsp;&nbsp;&nbsp;&nbsp;B. Personal-Owned Storage</h6>
+			<h6>&nbsp;&nbsp;&nbsp;&nbsp;B. Personal-owned Storage</h6>
 			{% for checkbox in form.personal_storage %}
 			    <div class="checkbox">
 			      {% if checkbox.choice_label == 'Others' %}
@@ -123,7 +123,7 @@
 
 		<div class="form-group row">
 			<br>
-			<h6>3. <span>*</span>Identify and Select the DOTr-issued and Personal-owned Online Storage Products you use for collaborative work in your office/division.</h6>
+			<h6>3. <span>*</span>Identify and select the DOTr-issued and Personal-owned Online Storage Products you use for collaborative work in your office/division.</h6>
 
 			<h6>&nbsp;&nbsp;&nbsp;&nbsp;A. DOTr-issued Online Storage Products</h6>
 			{% for checkbox in form.dotr_online_storage %}
@@ -136,7 +136,7 @@
 			</div>
 
 			<div class="form-group row">
-			<h6>&nbsp;&nbsp;&nbsp;&nbsp;B. Personal-Owned Online Storage Products</h6>
+			<h6>&nbsp;&nbsp;&nbsp;&nbsp;B. Personal-owned Online Storage Products</h6>
 			{% for checkbox in form.personal_online_storage %}
 			    <div class="checkbox">
 			        <label style="margin-left: 50px;">
@@ -159,7 +159,7 @@
 		</div>
 
 		<div class="form-group row">
-			<h6>5. <span>*</span>Identify and Select the Storage you <b>use</b> to backup your local documents, reports, and other important files necessary to your office.</h6>
+			<h6>5. <span>*</span>Identify and select the Storage you <b>use</b> to backup your local documents, reports, and other important files necessary to your office.</h6>
 
 			{% for checkbox in form.backup_storage %}
 			    <div class="checkbox">
@@ -179,7 +179,7 @@
 		</div>
 
 		<div class="form-group row">
-			<h6>6. <span>*</span>Identify and Select the Storage you <b>need</b> to backup your local documents, reports, and other important files necessary to your office.</h6>
+			<h6>6. <span>*</span>Identify and select the Storage you <b>need</b> to backup your local documents, reports, and other important files necessary to your office.</h6>
 
 			{% for checkbox in form.backup_storage_need %}
 			    <div class="checkbox">
@@ -207,7 +207,7 @@
 
 		{{form.storage_section}}
 		<button type="submit" class="btn btn-primary dbtn">Update</button>
-		<a href="/survey/" class="btn btn-danger dbtn">Go back</a>
+		<a href="/survey/" class="btn btn-danger dbtn">Back</a>
 		<br>
 		<br>
 	</form>	
