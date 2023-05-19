@@ -268,4 +268,71 @@
     return true;
   }
 </script>
+
+<script>
+	function handleCheckboxChange() {
+		var pto = document.querySelector("#id_dotr_issued_professional_tools_installed_{{pto}}");
+		var pto_others = document.querySelector("#id_dotr_issued_professional_tools_installed_others");
+
+		var popti = document.querySelector("#id_personal_owned_professional_tools_installed_{{pto}}");
+		var popti_others = document.querySelector("#id_personal_owned_professional_tools_installed_others");
+
+		var ptn = document.querySelector("#id_professional_tools_needed_{{pto}}");
+		var ptn_others = document.querySelector("#id_professional_tools_needed_others");
+
+		var cti = document.querySelector("#id_communication_tools_installed_{{ct}}");
+		var cti_others = document.querySelector("#id_communication_tools_installed_others");
+
+		var ctn = document.querySelector("#id_communication_tools_needed_{{ct}}");
+		var ctn_others = document.querySelector("#id_communication_tools_needed_others");
+
+		var dipi = document.querySelector("#id_dotr_issued_productivity_installed_{{ps}}");
+		var dipi_others = document.querySelector("#id_dotr_issued_productivity_installed_others");
+
+		var popi = document.querySelector("#id_personal_owned_productivity_installed_{{ps}}");
+		var popi_others = document.querySelector("#id_personal_owned_productivity_installed_others");
+
+		var pn = document.querySelector("#id_productivity_needed_{{ps}}");
+		var pn_others = document.querySelector("#id_productivity_needed_others");
+
+		pto_others.disabled = !pto.checked;
+		popti_others.disabled = !popti.checked;
+		ptn_others.disabled = !ptn.checked;
+		cti_others.disabled = !cti.checked;
+		ctn_others.disabled = !ctn.checked;
+		dipi_others.disabled = !dipi.checked;
+		popi_others.disabled = !popi.checked;
+		pn_others.disabled = !pn.checked;
+
+		pto_others.required = pto.checked;
+		popti_others.required = popti.checked;
+		ptn_others.required = ptn.checked;
+		cti_others.required = cti.checked;
+		ctn_others.required = ctn.checked;
+		dipi_others.required = dipi.checked;
+		popi_others.required = popi.checked;
+		pn_others.required = pn.checked;
+
+		pto_others.readOnly = !pto.checked;
+		popti_others.readOnly = !popti.checked;
+		ptn_others.readOnly = !ptn.checked;
+		cti.others.readOnly = !cti.checked;
+		ctn_others.readOnly = !ctn.checked;
+		dipi_others.readOnly = !dipi.checked;
+		popi_others.readOnly = !popi.checked;
+		pn_others.readOnly = !pn.checked;
+	}
+
+	window.addEventListener('load', handleCheckboxChange);
+	document.querySelector("#id_dotr_issued_professional_tools_installed_{{pto}}").addEventListener('change', handleCheckboxChange);
+	document.querySelector("#id_personal_owned_professional_tools_installed_{{pto}}").addEventListener('change', handleCheckboxChange);
+	document.querySelector("#id_professional_tools_needed_{{pto}}").addEventListener('change', handleCheckboxChange);
+	document.querySelector("#id_communication_tools_installed_{{ct}}").addEventListener('change', handleCheckboxChange)
+	document.querySelector("#id_communication_tools_needed_{{ct}}").addEventListener('change', handleCheckboxChange);
+	document.querySelector("#id_dotr_issued_productivity_installed_{{ps}}").addEventListener('change', handleCheckboxChange);
+
+	document.querySelector("#id_personal_owned_productivity_installed_{{ps}}").addEventListener('change', handleCheckboxChange);
+
+	document.querySelector("#id_productivity_needed_{{ps}}").addEventListener('change', handleCheckboxChange);
+</script>
 {% endblock content %}

@@ -703,6 +703,17 @@
 			<tr>
 				<th width="600" class="shared">
 					8. <span>*</span>Identify and indicate the number of <b>personal-owned shared devices </b>in your office.
+					
+					<span id="ordinaryprinter_shared_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="coloredprinter_shared_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="scanner_shared_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="speaker_shared_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="tv_shared_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="projector_shared_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="camera_shared_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="microphone_shared_personal_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="photocopier_shared_personal_alert" class="alert-danger custom" style="display:none;"></span>
+
 				</th>
 
 				<th>
@@ -795,7 +806,23 @@
 		<table class="table" id = "qtbl">
 			<tr>
 				<th width="600" class="shared">
-					9. Identify the type of equipment/s <b>you need</b> in your office/division and indicate the number of preferred units per equipment:
+					9. <span>*</span>Identify the type of equipment/s <b>you need</b> in your office/division and indicate the number of preferred units per equipment:
+
+					<span id="desktop_need_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="laptop_need_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="tablet_need_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="mouse_need_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="keyboard_need_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="monitor_need_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="ordinaryprinter_need_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="coloredprinter_need_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="scanner_need_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="speaker_need_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="tv_need_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="projector_need_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="camera_need_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="microphone_need_alert" class="alert-danger custom" style="display:none;"></span>
+					<span id="photocopier_need_alert" class="alert-danger custom" style="display:none;"></span>
 				</th>
 				<th>
 					
@@ -1054,6 +1081,35 @@
 
 	var pc = document.getElementById("id_photocopier_shared");
 
+	var opp = document.getElementById("id_ordinaryprinter_shared_personal");
+	var cpp = document.getElementById("id_coloredprinter_shared_personal");
+
+	var scp = document.getElementById("id_scanner_shared_personal");
+	var spp = document.getElementById("id_speaker_shared_personal");
+
+	var tvp = document.getElementById("id_tv_shared_personal");
+	var pjp = document.getElementById("id_projector_shared_personal");
+
+	var cmp = document.getElementById("id_camera_shared_personal");
+	var mcp = document.getElementById("id_microphone_shared_personal");
+
+	var pcp = document.getElementById("id_photocopier_shared_personal");
+
+	var dn = document.getElementById("id_desktop_need");
+	var ln = document.getElementById("id_laptop_need");
+	var tn = document.getElementById("id_tablet_need");
+	var mn = document.getElementById("id_mouse_need");
+	var kn = document.getElementById("id_keyboard_need");
+	var mon = document.getElementById("id_monitor_need");
+	var opn = document.getElementById("id_ordinaryprinter_need");
+	var cpn = document.getElementById("id_coloredprinter_need");
+	var scn = document.getElementById("id_scanner_need");
+	var spn = document.getElementById("id_speaker_need");
+	var tvn = document.getElementById("id_tv_need");
+	var pjn = document.getElementById("id_projector_need");
+	var cmn = document.getElementById("id_camera_need");
+	var mcn = document.getElementById("id_microphone_need");
+	var pcn = document.getElementById("id_photocopier_need");
 
 
 	acerInstalled.addEventListener("input", function() {
@@ -1676,6 +1732,223 @@
 			document.getElementById("photocopier_shared_alert").style.display = "none";
 		}
 	});
+
+	opp.addEventListener("input", function() {
+		if (opp.value === "") {
+			document.getElementById("ordinaryprinter_shared_personal_alert").style.display = "block";
+			document.getElementById("ordinaryprinter_shared_personal_alert").textContent = "Ordinary printer field is required. Input 0 if none.";
+		} else {
+			document.getElementById("ordinaryprinter_shared_personal_alert").style.display = "none";
+		}
+	});
+
+	cpp.addEventListener("input", function() {
+		if (cpp.value === "") {
+			document.getElementById("coloredprinter_shared_personal_alert").style.display = "block";
+			document.getElementById("coloredprinter_shared_personal_alert").textContent = "Colored printer field is required. Input 0 if none.";
+		} else {
+			document.getElementById("coloredprinter_shared_personal_alert").style.display = "none";
+		}
+	});
+
+	scp.addEventListener("input", function() {
+		if (scp.value === "") {
+			document.getElementById("scanner_shared_personal_alert").style.display = "block";
+			document.getElementById("scanner_shared_personal_alert").textContent = "Scanner field is required. Input 0 if none.";
+		} else {
+			document.getElementById("scanner_shared_personal_alert").style.display = "none";
+		}
+	});
+
+	spp.addEventListener("input", function() {
+		if (spp.value === "") {
+			document.getElementById("speaker_shared_personal_alert").style.display = "block";
+			document.getElementById("speaker_shared_personal_alert").textContent = "Speaker field is required. Input 0 if none.";
+		} else {
+			document.getElementById("speaker_shared_personal_alert").style.display = "none";
+		}
+	});
+
+	tvp.addEventListener("input", function() {
+		if (tvp.value === "") {
+			document.getElementById("tv_shared_personal_alert").style.display = "block";
+			document.getElementById("tv_shared_personal_alert").textContent = "TV/Big Monitor field is required. Input 0 if none.";
+		} else {
+			document.getElementById("tv_shared_personal_alert").style.display = "none";
+		}
+	});
+
+	pjp.addEventListener("input", function() {
+		if (pjp.value === "") {
+			document.getElementById("projector_shared_personal_alert").style.display = "block";
+			document.getElementById("projector_shared_personal_alert").textContent = "Projector field is required. Input 0 if none.";
+		} else {
+			document.getElementById("projector_shared_personal_alert").style.display = "none";
+		}
+	});
+
+	cmp.addEventListener("input", function() {
+		if (cmp.value === "") {
+			document.getElementById("camera_shared_personal_alert").style.display = "block";
+			document.getElementById("camera_shared_personal_alert").textContent = "Camera field is required. Input 0 if none.";
+		} else {
+			document.getElementById("camera_shared_personal_alert").style.display = "none";
+		}
+	});
+
+	mcp.addEventListener("input", function() {
+		if (mcp.value === "") {
+			document.getElementById("microphone_shared_personal_alert").style.display = "block";
+			document.getElementById("microphone_shared_personal_alert").textContent = "Microphone field is required. Input 0 if none.";
+		} else {
+			document.getElementById("microphone_shared_personal_alert").style.display = "none";
+		}
+	});
+
+	pcp.addEventListener("input", function() {
+		if (pcp.value === "") {
+			document.getElementById("photocopier_shared_personal_alert").style.display = "block";
+			document.getElementById("photocopier_shared_personal_alert").textContent = "Photocopier field is required. Input 0 if none.";
+		} else {
+			document.getElementById("photocopier_shared_personal_alert").style.display = "none";
+		}
+	});
+
+	dn.addEventListener("input", function() {
+		if (dn.value === "") {
+			document.getElementById("desktop_need_alert").style.display = "block";
+			document.getElementById("desktop_need_alert").textContent = "Desktop field is required. Input 0 if none.";
+		} else {
+			document.getElementById("desktop_need_alert").style.display = "none";
+		}
+	});
+
+	ln.addEventListener("input", function() {
+		if (ln.value === "") {
+			document.getElementById("laptop_need_alert").style.display = "block";
+			document.getElementById("laptop_need_alert").textContent = "Laptop field is required. Input 0 if none.";
+		} else {
+			document.getElementById("laptop_need_alert").style.display = "none";
+		}
+	});
+
+	tn.addEventListener("input", function() {
+		if (ln.value === "") {
+			document.getElementById("tablet_need_alert").style.display = "block";
+			document.getElementById("tablet_need_alert").textContent = "Tablet field is required. Input 0 if none.";
+		} else {
+			document.getElementById("tablet_need_alert").style.display = "none";
+		}
+	});
+
+	mn.addEventListener("input", function() {
+		if (mn.value === "") {
+			document.getElementById("mouse_need_alert").style.display = "block";
+			document.getElementById("mouse_need_alert").textContent = "Mouse field is required. Input 0 if none.";
+		} else {
+			document.getElementById("mouse_need_alert").style.display = "none";
+		}
+	});
+
+	kn.addEventListener("input", function() {
+		if (kn.value === "") {
+			document.getElementById("keyboard_need_alert").style.display = "block";
+			document.getElementById("keyboard_need_alert").textContent = "Keyboard field is required. Input 0 if none.";
+		} else {
+			document.getElementById("keyboard_need_alert").style.display = "none";
+		}
+	});
+
+	mon.addEventListener("input", function() {
+		if (mon.value === "") {
+			document.getElementById("monitor_need_alert").style.display = "block";
+			document.getElementById("monitor_need_alert").textContent = "Monitor field is required. Input 0 if none.";
+		} else {
+			document.getElementById("monitor_need_alert").style.display = "none";
+		}
+	});
+
+	opn.addEventListener("input", function() {
+		if (opn.value === "") {
+			document.getElementById("ordinaryprinter_need_alert").style.display = "block";
+			document.getElementById("ordinaryprinter_need_alert").textContent = "Ordinary Printer field is required. Input 0 if none.";
+		} else {
+			document.getElementById("ordinaryprinter_need_alert").style.display = "none";
+		}
+	});
+
+	cpn.addEventListener("input", function() {
+		if (cpn.value === "") {
+			document.getElementById("coloredprinter_need_alert").style.display = "block";
+			document.getElementById("coloredprinter_need_alert").textContent = "Colored Printer field is required. Input 0 if none.";
+		} else {
+			document.getElementById("coloredprinter_need_alert").style.display = "none";
+		}
+	});
+
+	scn.addEventListener("input", function() {
+		if (scn.value === "") {
+			document.getElementById("scanner_need_alert").style.display = "block";
+			document.getElementById("scanner_need_alert").textContent = "Scanner field is required. Input 0 if none.";
+		} else {
+			document.getElementById("scanner_need_alert").style.display = "none";
+		}
+	});
+
+	spn.addEventListener("input", function() {
+		if (spn.value === "") {
+			document.getElementById("speaker_need_alert").style.display = "block";
+			document.getElementById("speaker_need_alert").textContent = "Speaker field is required. Input 0 if none.";
+		} else {
+			document.getElementById("speaker_need_alert").style.display = "none";
+		}
+	});
+
+	tvn.addEventListener("input", function() {
+		if (tvn.value === "") {
+			document.getElementById("tv_need_alert").style.display = "block";
+			document.getElementById("tv_need_alert").textContent = "TV field is required. Input 0 if none.";
+		} else {
+			document.getElementById("tv_need_alert").style.display = "none";
+		}
+	});
+
+	pjn.addEventListener("input", function() {
+		if (pjn.value === "") {
+			document.getElementById("projector_need_alert").style.display = "block";
+			document.getElementById("projector_need_alert").textContent = "Projector field is required. Input 0 if none.";
+		} else {
+			document.getElementById("projector_need_alert").style.display = "none";
+		}
+	});
+
+	cmn.addEventListener("input", function() {
+		if (cmn.value === "") {
+			document.getElementById("camera_need_alert").style.display = "block";
+			document.getElementById("camera_need_alert").textContent = "Camera field is required. Input 0 if none.";
+		} else {
+			document.getElementById("camera_need_alert").style.display = "none";
+		}
+	});
+
+	mcn.addEventListener("input", function() {
+		if (mcn.value === "") {
+			document.getElementById("microphone_need_alert").style.display = "block";
+			document.getElementById("microphone_need_alert").textContent = "Microphone field is required. Input 0 if none.";
+		} else {
+			document.getElementById("microphone_need_alert").style.display = "none";
+		}
+	});
+
+	pcn.addEventListener("input", function() {
+		if (pcn.value === "") {
+			document.getElementById("photocopier_need_alert").style.display = "block";
+			document.getElementById("photocopier_need_alert").textContent = "Photocopier field is required. Input 0 if none.";
+		} else {
+			document.getElementById("photocopier_need_alert").style.display = "none";
+		}
+	});
+
 
 </script>
 {% endblock content %}

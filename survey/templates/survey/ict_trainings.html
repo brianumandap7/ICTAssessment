@@ -146,4 +146,32 @@
     return true;
   }
 </script>
+
+<script>
+	// Function to enable or disable input field based on checkbox selection
+	function handleCheckboxChange() {
+		var othersCheckboxTaken = document.querySelector("#id_ict_trainings_taken_{{ict_training_count}}");
+		var othersInputTaken = document.querySelector("#id_ict_trainings_taken_others");
+
+		var othersCheckboxInterested = document.querySelector("#id_ict_trainings_interests_{{ict_training_count}}");
+		var othersInputInterested = document.querySelector("#id_ict_trainings_interests_others");
+
+		othersInputTaken.disabled = !othersCheckboxTaken.checked;
+		othersInputInterested.disabled = !othersCheckboxInterested.checked;
+
+		othersInputTaken.required = othersCheckboxTaken.checked;
+		othersInputInterested.required = othersCheckboxInterested.checked;
+
+		othersInputTaken.readOnly = !othersCheckboxTaken.checked;
+		othersInputInterested.readOnly = !othersCheckboxInterested.checked;
+	}
+
+	// Call the function when the page loads and on checkbox change
+	window.addEventListener('load', handleCheckboxChange);
+	document.querySelector("#id_ict_trainings_taken_{{ict_training_count}}").addEventListener('change', handleCheckboxChange);
+	document.querySelector("#id_ict_trainings_interests_{{ict_training_count}}").addEventListener('change', handleCheckboxChange);
+</script>
+
+
+
 {% endblock content %}

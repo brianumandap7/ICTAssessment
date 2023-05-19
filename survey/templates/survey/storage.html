@@ -252,5 +252,49 @@
     return true;
   }
 </script>
+
+<script>
+	function handleCheckboxChange() {
+		var othersCDotrStorage = document.querySelector("#id_dotr_storage_{{storage_count}}");
+		var otherIDotrStorage = document.querySelector("#id_dotr_storage_others");
+
+		var othersPStorage = document.querySelector("#id_personal_storage_{{storage_count}}");
+		var otherIStorage = document.querySelector("#id_personal_storage_others");
+
+		var othersSneed = document.querySelector("#id_storage_need_{{storage_count}}");
+		var otherIneed = document.querySelector("#id_storage_need_others");
+
+		var otherBStorage = document.querySelector("#id_backup_storage_{{backup_count}}");
+		var otherIBStorage = document.querySelector("#id_backup_storage_others");
+
+		var otherBSNeed = document.querySelector("#id_backup_storage_need_{{backup_count}}");
+		var otherIBSNeed = document.querySelector("#id_backup_storage_need_others");
+
+		otherIDotrStorage.disabled = !othersCDotrStorage.checked;
+		otherIStorage.disabled = !othersPStorage.checked;
+		otherIneed.disabled = !othersSneed.checked;
+		otherIBStorage.disabled = !otherBStorage.checked;
+		otherIBSNeed.disabled = !otherBSNeed.checked;
+
+		otherIDotrStorage.required = othersCDotrStorage.checked;
+		otherIStorage.required = othersPStorage.checked;
+		otherIneed.required = othersSneed.checked;
+		otherIBStorage.required = otherBStorage.checked;
+		otherIBSNeed.required = otherBSNeed.checked;
+
+		otherIDotrStorage.readOnly = !othersCDotrStorage.checked;
+		otherIStorage.readOnly = !othersPStorage.checked;
+		otherIneed.readOnly = !othersSneed.checked;
+		otherIBStorage.readOnly = !otherBStorage.checked;
+		otherIBSNeed.readOnly = !otherBSNeed.checked;
+	}
+
+	window.addEventListener('load', handleCheckboxChange);
+	document.querySelector("#id_dotr_storage_{{storage_count}}").addEventListener('change', handleCheckboxChange);
+	document.querySelector("#id_personal_storage_{{storage_count}}").addEventListener('change', handleCheckboxChange);
+	document.querySelector("#id_storage_need_{{storage_count}}").addEventListener('change', handleCheckboxChange);
+	document.querySelector("#id_backup_storage_{{backup_count}}").addEventListener('change', handleCheckboxChange);
+	document.querySelector("#id_backup_storage_need_{{backup_count}}").addEventListener('change', handleCheckboxChange);
+</script>
 {% endblock content %}
 
