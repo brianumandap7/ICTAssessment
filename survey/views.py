@@ -28,7 +28,7 @@ from django.contrib import messages
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import Survey, office_division, CommunicationToolsOption, ProductivityOption, StorageOption, OnlineStorageOption, BackupStorageOption, OnlineOption
+from .models import Survey, office_division, CommunicationToolsOption, ProductivityOption, StorageOption, OnlineStorageOption, BackupStorageOption, OnlineOption, ICTTrainingPrograms, ProfessionalToolsOption
 
 from .forms import demographicsform, hardwareform, SoftwareForm, CompetenciesForm, ICTTrainingsForm, StorageForm
 
@@ -159,6 +159,9 @@ class Software(LoginRequiredMixin, UpdateView):
         context['check_user'] = Survey.objects.filter(user = self.request.user)
         context['sec'] = 4
         context['pk'] = self.kwargs.get('pk')
+        context['pto'] = ProfessionalToolsOption.objects.count() - 1
+        context['ct'] = CommunicationToolsOption.objects.count() - 1
+        context['ps'] = ProductivityOption.objects.count() - 1
         return context
 
 class Storage(LoginRequiredMixin, UpdateView):
@@ -173,6 +176,8 @@ class Storage(LoginRequiredMixin, UpdateView):
         context['check_user'] = Survey.objects.filter(user = self.request.user)
         context['sec'] = 5
         context['pk'] = self.kwargs.get('pk')
+        context['storage_count'] = StorageOption.objects.count() - 1
+        context['backup_count'] = BackupStorageOption.objects.count() - 1
         return context
 
 class Competencies(LoginRequiredMixin, UpdateView):
@@ -202,6 +207,7 @@ class ICTTrainings(LoginRequiredMixin, UpdateView):
         context['check_user'] = Survey.objects.filter(user = self.request.user)
         context['sec'] = 7
         context['pk'] = self.kwargs.get('pk')
+        context['ict_training_count'] = ICTTrainingPrograms.objects.count() - 1
         return context
 
 
