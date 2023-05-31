@@ -28,7 +28,7 @@ from django.contrib import messages
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import Survey, office_division, CommunicationToolsOption, ProductivityOption, StorageOption, OnlineStorageOption, BackupStorageOption, OnlineOption, ICTTrainingPrograms, ProfessionalToolsOption
+from .models import Survey, office_division, CommunicationToolsOption, ProductivityOption, StorageOption, OnlineStorageOption, BackupStorageOption, OnlineOption, ICTTrainingPrograms, ProfessionalToolsOption, OfficeLocation, ConnectionOption
 
 from .forms import demographicsform, hardwareform, SoftwareForm, CompetenciesForm, ICTTrainingsForm, StorageForm
 
@@ -117,6 +117,7 @@ class demographics(UpdateView):
         context['title'] = 'Demographics'
         context['check_user'] = Survey.objects.filter(user = self.request.user)
         context['sec'] = 2
+        context['pto'] = OfficeLocation.objects.count() - 1
         context['pk'] = self.kwargs.get('pk')
 
         return context

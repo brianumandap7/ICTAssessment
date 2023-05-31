@@ -1,13 +1,15 @@
 from django import forms
-from .models import Survey, ProfessionalToolsOption, CompetencyScale, ICTTrainingPrograms, CommunicationToolsOption, ProductivityOption, StorageOption, OnlineStorageOption, BackupStorageOption, OnlineOption
+from .models import Survey, ProfessionalToolsOption, CompetencyScale, ICTTrainingPrograms, CommunicationToolsOption, ProductivityOption, StorageOption, OnlineStorageOption, BackupStorageOption, OnlineOption, OfficeLocation, ConnectionOption
 from crispy_forms.helper import FormHelper
 from django.core.exceptions import ValidationError
 
 class demographicsform(forms.ModelForm):
+	office_location = forms.ModelMultipleChoiceField(queryset=OfficeLocation.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
+	pmo_office = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield'}))
 	class Meta:
 		model = Survey
 		fields = ['office_division_name','presidential_appointee', 'permanent', 'coterminus', 'jo_cos', 'casual_temporary', 'male',
-		 'female', 'age_20_24', 'age_25_34', 'age_35_44', 'age_45_54', 'age_55_above', 'demographics_section']
+		 'female', 'age_20_24', 'age_25_34', 'age_35_44', 'age_45_54', 'age_55_above', 'demographics_section', 'office_location', 'pmo_office']
 		widgets = {
 			'office_division_name': forms.Select(attrs={'class': 'form-control fieldsize'}),
 			'presidential_appointee': forms.NumberInput(attrs={'class': 'form-control fieldsize', 'min': '0', 'oninput': "this.value = this.value.replace(/^[-]/, '')"}),
@@ -63,6 +65,7 @@ class demographicsform(forms.ModelForm):
 
 
 class hardwareform(forms.ModelForm):
+	connection_option = forms.ModelMultipleChoiceField(queryset=ConnectionOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
 	class Meta:
 		model = Survey
 		fields = ['desktop_acer_installed', 'desktop_hp_installed', 'desktop_lenovo_installed', 'desktop_samsung_installed',
@@ -86,7 +89,7 @@ class hardwareform(forms.ModelForm):
 		 'projector_shared_personal', 'camera_shared_personal', 'microphone_shared_personal', 'photocopier_shared_personal',
 		 'desktop_need', 'laptop_need', 'tablet_need', 'mouse_need', 'keyboard_need', 'monitor_need',
 		 'ordinaryprinter_need', 'coloredprinter_need', 'scanner_need', 'speaker_need', 'tv_need',
-		 'projector_need', 'camera_need', 'microphone_need', 'photocopier_need', 'hardware_comments']
+		 'projector_need', 'camera_need', 'microphone_need', 'photocopier_need', 'hardware_comments', 'connection_option']
 		
 		widgets = {
 			'desktop_acer_installed': forms.NumberInput(attrs={'class': 'form-control fieldsize', 'oninput': "this.value = this.value.replace(/^[-]/, '')"}),
@@ -281,17 +284,17 @@ class SoftwareForm(forms.ModelForm):
     professional_tools_needed = forms.ModelMultipleChoiceField(queryset=ProfessionalToolsOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
     communication_tools_installed = forms.ModelMultipleChoiceField(queryset=CommunicationToolsOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
     communication_tools_needed = forms.ModelMultipleChoiceField(queryset=CommunicationToolsOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
-    communication_tools_installed_others = forms.CharField(required=False)
-    communication_tools_needed_others = forms.CharField(required=False)
-    dotr_issued_professional_tools_installed_others = forms.CharField(required=False)
-    personal_owned_professional_tools_installed_others = forms.CharField(required=False)
-    professional_tools_needed_others = forms.CharField(required=False)
+    communication_tools_installed_others = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield'}))
+    communication_tools_needed_others = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield'}))
+    dotr_issued_professional_tools_installed_others = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield'}))
+    personal_owned_professional_tools_installed_others = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield'}))
+    professional_tools_needed_others = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield'}))
     dotr_issued_productivity_installed = forms.ModelMultipleChoiceField(queryset=ProductivityOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
-    dotr_issued_productivity_installed_others = forms.CharField(required=False)
+    dotr_issued_productivity_installed_others = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield'}))
     personal_owned_productivity_installed = forms.ModelMultipleChoiceField(queryset=ProductivityOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
-    personal_owned_productivity_installed_others = forms.CharField(required=False)
+    personal_owned_productivity_installed_others = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield'}))
     productivity_needed = forms.ModelMultipleChoiceField(queryset=ProductivityOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
-    productivity_needed_others = forms.CharField(required=False)
+    productivity_needed_others = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield'}))
 
     class Meta:
         model = Survey
@@ -394,8 +397,8 @@ class CompetenciesForm(forms.ModelForm):
 class ICTTrainingsForm(forms.ModelForm):
     ict_trainings_taken = forms.ModelMultipleChoiceField(queryset=ICTTrainingPrograms.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
     ict_trainings_interests = forms.ModelMultipleChoiceField(queryset=ICTTrainingPrograms.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
-    ict_trainings_taken_others = forms.CharField(required=False)
-    ict_trainings_interests_others = forms.CharField(required=False)
+    ict_trainings_taken_others = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield'}))
+    ict_trainings_interests_others = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield'}))
     class Meta:
         model = Survey
         fields = ['ict_trainings_taken', 'ict_trainings_interests', 'ict_trainings_taken_others',
@@ -418,17 +421,17 @@ class ICTTrainingsForm(forms.ModelForm):
 class StorageForm(forms.ModelForm):
 	dotr_storage = forms.ModelMultipleChoiceField(queryset=StorageOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
 	personal_storage = forms.ModelMultipleChoiceField(queryset=StorageOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
-	dotr_storage_others = forms.CharField(required=False)
-	personal_storage_others = forms.CharField(required=False)
+	dotr_storage_others = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield'}))
+	personal_storage_others = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield'}))
 	storage_need = forms.ModelMultipleChoiceField(queryset=StorageOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
-	storage_need_others = forms.CharField(required=False)
+	storage_need_others = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield'}))
 	dotr_online_storage = forms.ModelMultipleChoiceField(queryset=OnlineStorageOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
 	personal_online_storage = forms.ModelMultipleChoiceField(queryset=OnlineStorageOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
 	online_storage_need = forms.ModelMultipleChoiceField(queryset=OnlineStorageOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
 	backup_storage = forms.ModelMultipleChoiceField(queryset=BackupStorageOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
-	backup_storage_others = forms.CharField(required=False)
+	backup_storage_others = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield'}))
 	backup_storage_need = forms.ModelMultipleChoiceField(queryset=BackupStorageOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
-	backup_storage_need_others = forms.CharField(required=False)
+	backup_storage_need_others = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield'}))
 
 	class Meta:
 		model = Survey

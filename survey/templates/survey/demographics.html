@@ -53,14 +53,26 @@
 	span {
 		color: red;
 	}
+
+	
 </style>
 <h3 class="mt-4">{{title}}</h3>
 <div class="container-fluid formdiv">
 
-	<form method="post">
+	<form method="post" onsubmit="return validateForm()">
 		{% csrf_token %}
-
+		<div class="alert alert-danger" id="error-message" style="display: none;">
+					  Please select at least one option for the questions containing checkboxes.
+		</div>
 		<table class="table">
+			
+							<tr>
+								<td>
+									<h6 class="ovr rounded"><strong>Office Overview: </strong></h6>
+								</td>
+
+								<td></td>
+							</tr>
 							<tr>
 								<td>
 									<span>*</span> <strong>{{form.office_division_name.label_tag}}</strong>
@@ -104,7 +116,33 @@
 							</tr>
 							<tr>
 								<td>
-									<span>*</span> <strong>Gender: </strong><br><small>(Define the number of male and female personnel)</small>
+									<h6><span>*</span> <strong>Office Location: </strong></h6>
+									<div class="form-group">
+									{% for checkbox in form.office_location %}
+									    <div class="checkbox">
+									      {% if checkbox.choice_label == 'PMO' %}
+									        <label style="margin-left: 50px;">
+									          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+									          {{form.pmo_office}}
+									        </label>
+									        
+									      {% else %}
+									        <label style="margin-left: 50px;">
+									          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+									        </label>
+									      {% endif %}
+									    </div>
+									{% endfor %}
+									</div>
+								</td>
+								<td>
+									
+
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h6 class="ovr rounded"><strong>Gender: </strong></h6>
 								</td>
 							</tr>
 							<tr>
@@ -124,7 +162,7 @@
 							</tr>
 							<tr>
 								<td>
-									<span>*</span> <strong>Age Bracket:</strong><br><small>(Define the number of personnel per age bracket)</small>
+									<h6 class="ovr rounded"><strong>Age Bracket: </strong></h6>
 								</td>
 							</tr>
 							<tr>
@@ -176,6 +214,7 @@
 		<div id="scrollPercentage">Page Scroll: 0%&nbsp;&nbsp;&nbsp;</div>
 
 </div>
+<br>
 
 <script>
 	// Get the container element
@@ -340,5 +379,42 @@
 
 </script>
 
+<script>
+	function handleCheckboxChange() {
+		var pmo = document.querySelector("#id_office_location_{{pto}}");
+		var pmo_others = document.querySelector("#id_pmo_office");
 
+
+		pmo_others.disabled = !pmo.checked;
+
+		pmo_others.required = pmo.checked;
+
+		pmo_others.readOnly = !pmo.checked;
+	}
+
+	window.addEventListener('load', handleCheckboxChange);
+	document.querySelector("#id_office_location_{{pto}}").addEventListener('change', handleCheckboxChange);
+</script>
+
+<script>
+  function validateForm() {
+    var questionContainers = document.querySelectorAll('.form-group');
+    for (var i = 0; i < questionContainers.length; i++) {
+      var checkboxes = questionContainers[i].querySelectorAll('input[type=checkbox]');
+      var checked = false;
+      for (var j = 0; j < checkboxes.length; j++) {
+        if (checkboxes[j].checked) {
+          checked = true;
+          break;
+        } 
+      }
+      if (!checked) {
+        document.getElementById('error-message').style.display = 'block';
+        window.scrollTo(0, 0);
+        return false;
+      }
+    }
+    return true;
+  }
+</script>
 {% endblock content %}
