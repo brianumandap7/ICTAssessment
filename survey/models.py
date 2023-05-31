@@ -65,6 +65,18 @@ class OnlineOption(models.Model):
 
     def __str__(self):
         return self.title
+
+class OfficeLocation(models.Model):
+    title = models.CharField(max_length=255, blank=True, null=True)
+    
+    def __str__(self):
+        return self.title
+
+class ConnectionOption(models.Model):
+    title = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.title
     
 class Survey(models.Model):
     survey_id = models.AutoField(primary_key=True)
@@ -82,6 +94,8 @@ class Survey(models.Model):
     age_35_44 = models.IntegerField(blank=True, null=True)
     age_45_54 = models.IntegerField(blank=True, null=True)
     age_55_above = models.IntegerField(blank=True, null=True)
+    office_location = models.ManyToManyField(OfficeLocation, blank=True, related_name='office_location')
+    pmo_office = models.CharField(max_length=255, blank=True, null=True)
 
     desktop_acer_installed = models.IntegerField(blank=True, null=True)
     desktop_hp_installed = models.IntegerField(blank=True, null=True)
@@ -163,6 +177,8 @@ class Survey(models.Model):
     keyboard_personal = models.IntegerField(blank=True, null=True)
     monitor_personal = models.IntegerField(blank=True, null=True)
     scanner_personal = models.IntegerField(blank=True, null=True)
+
+    connection_option = models.ManyToManyField(ConnectionOption, blank=True, related_name='connection_option')
 
     ordinaryprinter_shared = models.IntegerField(blank=True, null=True)
     coloredprinter_shared = models.IntegerField(blank=True, null=True)
@@ -304,6 +320,7 @@ class Survey(models.Model):
     online_options = models.ForeignKey(OnlineOption, on_delete=models.CASCADE, null=True, blank=True, related_name='online_options')
     competencies_comments = models.CharField(max_length=255, blank=True, null=True)
 
+    submitted = models.IntegerField(blank=True, null=True, default = 0)
     def __str__(self):
         return str(self.survey_id)+" "+str(self.user)
 

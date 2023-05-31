@@ -67,13 +67,23 @@
 		padding-left: 5px;
 		padding-right: 5px;
 	}
+
+	.ovr2 {
+          background-color: #007BFF;
+          width: 250px;
+          color: white;
+          padding-left: 10px;
+          padding-right: 10px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+        }
 </style>
 <h3 class="mt-4">{{title}}</h3>
-<div class="container-fluid formdiv">
-	<form method="post" class="form">
+<div class="container-fluid formdiv table-responsive">
+	<form method="post" class="form" onsubmit="return validateForm()">
 		{% csrf_token %}
 
-		<b>Desktop Computers:</b><br>
+		<b class="ovr2 rounded">Desktop Computers:</b><br>
 		1. Identify the number of <b>DOTr-issued</b> and <b>personal-owned</b> <b>Desktop Computers</b> in your division/office:
 		<table class="table" id = "qtbl">
 			<tr>
@@ -162,7 +172,7 @@
 		{{ form.hardware_section }}
 		
 		<br>
-		<b>Laptop Computers:</b><br>
+		<b class="ovr2 rounded">Laptop Computers:</b><br>
 		2. Identify the number of <b>DOTr-issued</b> and <b>personal-owned Laptop Computers</b> in your division/office:
 		<table class="table" id = "qtbl">
 
@@ -251,7 +261,7 @@
 		
 
 		<br>
-		<b>Tablets: </b><br>
+		<b class="ovr2 rounded">Tablets: </b><br>
 		3. Identify the number of <b>DOTr-issued and personal-owned tablet computers</b> in your division/office:
 		<table class="table" id = "qtbl">
 			<tr>
@@ -338,7 +348,7 @@
 
 
 		<br>
-		<b>Mouse: </b><br>
+		<b class="ovr2 rounded">Mouse: </b><br>
 		4. Identify the number of <b>DOTr-issued and personal-owned mouse</b> in your division/office:
 		<table class="table" id = "qtbl">
 			<tr>
@@ -424,7 +434,7 @@
 		</table>
 
 		<br>
-		<b>Keyboards: </b><br>
+		<b class="ovr2 rounded">Keyboards: </b><br>
 		5. Identify the number of <b>DOTr-issued and personal-owned keyboards</b> in your division/office:
 		<table class="table" id = "qtbl">
 			<tr>
@@ -510,7 +520,7 @@
 		</table>
 
 		<br>
-		<b>Monitors: </b><br>
+		<b class="ovr2 rounded">Monitors: </b><br>
 		6. Identify the number of <b>DOTr-issued and personal-owned monitors</b> in your division/office:
 		<table class="table" id = "qtbl">
 			<tr>
@@ -595,13 +605,38 @@
 			</tr>
 		</table>
 		
+		<b class="ovr2 rounded">Internet Connectivity: </b><br>
+		7. <span>*</span>Identify the internet connectivity setup in your office/division: 
+		<table class="table" id = "qtbl">
+			<tr>
+				<th width="800" class="internet">
+					Connection: 
+					<div class="alert alert-danger" id="error-message" style="display: none;">
+					  Please select at least one option for the questions containing checkboxes.
+					</div>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<div class="form-group">
+					{% for checkbox in form.connection_option %}
+					    <div class="checkbox">	      
+					        <label style="margin-left: 50px;">
+					          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+					        </label>
+					    </div>
+					{% endfor %}
+					</div>
+				</td>
+			</tr>
+		</table>
 
-		<b>Shared Devices: </b><br>
+		<b class="ovr2 rounded">Shared Devices: </b><br>
 		
 		<table class="table" id = "qtbl">
 			<tr>
 				<th width="600" class="shared">
-					7. <span>*</span>Identify and indicate the number of <b>DOTr-issued shared devices</b> in your office.
+					8. <span>*</span>Identify and indicate the number of <b>DOTr-issued shared devices</b> in your office.
 					<span id="ordinaryprinter_shared_alert" class="alert-danger custom" style="display:none;"></span>
 					<span id="coloredprinter_shared_alert" class="alert-danger custom" style="display:none;"></span>
 					<span id="scanner_shared_alert" class="alert-danger custom" style="display:none;"></span>
@@ -702,7 +737,7 @@
 		<table class="table" id = "qtbl">
 			<tr>
 				<th width="600" class="shared">
-					8. <span>*</span>Identify and indicate the number of <b>personal-owned shared devices </b>in your office.
+					9. <span>*</span>Identify and indicate the number of <b>personal-owned shared devices </b>in your office.
 					
 					<span id="ordinaryprinter_shared_personal_alert" class="alert-danger custom" style="display:none;"></span>
 					<span id="coloredprinter_shared_personal_alert" class="alert-danger custom" style="display:none;"></span>
@@ -806,7 +841,7 @@
 		<table class="table" id = "qtbl">
 			<tr>
 				<th width="600" class="shared">
-					9. <span>*</span>Identify the type of equipment/s <b>you need</b> in your office/division and indicate the number of preferred units per equipment:
+					10. <span>*</span>Identify the type of equipment/s <b>you need</b> in your office/division and indicate the number of preferred units per equipment:
 
 					<span id="desktop_need_alert" class="alert-danger custom" style="display:none;"></span>
 					<span id="laptop_need_alert" class="alert-danger custom" style="display:none;"></span>
@@ -957,7 +992,7 @@
 			</tr>
 		</table>
 
-		10. <span>*</span>Any <b>comments and suggestions</b> to improve the hardware setup in your division/office:
+		11. <span>*</span>Any <b>comments and suggestions</b> to improve the hardware setup in your division/office:
 
 		<table class="table" id = "qtbl">
 			<tr>
@@ -1950,5 +1985,32 @@
 	});
 
 
+</script>
+
+<script>
+  function validateForm() {
+    var questionContainers = document.querySelectorAll('.form-group');
+    for (var i = 0; i < questionContainers.length; i++) {
+      var checkboxes = questionContainers[i].querySelectorAll('input[type=checkbox]');
+      var checked = false;
+      for (var j = 0; j < checkboxes.length; j++) {
+        if (checkboxes[j].checked) {
+          checked = true;
+          break;
+        } 
+      }
+      if (!checked) {
+        document.getElementById('error-message').style.display = 'block';
+        const scrollPercentage = 43; // Scroll to 37 percent of the page
+
+		const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+		const targetPosition = (scrollableHeight * scrollPercentage) / 100;
+
+		window.scrollTo(0, targetPosition);
+        return false;
+      }
+    }
+    return true;
+  }
 </script>
 {% endblock content %}

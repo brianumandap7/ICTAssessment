@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Survey, office_division, ProfessionalToolsOption, CompetencyScale, ICTTrainingPrograms, CommunicationToolsOption, ProductivityOption, StorageOption, OnlineStorageOption, BackupStorageOption, OnlineOption
+from .models import Survey, office_division, ProfessionalToolsOption, CompetencyScale, ICTTrainingPrograms, CommunicationToolsOption, ProductivityOption, StorageOption, OnlineStorageOption, BackupStorageOption, OnlineOption, OfficeLocation, ConnectionOption
 from import_export.admin import ImportExportModelAdmin, ExportActionMixin
 
 class exportSurvey(ExportActionMixin, admin.ModelAdmin):
@@ -17,4 +17,6 @@ admin.site.register(StorageOption, exportSurvey)
 admin.site.register(OnlineStorageOption, exportSurvey)
 admin.site.register(BackupStorageOption, exportSurvey)
 admin.site.register(OnlineOption, exportSurvey)
+admin.site.register(OfficeLocation, exportSurvey)
+admin.site.register(ConnectionOption, exportSurvey)
 
