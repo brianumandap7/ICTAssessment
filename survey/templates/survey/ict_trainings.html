@@ -1,4 +1,4 @@
-{% extends "basetemp/indexbase.html" %}
+{% extends "basetemp/newbase.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
@@ -57,7 +57,7 @@
 	</div>
 	<form method="post" onsubmit="return validateForm()">
 		{% csrf_token %}
-		<div class="form-group row">
+		<div class="form-group">
 			<h6>1. <span>*</span>What ICT Trainings have you taken before?</h6>
 
 			{% for checkbox in form.ict_trainings_taken %}
@@ -76,7 +76,7 @@
 			{% endfor %}
 		</div>
 		
-		<div class="form-group row">
+		<div class="form-group">
 			<h6>2. <span>*</span>What ICT Trainings are you interested in?</h6>
 
 			{% for checkbox in form.ict_trainings_interests %}
@@ -95,7 +95,7 @@
 			{% endfor %}
 		</div>
 
-		<div class="row">
+		<div class="container-fluid">
 			<h6>3. <span>*</span>Any comments, suggestions, and recommendations on the ICT Trainings provided and to be provided for your division/office:</h6>
 			<div class="container-fluid">
 				{{form.ict_training_comments}}
@@ -170,6 +170,7 @@
 	window.addEventListener('load', handleCheckboxChange);
 	document.querySelector("#id_ict_trainings_taken_{{ict_training_count}}").addEventListener('change', handleCheckboxChange);
 	document.querySelector("#id_ict_trainings_interests_{{ict_training_count}}").addEventListener('change', handleCheckboxChange);
+
 </script>
 
 
