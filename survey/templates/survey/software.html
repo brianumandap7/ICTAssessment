@@ -59,7 +59,9 @@
 	<form method="post" id="softwareform" onsubmit="return validateForm()">
 		{% csrf_token %}
 
+
 		<div class="form-group">
+
 			<b class="ovr1 rounded">Professional Tools</b>
 			<h6>1. <span>*</span>Identify any <b>DOTr-issued and personal-owned professional tool/software</b> you are <b>currently using</b> in your office/division:</h6><br><br>
 			<h6>&nbsp;&nbsp;&nbsp;&nbsp;A. DOTr-issued professional tool/software:</h6>
@@ -118,7 +120,9 @@
 			{% endfor %}
 		</div>
 		<br>
+
 		<div class="form-group">
+
 			<b class="ovr1 rounded">Communication Tools</b>
 			<h6>3. <span>*</span>Identify the current Communication tools you are using in your division/office.</h6>
 			{% for checkbox in form.communication_tools_installed %}
@@ -155,7 +159,9 @@
 			{% endfor %}
 		</div>
 
+
 		<div class="form-group">
+
 			<b class="ovr1 rounded">Office Productivity Software</b>
 			<h6>5. <span>*</span>Identify any <b>DOTr-issued and personal-owned office productivity software</b> you are <b>currently using</b> in your office/division:</h6><br><br>
 			<h6>&nbsp;&nbsp;&nbsp;&nbsp;A. DOTr-issued office producitivity software:</h6>
