@@ -53,6 +53,10 @@
 	.ptools {
 		margin-top: 20px;
 	}
+
+	.fm {
+		width: 50%;
+	}
 </style>
 <h3 class="mt-4">{{title}}</h3>
 
@@ -124,12 +128,24 @@
 			    </div>
 			{% endfor %}
 		</div>
+
+		<div class="form-group">
+			<h6>3. <span>*</span>Identify the most frequently used professional tool/software in your office.</h6>
+
+			{{form.professional_frequent}}
+		</div>
+
+		<div class="form-group">
+			<h6>4. <span>*</span>Identify the most needed professional tool/software in your office.</h6>
+
+			{{form.professional_most_needed}}
+		</div>
 		<br>
 
 		<div class="form-group">
 
 			<b class="ovr1 rounded">Communication Tools</b>
-			<h6 class="ptools">3. <span>*</span>Identify the current Communication tools you are using in your division/office.</h6>
+			<h6 class="ptools">5. <span>*</span>Identify the current Communication tools you are using in your division/office.</h6>
 			{% for checkbox in form.communication_tools_installed %}
 			    <div class="checkbox">
 			      {% if checkbox.choice_label == 'Others' %}
@@ -147,7 +163,7 @@
 		</div>
 
 		<div class="form-group">
-			<h6>4. <span>*</span>Identify the current Communication tools needed in your division/office.</h6>
+			<h6>6. <span>*</span>Identify the current Communication tools needed in your division/office.</h6>
 			{% for checkbox in form.communication_tools_needed %}
 			    <div class="checkbox">
 			      {% if checkbox.choice_label == 'Others' %}
@@ -164,11 +180,22 @@
 			{% endfor %}
 		</div>
 
+		<div class="form-group">
+			<h6>7. <span>*</span>Identify the most frequently used communication tool/software in your office.</h6>
+
+			{{form.communication_frequent}}
+		</div>
+
+		<div class="form-group">
+			<h6>8. <span>*</span>Identify the most needed communication tool/software in your office.</h6>
+
+			{{form.communication_most_needed}}
+		</div>
 
 		<div class="form-group">
 
 			<b class="ovr1 rounded">Office Productivity Software</b>
-			<h6 class="ptools">5. <span>*</span>Identify any <b>DOTr-issued and personal-owned office productivity software</b> you are <b>currently using</b> in your office/division:</h6><br><br>
+			<h6 class="ptools">9. <span>*</span>Identify any <b>DOTr-issued and personal-owned office productivity software</b> you are <b>currently using</b> in your office/division:</h6><br><br>
 			<h6>&nbsp;&nbsp;&nbsp;&nbsp;A. DOTr-issued office producitivity software:</h6>
 
 			{% for checkbox in form.dotr_issued_productivity_installed %}
@@ -208,7 +235,7 @@
 		</div>
 
 		<div class="form-group">
-			<h6>6. <span>*</span>Identify the current productivity software products <b>needed</b> in your office/division.</h6>
+			<h6>10. <span>*</span>Identify the current productivity software products <b>needed</b> in your office/division.</h6>
 			{% for checkbox in form.productivity_needed %}
 			    <div class="checkbox">
 			      {% if checkbox.choice_label == 'Others' %}
@@ -225,11 +252,23 @@
 			{% endfor %}
 		</div>
 
-		<div class="container-fluid">
-			<h6>7. <span>*</span>Any comments and suggestions on the software currently installed in your division/office:</h6>
-			<div class="container-fluid">
+		<div class="form-group">
+			<h6>11. <span>*</span>Identify the most frequently used productivity software in your office.</h6>
+
+			{{form.productivity_frequent}}
+		</div>
+
+		<div class="form-group">
+			<h6>12. <span>*</span>Identify the most needed productivity software in your office.</h6>
+
+			{{form.productivity_most_needed}}
+		</div>
+
+		<div class="form-group-fluid">
+			<h6>13. <span>*</span>Any comments and suggestions on the software currently installed in your division/office:</h6>
+
 				{{form.software_comments}}
-			</div>
+
 		</div>
 		<br>
 		{{form.software_section}}

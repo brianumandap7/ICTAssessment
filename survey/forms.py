@@ -296,6 +296,13 @@ class SoftwareForm(forms.ModelForm):
     productivity_needed = forms.ModelMultipleChoiceField(queryset=ProductivityOption.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
     productivity_needed_others = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield'}))
 
+    professional_frequent = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control fm'}))
+    professional_most_needed = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control fm'}))
+    communication_frequent = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control fm'}))
+    communication_most_needed = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control fm'}))
+    productivity_frequent = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control fm'}))
+    productivity_most_needed = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control fm'}))
+
     class Meta:
         model = Survey
         fields = ['dotr_issued_professional_tools_installed', 'personal_owned_professional_tools_installed', 'professional_tools_needed', 'software_section',
@@ -305,7 +312,8 @@ class SoftwareForm(forms.ModelForm):
         'professional_tools_needed_others',
         'dotr_issued_productivity_installed', 'dotr_issued_productivity_installed_others',
         'personal_owned_productivity_installed', 'personal_owned_productivity_installed_others', 'productivity_needed', 'productivity_needed_others',
-        'software_comments',]
+        'software_comments', 'professional_frequent', 'professional_most_needed', 'communication_frequent', 'communication_most_needed',
+        'productivity_frequent', 'productivity_most_needed']
         
         widgets = {
 			'software_section': forms.HiddenInput(attrs={'class': 'form-control fieldsize'}),
