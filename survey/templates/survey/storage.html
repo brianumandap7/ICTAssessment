@@ -60,8 +60,14 @@
 	<form method="post" onsubmit="return validateForm()">
 		{% csrf_token %}
 		<div class="form-group">
-			<br>
-			<h6><b>Currently used Storage Products and Applications</b></h6><br><br>
+			<table class="table">
+				<tr>
+					<td>
+						<h6><b class="ovr rounded">Currently used Storage Products and Applications</b></h6>
+					</td>
+				</tr>
+			</table>
+			
 			<h6>1. <span>*</span>Identify and select any DOTr-issued and Personal-owned Storage you use to store local documents, reports, and other important files necessary to your office.</h6>
 
 			<h6>&nbsp;&nbsp;&nbsp;&nbsp;A. DOTr-issued Storage</h6>
