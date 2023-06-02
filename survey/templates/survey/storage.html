@@ -1,4 +1,4 @@
-{% extends "basetemp/indexbase.html" %}
+{% extends "basetemp/newbase.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
@@ -59,7 +59,7 @@
 
 	<form method="post" onsubmit="return validateForm()">
 		{% csrf_token %}
-		<div class="form-group row">
+		<div class="form-group">
 			<br>
 			<h6><b>Currently used Storage Products and Applications</b></h6><br><br>
 			<h6>1. <span>*</span>Identify and select any DOTr-issued and Personal-owned Storage you use to store local documents, reports, and other important files necessary to your office.</h6>
@@ -82,7 +82,7 @@
 			{% endfor %}
 			</div>
 
-			<div class="form-group row">
+			<div class="form-group">
 			<h6>&nbsp;&nbsp;&nbsp;&nbsp;B. Personal-owned Storage</h6>
 			{% for checkbox in form.personal_storage %}
 			    <div class="checkbox">
@@ -102,7 +102,7 @@
 			</div>
 		
 
-		<div class="form-group row">
+		<div class="form-group">
 			<h6>2. <span>*</span>Select the type of external storage device/s you need in your office.</h6>
 
 			{% for checkbox in form.storage_need %}
@@ -121,7 +121,7 @@
 			{% endfor %}
 		</div>
 
-		<div class="form-group row">
+		<div class="form-group">
 			<br>
 			<h6>3. <span>*</span>Identify and select the DOTr-issued and Personal-owned Online Storage Products you use for collaborative work in your office/division.</h6>
 
@@ -135,7 +135,7 @@
 			{% endfor %}
 			</div>
 
-			<div class="form-group row">
+			<div class="form-group">
 			<h6>&nbsp;&nbsp;&nbsp;&nbsp;B. Personal-owned Online Storage Products</h6>
 			{% for checkbox in form.personal_online_storage %}
 			    <div class="checkbox">
@@ -146,7 +146,7 @@
 			{% endfor %}
 		</div>
 
-		<div class="form-group row">
+		<div class="form-group">
 			<h6>4. <span>*</span>Select the type of online storage product/s you need in your office </h6>
 
 			{% for checkbox in form.online_storage_need %}
@@ -158,7 +158,7 @@
 			{% endfor %}
 		</div>
 
-		<div class="form-group row">
+		<div class="form-group">
 			<h6>5. <span>*</span>Identify and select the Storage you <b>use</b> to backup your local documents, reports, and other important files necessary to your office.</h6>
 
 			{% for checkbox in form.backup_storage %}
@@ -178,7 +178,7 @@
 
 		</div>
 
-		<div class="form-group row">
+		<div class="form-group">
 			<h6>6. <span>*</span>Identify and select the Storage you <b>need</b> to backup your local documents, reports, and other important files necessary to your office.</h6>
 
 			{% for checkbox in form.backup_storage_need %}
@@ -198,7 +198,7 @@
 			
 		</div>
 
-		<div class="row">
+		<div class="container-fluid">
 			<h6>7. <span>*</span>Any comments and suggestions on the Storage Products currently in use in your division/office:</h6>
 			<div class="container-fluid">
 				{{form.storage_comments}}
@@ -206,6 +206,8 @@
 		</div>
 
 		{{form.storage_section}}
+
+		<br>
 		<button type="submit" class="btn btn-primary dbtn">Update</button>
 		<a href="/survey/" class="btn btn-danger dbtn">Back</a>
 		<br>

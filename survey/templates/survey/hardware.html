@@ -1,4 +1,4 @@
-{% extends "basetemp/indexbase.html" %}
+{% extends "basetemp/newbase.html" %}
 {% load static %}
 {% block content %}
 {% for i in check_user %}
@@ -1868,7 +1868,7 @@
 	});
 
 	tn.addEventListener("input", function() {
-		if (ln.value === "") {
+		if (tn.value === "") {
 			document.getElementById("tablet_need_alert").style.display = "block";
 			document.getElementById("tablet_need_alert").textContent = "Tablet field is required. Input 0 if none.";
 		} else {
