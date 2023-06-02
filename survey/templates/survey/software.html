@@ -47,7 +47,12 @@
 	.others {
 		width: 10%;
 	}
-
+	form {
+		margin-top: 20px;
+	}
+	.ptools {
+		margin-top: 20px;
+	}
 </style>
 <h3 class="mt-4">{{title}}</h3>
 
@@ -62,8 +67,8 @@
 
 		<div class="form-group">
 
-			<b class="ovr1 rounded">Professional Tools</b>
-			<h6>1. <span>*</span>Identify any <b>DOTr-issued and personal-owned professional tool/software</b> you are <b>currently using</b> in your office/division:</h6><br><br>
+			<b class="ovr1 rounded ptools">Professional Tools</b>
+			<h6 class="ptools">1. <span>*</span>Identify any <b>DOTr-issued and personal-owned professional tool/software</b> you are <b>currently using</b> in your office/division:</h6>
 			<h6>&nbsp;&nbsp;&nbsp;&nbsp;A. DOTr-issued professional tool/software:</h6>
 
 			{% for checkbox in form.dotr_issued_professional_tools_installed %}
@@ -124,7 +129,7 @@
 		<div class="form-group">
 
 			<b class="ovr1 rounded">Communication Tools</b>
-			<h6>3. <span>*</span>Identify the current Communication tools you are using in your division/office.</h6>
+			<h6 class="ptools">3. <span>*</span>Identify the current Communication tools you are using in your division/office.</h6>
 			{% for checkbox in form.communication_tools_installed %}
 			    <div class="checkbox">
 			      {% if checkbox.choice_label == 'Others' %}
@@ -163,7 +168,7 @@
 		<div class="form-group">
 
 			<b class="ovr1 rounded">Office Productivity Software</b>
-			<h6>5. <span>*</span>Identify any <b>DOTr-issued and personal-owned office productivity software</b> you are <b>currently using</b> in your office/division:</h6><br><br>
+			<h6 class="ptools">5. <span>*</span>Identify any <b>DOTr-issued and personal-owned office productivity software</b> you are <b>currently using</b> in your office/division:</h6><br><br>
 			<h6>&nbsp;&nbsp;&nbsp;&nbsp;A. DOTr-issued office producitivity software:</h6>
 
 			{% for checkbox in form.dotr_issued_productivity_installed %}
