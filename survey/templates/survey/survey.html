@@ -132,7 +132,13 @@
       </div>
     {% endfor %}
 <!-- end of forced modal -->
-
+{% for j in check_user %}
+	{% if j.submitted == 1 %}
+	<div class="alert alert-success" role="alert">
+	  You have already submitted your survey! You can still look on you answers by clicking on the sections below.
+	</div>
+	{% endif %}
+{% endfor %}
 <h1 class="mt-4">ICT Needs Assessment</h1>
                     <p class="text-justify">The purpose of this survey is to gather information related to information technology infrastructure and assess the pace at which innovations in technology occur in various offices in the Department of Transportation (DOTr). Information about IT infrastructure and supporting IT processes needs to be gathered as essential background to a more detailed risk evaluation.</p>
 
@@ -282,6 +288,48 @@
 		</div>
 	</div>
 
+	<br>
+	{% for items in check_user %}
+
+
+
+	{% if items.privacy_section == 1 and items.hardware_section == 1 and items.demographics_section == 1 and items.software_section == 1 and items.storage_section == 1 and items.competencies_section == 1 and items.trainings_section == 1 and items.submitted == 0 %}
+    <!-- Code to display when all conditions are true -->
+    <center><button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#finish">Finish Survey</button></center>
+    <!-- ... -->
+	{% else %}
+	    <!-- Code to display when any of the conditions is false -->
+	<center><button type="button" class="btn btn-success btn-md disabled" data-toggle="modal" data-target="#unk">Finish Survey</button></center>
+	    <!-- ... -->
+	{% endif %}
+
+
+
+	{% endfor %}
+	
+	<!-- Modal -->
+	<div id="finish" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-body">
+	        Are you sure you want to submit the survey? You can't edit your answers once submitted.
+	      </div>
+	      <div class="modal-footer">
+	      	<form method="POST">
+	      		{% csrf_token %}
+	      		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        	<input type="submit" class="btn btn-success" value="Proceed" name="submitted">
+	      	</form>
+	        
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+
+	<br>
 	
 </div>
 

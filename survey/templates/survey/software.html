@@ -272,7 +272,16 @@
 		</div>
 		<br>
 		{{form.software_section}}
-		<button type="submit" class="btn btn-primary dbtn">Update</button>
+
+		{% for i in check_user %}
+
+		 {% if i.submitted == 1 %}
+		 
+		 {% else %}
+		 <button type="submit" class="btn btn-primary dbtn">Update</button>
+		 {% endif %}
+		
+		{% endfor %}
 		<a href="/survey/" class="btn btn-danger dbtn">Back</a>
 	</form>	
 
