@@ -7,8 +7,14 @@
         text-decoration: none;
         color: black;
     }
+    .chrt {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60%;
+    }
 </style>
-<section class="vh-100">
+<section class="vh-20">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col col-xl-10">
@@ -19,16 +25,12 @@
             <p class="small mb-0"><i class="far fa-star fa-lg"></i> <span class="mx-2">|</span>
               <strong>Department of Transportation</strong> | The Columbia Tower, Ortigas Avenue, Mandaluyong City</p>
               
-            <div class="col-lg-8 col-md-8 col-xs-8 chrt">
+            <center><div class="col-lg-12 col-md-12 col-xs-12 chrt">
               <canvas id="myChart"></canvas>
-            </div>
+            </div></center>
 
             <hr class="my-4">
             <div class="d-flex justify-content-start align-items-center">
-              <p class="mb-0 text-uppercase"><i class="fa fa-facebook me-2"></i> <span
-                  class="text-muted small"><a href="https://www.facebook.com/DOTrPH" target="_blank">FB Page</a></span></p>
-              <p class="mb-0 text-uppercase"><i class="fa fa-globe ms-4 me-2"></i> <span
-                  class="text-muted small"><a href="https://www.dotr.gov.ph">Official Website</a><span class="ms-3 me-4">|</span></p>
               
                 <img src="{% static 'basetemp/dotricon.png' %}" alt="avatar"
                   class="img-fluid rounded-circle me-3" width="35">
@@ -42,23 +44,24 @@
     </div>
   </div>
 
-
+{% for items in check_user %}
 <script>
  const config = {
-  type: 'pie',
+  type: 'bar',
   data: {
     datasets: [{
-      data: [1, 2, 3, 4, 5, 6],
+      data: [{{items.permanent|safe}}, {{items.jo_cos|safe}}, {{items.casual_temporary|safe}}, {{items.coterminus|safe}}, 
+      {{items.presidential_appointee|safe}}],
       backgroundColor: [
-      '#007BFF', '#DC3545', '#FFC107', '#343A40', '#28A745', '#6C757D'
+      '#007BFF', '#DC3545', '#FFC107', '#343A40', '#28A745'
       ],
-      label: 'Population'
+      label: 'Demographics'
     }],
-    labels: ['On-Going', 'Suspended', 'Cancelled', 'Terminated', 'Completed', 'On Request']
+    labels: ['Permanent', 'JO/COS', 'Casual / Temporary', 'Co-terminous', 'Presidential Appointee']
   },
   options: {
-    responsive: true
-  } 
+    responsive: true,
+    } 
   };
 
   window.onload = function() {
@@ -66,6 +69,7 @@
     window.myPie = new Chart(ctx, config);
   };
 </script>
+{% endfor %}
 
 </section>
 

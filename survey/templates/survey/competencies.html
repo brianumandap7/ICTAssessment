@@ -752,8 +752,16 @@
 			{{form.competencies_section}}
 		</div>
 			
+		{% for i in check_user %}
 
-		<button type="submit" class="btn btn-primary dbtn">Update</button>
+		 {% if i.submitted == 1 %}
+		 
+		 {% else %}
+		 <button type="submit" class="btn btn-primary dbtn">Update</button>
+		 {% endif %}
+		
+		{% endfor %}
+		
 		<a href="/survey/" class="btn btn-danger dbtn">Back</a>
 		<div id="scrollPercentage">Page Scroll: 0%&nbsp;&nbsp;&nbsp;</div>
 	</form>	
