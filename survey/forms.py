@@ -5,11 +5,12 @@ from django.core.exceptions import ValidationError
 
 class demographicsform(forms.ModelForm):
 	office_location = forms.ModelMultipleChoiceField(queryset=OfficeLocation.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
-	pmo_office = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield'}))
+	pmo_office = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield pmos form-control'}))
+	office_location_others = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield form-control'}))
 	class Meta:
 		model = Survey
 		fields = ['office_division_name','presidential_appointee', 'permanent', 'coterminus', 'jo_cos', 'casual_temporary', 'male',
-		 'female', 'age_20_24', 'age_25_34', 'age_35_44', 'age_45_54', 'age_55_above', 'demographics_section', 'office_location', 'pmo_office']
+		 'female', 'age_20_24', 'age_25_34', 'age_35_44', 'age_45_54', 'age_55_above', 'demographics_section', 'office_location', 'pmo_office', 'office_location_others']
 		widgets = {
 			'office_division_name': forms.Select(attrs={'class': 'form-control fieldsize'}),
 			'presidential_appointee': forms.NumberInput(attrs={'class': 'form-control fieldsize', 'min': '0', 'oninput': "this.value = this.value.replace(/^[-]/, '')"}),

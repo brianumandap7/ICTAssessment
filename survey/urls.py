@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from . import views
 from rest_framework.authtoken.views import obtain_auth_token
 from django.contrib.admin.views.decorators import staff_member_required
+from .views import view_dash
 
 app_name = 'survey'
 
@@ -16,4 +17,5 @@ urlpatterns = [
   path('competencies/<int:pk>', login_required(views.Competencies.as_view()), name='Competencies'),
   path('ict_trainings/<int:pk>', login_required(views.ICTTrainings.as_view()), name='ICTTrainings'),
   path('simple_upload/', staff_member_required(views.simple_upload.as_view()), name='simple_upload'),
+  path('export-excel/', views.export_to_excel, name='export_to_excel'),
 ]	
