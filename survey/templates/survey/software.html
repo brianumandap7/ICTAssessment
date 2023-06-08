@@ -57,9 +57,11 @@
 	.fm {
 		width: 50%;
 	}
+
 	.q9 {
 		margin-top: -45px;
 	}
+
 </style>
 <h3 class="mt-4">{{title}}</h3>
 
@@ -132,14 +134,18 @@
 			{% endfor %}
 		</div>
 
+
 		<div class="form-group-fluid">
 			<h6>3. <span>*</span>Identify the <b>most frequently used</b> professional tool/software in your office.</h6>
+
 
 			{{form.professional_frequent}}
 		</div>
 
+
 		<div class="form-group-fluid">
 			<h6>4. <span>*</span>Identify the <b>most needed</b> professional tool/software in your office.</h6>
+
 
 			{{form.professional_most_needed}}
 		</div>
@@ -148,7 +154,9 @@
 		<div class="form-group">
 
 			<b class="ovr1 rounded">Communication Tools</b>
+
 			<h6 class="ptools">5. <span>*</span>Identify the Communication tools you are <b>currently using</b> in your division/office.</h6>
+
 			{% for checkbox in form.communication_tools_installed %}
 			    <div class="checkbox">
 			      {% if checkbox.choice_label == 'Others' %}
@@ -166,7 +174,9 @@
 		</div>
 
 		<div class="form-group">
+
 			<h6>6. <span>*</span>Identify the current Communication tools <b>needed</b> in your division/office.</h6>
+
 			{% for checkbox in form.communication_tools_needed %}
 			    <div class="checkbox">
 			      {% if checkbox.choice_label == 'Others' %}
@@ -183,11 +193,14 @@
 			{% endfor %}
 		</div>
 
+
 		<div class="form-group-fluid">
 			<h6>7. <span>*</span>Identify the <b>most frequently used</b> communication tool/software in your office.</h6>
 
+
 			{{form.communication_frequent}}
 		</div>
+
 
 		<div class="form-group-fluid">
 			<h6>8. <span>*</span>Identify the <b>most needed</b> communication tool/software in your office.</h6>
@@ -199,6 +212,7 @@
 			<b class="ovr1 rounded ops">Office Productivity Software</b>
 			<h6 class="ptools">9. <span>*</span>Identify any <b>DOTr-issued and personally-owned office productivity software</b> you are <b>currently using</b> in your office/division:</h6><br><br>
 			<h6 class="q9">A. DOTr-issued office producitivity software:</h6>
+
 
 			{% for checkbox in form.dotr_issued_productivity_installed %}
 			    <div class="checkbox">
@@ -268,6 +282,8 @@
 		<br>
 		<div class="form-group-fluid">
 			<h6>13. <span>*</span>Any comments and suggestions on the software currently installed in your division/office:</h6>
+
+
 
 				{{form.software_comments}}
 
