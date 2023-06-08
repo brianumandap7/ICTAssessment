@@ -54,7 +54,6 @@
 		color: red;
 	}
 
-	
 </style>
 <h3 class="mt-4">{{title}}</h3>
 <div class="container-fluid formdiv">
@@ -123,7 +122,12 @@
 									      {% if checkbox.choice_label == 'PMO' %}
 									        <label style="margin-left: 50px;">
 									          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
-									          {{form.pmo_office}}
+									          <br>{{form.pmo_office}}
+									        </label>
+									      {% elif checkbox.choice_label == 'Others' %}
+									        <label style="margin-left: 50px;">
+									          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+									          <br>{{form.office_location_others}}
 									        </label>
 									        
 									      {% else %}
@@ -388,16 +392,22 @@
 		var pmo = document.querySelector("#id_office_location_{{pto}}");
 		var pmo_others = document.querySelector("#id_pmo_office");
 
+		var olo = document.querySelector("#id_office_location_{{olo}}");
+		var olo_others = document.querySelector("#id_office_location_others");
 
 		pmo_others.disabled = !pmo.checked;
+		olo_others.disabled = !olo.checked;
 
 		pmo_others.required = pmo.checked;
+		olo_others.required = olo.checked;
 
 		pmo_others.readOnly = !pmo.checked;
+		olo_others.readOnly = !olo.checked;
 	}
 
 	window.addEventListener('load', handleCheckboxChange);
 	document.querySelector("#id_office_location_{{pto}}").addEventListener('change', handleCheckboxChange);
+	document.querySelector("#id_office_location_{{olo}}").addEventListener('change', handleCheckboxChange);
 </script>
 
 <script>

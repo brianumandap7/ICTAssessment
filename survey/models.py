@@ -96,6 +96,7 @@ class Survey(models.Model):
     age_55_above = models.IntegerField(blank=True, null=True)
     office_location = models.ManyToManyField(OfficeLocation, blank=True, related_name='office_location')
     pmo_office = models.CharField(max_length=255, blank=True, null=True)
+    office_location_others = models.CharField(max_length=255, blank=True, null=True)
 
     desktop_acer_installed = models.IntegerField(blank=True, null=True)
     desktop_hp_installed = models.IntegerField(blank=True, null=True)

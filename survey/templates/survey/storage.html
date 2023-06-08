@@ -68,20 +68,20 @@
 				</tr>
 			</table>
 			
-			<h6>1. <span>*</span>Identify and select any DOTr-issued and Personal-owned Storage you use to store local documents, reports, and other important files necessary to your office.</h6>
+			<h6>1. <span>*</span>Identify and select any <b>DOTr-issued and personally-owned storage</b> you use to store local documents, reports, and other important files necessary to your office.</h6>
 
-			<h6>&nbsp;&nbsp;&nbsp;&nbsp;A. DOTr-issued Storage</h6>
+			<h6>A. <b>DOTr-issued</b> Storage</h6>
 			{% for checkbox in form.dotr_storage %}
 			    <div class="checkbox">
 			      {% if checkbox.choice_label == 'Others' %}
-			        <label style="margin-left: 50px;">
-			          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
-			          {{form.dotr_storage_others}}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			          {{form.dotr_sotrage_others}}
 			        </label>
 			        
 			      {% else %}
-			        <label style="margin-left: 50px;">
-			          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
 			        </label>
 			      {% endif %}
 			    </div>
@@ -89,18 +89,18 @@
 			</div>
 
 			<div class="form-group">
-			<h6>&nbsp;&nbsp;&nbsp;&nbsp;B. Personal-owned Storage</h6>
+			<h6>B. <b>Personally-owned</b> Storage</h6>
 			{% for checkbox in form.personal_storage %}
 			    <div class="checkbox">
 			      {% if checkbox.choice_label == 'Others' %}
-			        <label style="margin-left: 50px;">
-			          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
 			          {{form.personal_storage_others}}
 			        </label>
 			        
 			      {% else %}
-			        <label style="margin-left: 50px;">
-			          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
 			        </label>
 			      {% endif %}
 			    </div>
@@ -109,7 +109,7 @@
 		
 
 		<div class="form-group">
-			<h6>2. <span>*</span>Select the type of external storage device/s you need in your office.</h6>
+			<h6>2. <span>*</span>Select the type of external storage device/s <b>needed</b> in your office.</h6>
 
 			{% for checkbox in form.storage_need %}
 			    <div class="checkbox">
@@ -129,31 +129,31 @@
 
 		<div class="form-group">
 			<br>
-			<h6>3. <span>*</span>Identify and select the DOTr-issued and Personal-owned Online Storage Products you use for collaborative work in your office/division.</h6>
+			<h6>3. <span>*</span>Identify and select the <b>DOTr-issued and personally-owned online storage products</b> you use for collaborative work in your office/division.</h6>
 
-			<h6>&nbsp;&nbsp;&nbsp;&nbsp;A. DOTr-issued Online Storage Products</h6>
+			<h6>A. <b>DOTr-issued</b> Online Storage Products</h6>
 			{% for checkbox in form.dotr_online_storage %}
 			    <div class="checkbox">
-			        <label style="margin-left: 50px;">
-			          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
 			        </label>
 			    </div>
 			{% endfor %}
 			</div>
 
 			<div class="form-group">
-			<h6>&nbsp;&nbsp;&nbsp;&nbsp;B. Personal-owned Online Storage Products</h6>
+			<h6>B. <b>Personally-owned</b> Online Storage Products</h6>
 			{% for checkbox in form.personal_online_storage %}
 			    <div class="checkbox">
-			        <label style="margin-left: 50px;">
-			          &nbsp;&nbsp;&nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
+			        <label style="margin-left: 30px;">
+			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
 			        </label>
 			    </div>
 			{% endfor %}
 		</div>
 
 		<div class="form-group">
-			<h6>4. <span>*</span>Select the type of online storage product/s you need in your office </h6>
+			<h6>4. <span>*</span>Select the type of online storage product/s <b>needed</b> in your office </h6>
 
 			{% for checkbox in form.online_storage_need %}
 				<div class="checkbox">
@@ -205,7 +205,7 @@
 		</div>
 
 		<div class="container-fluid">
-			<h6>7. <span>*</span>Any comments and suggestions on the Storage Products currently in use in your division/office:</h6>
+			<h6>7. <span>*</span>Any comments and suggestions on the Storage Products currently used in your division/office:</h6>
 			<div class="container-fluid">
 				{{form.storage_comments}}
 			</div>
@@ -273,7 +273,7 @@
 <script>
 	function handleCheckboxChange() {
 		var othersCDotrStorage = document.querySelector("#id_dotr_storage_{{storage_count}}");
-		var otherIDotrStorage = document.querySelector("#id_dotr_storage_others");
+		var otherIDotrStorage = document.querySelector("#id_dotr_sotrage_others");
 
 		var othersPStorage = document.querySelector("#id_personal_storage_{{storage_count}}");
 		var otherIStorage = document.querySelector("#id_personal_storage_others");
