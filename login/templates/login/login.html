@@ -3,77 +3,38 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
-<style>
-.bannerdiv {
-	margin-top: 70px;
-}
-.loginform {
-	width: 500px;
-	padding-top: 60px;
-	padding-right: 60px;
-	padding-left: 60px;
-	padding-bottom: 60px;
-}
-.bannerdiv1 {
-	margin-top: 127px;
-}
-.loginbtn, .loginbtn:hover {
-	/* background-color: #0d47a1; */
-	color: white;
-}
 
-.maindiv {
-	margin-top: 160px;
-}
-</style>
+			<!-- here -->
+			<center>
 
-	<div class="container-fluid maindiv">
-		<center>
-		<form method="POST" class = "loginform mt-4">
-				<!-- <a href="/">
-				<img src="{% static 'basetemp/dotricon.png' %}" width="180" height="180" >
-				</a> -->
-				
-				
-					<p style = "font-family:helvetica; color: #4F4F4F"><b>ICT Needs Assessment Survey Login</b></p>
-
-			            {% csrf_token %}
-			            {% if form.errors %}
+				<div class="form-container rounded loginformdiv">
+						{% if form.errors %}
 							<div class="alert alert-danger" role="alert">
-								<strong>Incorrect username or password!</strong> Please try again.
+								<strong>Incorrect username or password!</strong>
 							</div>
 						{% endif %}
-			            <table class="table">
-			            	<tr>
-			            		<td>
-			            			Username: 
-			            		</td>
-			            		<td>
-			            			{{form.username}}
-			            		</td>
-			            	</tr>
+					<h3 class="title">ICT Needs Assessment Survey</h3>
 
-			            	<tr>
-			            		<td>
-			            			Password: 
-			            		</td>
-			            		<td>
-			            			{{form.password}}
-			            		</td>
-			            	</tr>
-			            </table>
-			            
-			            
+					<form class="form-horizontal" method="POST">
+						{% csrf_token %}
 
-			            <div class = "form-group">
-			            	<button class ="btn btn-primary form-control loginbtn" type = "submit">Login</button>
-			            </div>
-			           
-			        </form>
 
-			      </center>
-	</div>
-		<!-- </div> -->
-		
+						<div class="form-icon">
+							<img src = "{% static 'basetemp/dotr_logo123.png' %}" class= "img-responsive dl">
+						</div>
+						<div class="form-group">
+							<span class="input-icon"><i class="fa fa-user"></i></span>
+							{{form.username}}
+						</div>
+						<div class="form-group">
+							<span class="input-icon"><i class="fa fa-lock"></i></span>
+							{{form.password}}
+							
+						</div>
+						<button class="btn btn-primary signin">Login</button>
+					</form>
+				</div>
+			</center>
+
 			
 {% endblock content %}
