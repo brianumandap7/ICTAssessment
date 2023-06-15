@@ -60,9 +60,6 @@
 
 	<form method="post" onsubmit="return validateForm()">
 		{% csrf_token %}
-		<div class="alert alert-danger" id="error-message" style="display: none;">
-					  Please select at least one option for the questions containing checkboxes.
-		</div>
 		<table class="table">
 			
 							<tr>
@@ -116,6 +113,11 @@
 							<tr>
 								<td>
 									<h6><span>*</span> <strong>Office Location: </strong></h6>
+									{% if form.office_location.errors %}
+										<div class="alert alert-danger" id="error-message">
+										Please select at least one option for the questions containing checkboxes.
+										</div>
+									{% endif %}
 									<div class="form-group">
 									{% for checkbox in form.office_location %}
 									    <div class="checkbox">
@@ -410,25 +412,5 @@
 	document.querySelector("#id_office_location_{{olo}}").addEventListener('change', handleCheckboxChange);
 </script>
 
-<script>
-  function validateForm() {
-    var questionContainers = document.querySelectorAll('.form-group');
-    for (var i = 0; i < questionContainers.length; i++) {
-      var checkboxes = questionContainers[i].querySelectorAll('input[type=checkbox]');
-      var checked = false;
-      for (var j = 0; j < checkboxes.length; j++) {
-        if (checkboxes[j].checked) {
-          checked = true;
-          break;
-        } 
-      }
-      if (!checked) {
-        document.getElementById('error-message').style.display = 'block';
-        window.scrollTo(0, 0);
-        return false;
-      }
-    }
-    return true;
-  }
-</script>
+
 {% endblock content %}

@@ -3,8 +3,12 @@ from .models import Survey, ProfessionalToolsOption, CompetencyScale, ICTTrainin
 from crispy_forms.helper import FormHelper
 from django.core.exceptions import ValidationError
 
+def validate_check_at_least_one(value):
+    if not value:
+        raise ValidationError("Please select at least one option for the questions containing checkboxes.")
+
 class demographicsform(forms.ModelForm):
-	office_location = forms.ModelMultipleChoiceField(queryset=OfficeLocation.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}))
+	office_location = forms.ModelMultipleChoiceField(queryset=OfficeLocation.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}), validators=[validate_check_at_least_one])
 	pmo_office = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield pmos form-control'}))
 	office_location_others = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'ofield form-control'}))
 	class Meta:
