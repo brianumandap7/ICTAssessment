@@ -190,8 +190,8 @@ class Storage(LoginRequiredMixin, UpdateView):
         context['check_user'] = Survey.objects.filter(user = self.request.user)
         context['sec'] = 5
         context['pk'] = self.kwargs.get('pk')
-        context['storage_count'] = StorageOption.objects.count() - 1
-        context['backup_count'] = BackupStorageOption.objects.count() - 1
+        context['scount'] = StorageOption.objects.count() - 1
+        context['bcount'] = BackupStorageOption.objects.count() - 1
         return context
 
 class Competencies(LoginRequiredMixin, UpdateView):

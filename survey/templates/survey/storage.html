@@ -1,6 +1,5 @@
 {% extends "basetemp/newbase.html" %}
 {% load static %}
-{% load crispy_forms_tags %}
 {% block content %}
 {% for i in check_user %}
 	{% if i.privacy_section == 0 %}
@@ -50,7 +49,7 @@
 	  color: white;
 	}
 </style>
-<h3 class="mt-4">{{title}}</h3>
+<h3 class="mt-4">{{title}}{{scount}}{{bcount}}</h3>
 <div class="container-fluid formdiv">
 
 <div class="alert alert-danger" id="error-message" style="display: none;">
@@ -76,7 +75,7 @@
 			      {% if checkbox.choice_label == 'Others' %}
 			        <label style="margin-left: 30px;">
 			          &nbsp;&nbsp;{{ checkbox.tag }} {{ checkbox.choice_label }}
-			          {{form.dotr_sotrage_others}}
+			          {{form.dotr_storage_others}}
 			        </label>
 			        
 			      {% else %}
@@ -231,22 +230,7 @@
 	<div id="scrollPercentage">Page Scroll: 0%&nbsp;&nbsp;&nbsp;</div>
 </div>
 
-<script>
-	// Get the container element
-	var scrollPercentageElement = document.getElementById("scrollPercentage");
 
-	// Add a scroll event listener to the window
-	window.addEventListener("scroll", function() {
-	  // Calculate the percentage of the webpage scrolled
-	  var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-	  var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
-	  var scrolledPercentage = (scrollTop / (scrollHeight - window.innerHeight)) * 100;
-
-	  // Update the content of the container element with the calculated percentage
-	  scrollPercentageElement.textContent = "Page Scroll: " + Math.round(scrolledPercentage) + "%";
-
-	});
-</script>
 
 <script>
   function validateForm() {
@@ -270,48 +254,68 @@
   }
 </script>
 
+
+
+<script>
+	// Get the container element
+	var scrollPercentageElement = document.getElementById("scrollPercentage");
+
+	// Add a scroll event listener to the window
+	window.addEventListener("scroll", function() {
+	  // Calculate the percentage of the webpage scrolled
+	  var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+	  var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+	  var scrolledPercentage = (scrollTop / (scrollHeight - window.innerHeight)) * 100;
+
+	  // Update the content of the container element with the calculated percentage
+	  scrollPercentageElement.textContent = "Page Scroll: " + Math.round(scrolledPercentage) + "%";
+
+	});
+</script>
+
 <script>
 	function handleCheckboxChange() {
-		var othersCDotrStorage = document.querySelector("#id_dotr_storage_{{storage_count}}");
-		var otherIDotrStorage = document.querySelector("#id_dotr_sotrage_others");
+		var ds = document.querySelector("#id_dotr_storage_{{scount}}");
+		var ds_others = document.querySelector("#id_dotr_storage_others");
 
-		var othersPStorage = document.querySelector("#id_personal_storage_{{storage_count}}");
-		var otherIStorage = document.querySelector("#id_personal_storage_others");
+		var ps = document.querySelector("#id_personal_storage_{{scount}}");
+		var ps_others = document.querySelector("#id_personal_storage_others");
 
-		var othersSneed = document.querySelector("#id_storage_need_{{storage_count}}");
-		var otherIneed = document.querySelector("#id_storage_need_others");
+		var sn = document.querySelector("#id_storage_need_{{scount}}");
+		var sn_others = document.querySelector("#id_storage_need_others");
 
-		var otherBStorage = document.querySelector("#id_backup_storage_{{backup_count}}");
-		var otherIBStorage = document.querySelector("#id_backup_storage_others");
+		var bs = document.querySelector("#id_backup_storage_{{bcount}}");
+		var bs_others = document.querySelector("#id_backup_storage_others");
 
-		var otherBSNeed = document.querySelector("#id_backup_storage_need_{{backup_count}}");
-		var otherIBSNeed = document.querySelector("#id_backup_storage_need_others");
+		var bn = document.querySelector("#id_backup_storage_need_{{bcount}}");
+		var bn_others = document.querySelector("#id_backup_storage_need_others");
 
-		otherIDotrStorage.disabled = !othersCDotrStorage.checked;
-		otherIStorage.disabled = !othersPStorage.checked;
-		otherIneed.disabled = !othersSneed.checked;
-		otherIBStorage.disabled = !otherBStorage.checked;
-		otherIBSNeed.disabled = !otherBSNeed.checked;
+		ds_others.disabled = !ds.checked;
+		ps_others.disabled = !ps.checked;
+		sn_others.disabled = !sn.checked;
+		bs_others.disabled = !bs.checked;
+		bn_others.disabled = !bn.checked;
 
-		otherIDotrStorage.required = othersCDotrStorage.checked;
-		otherIStorage.required = othersPStorage.checked;
-		otherIneed.required = othersSneed.checked;
-		otherIBStorage.required = otherBStorage.checked;
-		otherIBSNeed.required = otherBSNeed.checked;
+		ds_others.required = ds.checked;
+		ps_others.required = ps.checked;
+		sn_others.required = sn.checked;
+		bs_others.required = bs.checked;
+		bn_others.required = bn.checked;
 
-		otherIDotrStorage.readOnly = !othersCDotrStorage.checked;
-		otherIStorage.readOnly = !othersPStorage.checked;
-		otherIneed.readOnly = !othersSneed.checked;
-		otherIBStorage.readOnly = !otherBStorage.checked;
-		otherIBSNeed.readOnly = !otherBSNeed.checked;
+		ds_others.readOnly = !ds.checked;
+		ps_others.readOnly = !ps.checked;
+		sn_others.readOnly = !sn.checked;
+		bs_others.readOnly = !bs.checked;
+		bn_others.readOnly = !bn.checked;
+
 	}
 
 	window.addEventListener('load', handleCheckboxChange);
-	document.querySelector("#id_dotr_storage_{{storage_count}}").addEventListener('change', handleCheckboxChange);
-	document.querySelector("#id_personal_storage_{{storage_count}}").addEventListener('change', handleCheckboxChange);
-	document.querySelector("#id_storage_need_{{storage_count}}").addEventListener('change', handleCheckboxChange);
-	document.querySelector("#id_backup_storage_{{backup_count}}").addEventListener('change', handleCheckboxChange);
-	document.querySelector("#id_backup_storage_need_{{backup_count}}").addEventListener('change', handleCheckboxChange);
+	document.querySelector("#id_dotr_storage_{{scount}}").addEventListener('change', handleCheckboxChange);
+	document.querySelector("#id_personal_storage_{{scount}}").addEventListener('change', handleCheckboxChange);
+	document.querySelector("#id_storage_need_{{scount}}").addEventListener('change', handleCheckboxChange);
+	document.querySelector("#id_backup_storage_{{bcount}}").addEventListener('change', handleCheckboxChange);
+	document.querySelector("#id_backup_storage_need_{{bcount}}").addEventListener('change', handleCheckboxChange);
 </script>
 {% endblock content %}
 
