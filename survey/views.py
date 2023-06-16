@@ -58,7 +58,6 @@ class view_dash(View):
 
     def post(self, request, *args, **kwargs):
         db = Survey()
-        db1 = Survey.objects.get(user = request.user)
         if request.POST.get('ia'):
             db.privacy_section = 1
             db.user = request.user
