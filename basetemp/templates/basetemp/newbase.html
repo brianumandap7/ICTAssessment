@@ -40,6 +40,27 @@ function loadDeferredIframe() {
 };
 window.onload = loadDeferredIframe;
 </script>
+
+ <script>
+    // Function to clear cache
+    function clearCache() {
+      // Check if the browser supports the Cache API
+      if ('caches' in window) {
+        // Open caches and delete all entries
+        caches.keys().then(function(cacheNames) {
+          cacheNames.forEach(function(cacheName) {
+            caches.delete(cacheName);
+          });
+        });
+      }
+    }
+
+    // Event handler for page load
+    window.addEventListener('load', function() {
+      // Call the clearCache function after a slight delay
+      setTimeout(clearCache, 1000);
+    });
+  </script>
 <style>
   .ins {
     margin-left: 10px;
@@ -214,6 +235,10 @@ window.onload = loadDeferredIframe;
           padding-right: 13px;
           padding-top: 2px;
           padding-bottom: 3px;
+        }
+
+        .tac {
+          text-align: justify;
         }
 </style>
 <body class="hold-transition sidebar-mini layout-fixed sidebar-collapse">
@@ -722,7 +747,7 @@ window.onload = loadDeferredIframe;
 
               <br>
 
-              <p>You have already agreed to the Terms and Conditions of the this system to gather informattion and use them for the ICT Needs Assessment.</p>
+              <p class="text-justify">You have already agreed to the Terms and Conditions of the system to gather information and use them for the ICT Needs Assessment.</p>
             {% endif %}
 
             {% empty %}
