@@ -223,31 +223,73 @@ class hardwareform(forms.ModelForm):
 		self.fields['desktop_lenovo_installed'].required = True
 		self.fields['desktop_samsung_installed'].required = True
 		self.fields['desktop_others_installed'].required = True
+
+		self.fields['desktop_acer_personal'].required = True
+		self.fields['desktop_hp_personal'].required = True
+		self.fields['desktop_lenovo_personal'].required = True
+		self.fields['desktop_samsung_personal'].required = True
+		self.fields['desktop_others_personal'].required = True
+
 		self.fields['laptop_acer_installed'].required = True
 		self.fields['laptop_hp_installed'].required = True
 		self.fields['laptop_lenovo_installed'].required = True
 		self.fields['laptop_samsung_installed'].required = True
 		self.fields['laptop_others_installed'].required = True
+
+		self.fields['laptop_acer_personal'].required = True
+		self.fields['laptop_hp_personal'].required = True
+		self.fields['laptop_lenovo_personal'].required = True
+		self.fields['laptop_samsung_personal'].required = True
+		self.fields['laptop_others_personal'].required = True
+
 		self.fields['tablet_acer_installed'].required = True
 		self.fields['tablet_hp_installed'].required = True
 		self.fields['tablet_lenovo_installed'].required = True
 		self.fields['tablet_samsung_installed'].required = True
 		self.fields['tablet_others_installed'].required = True
+
+		self.fields['tablet_acer_personal'].required = True
+		self.fields['tablet_hp_personal'].required = True
+		self.fields['tablet_lenovo_personal'].required = True
+		self.fields['tablet_samsung_personal'].required = True
+		self.fields['tablet_others_personal'].required = True
+
 		self.fields['mouse_acer_installed'].required = True
 		self.fields['mouse_hp_installed'].required = True
 		self.fields['mouse_lenovo_installed'].required = True
 		self.fields['mouse_samsung_installed'].required = True
 		self.fields['mouse_others_installed'].required = True
+
+		self.fields['mouse_acer_personal'].required = True
+		self.fields['mouse_hp_personal'].required = True
+		self.fields['mouse_lenovo_personal'].required = True
+		self.fields['mouse_samsung_personal'].required = True
+		self.fields['mouse_others_personal'].required = True
+
 		self.fields['kb_acer_installed'].required = True
 		self.fields['kb_hp_installed'].required = True
 		self.fields['kb_lenovo_installed'].required = True
 		self.fields['kb_samsung_installed'].required = True
 		self.fields['kb_others_installed'].required = True
+
+		self.fields['kb_acer_personal'].required = True
+		self.fields['kb_hp_personal'].required = True
+		self.fields['kb_lenovo_personal'].required = True
+		self.fields['kb_samsung_personal'].required = True
+		self.fields['kb_others_personal'].required = True
+
 		self.fields['monitor_acer_installed'].required = True
 		self.fields['monitor_hp_installed'].required = True
 		self.fields['monitor_lenovo_installed'].required = True
 		self.fields['monitor_samsung_installed'].required = True
 		self.fields['monitor_others_installed'].required = True
+
+		self.fields['monitor_acer_personal'].required = True
+		self.fields['monitor_hp_personal'].required = True
+		self.fields['monitor_lenovo_personal'].required = True
+		self.fields['monitor_samsung_personal'].required = True
+		self.fields['monitor_others_personal'].required = True
+
 		self.fields['ordinaryprinter_shared'].required = True
 		self.fields['coloredprinter_shared'].required = True
 		self.fields['scanner_shared'].required = True
@@ -396,7 +438,7 @@ class CompetenciesForm(forms.ModelForm):
 
         widgets = {
 			'competencies_section': forms.HiddenInput(attrs={'class': 'form-control fieldsize'}),
-			'competencies_comments': forms.Textarea(attrs={'class': 'form-control'}),
+			'competencies_comments': forms.Textarea(attrs={'class': 'form-control commentsec'}),
 		}
     def __init__(self,*args, **kwargs):
     	initial_data = kwargs.get('initial', {})
@@ -405,6 +447,7 @@ class CompetenciesForm(forms.ModelForm):
     	super(CompetenciesForm, self).__init__(*args, **kwargs)
     	self.helper = FormHelper(self)
     	self.helper.form_show_labels = False
+    	self.fields['competencies_comments'].required = True
 		
 
 class ICTTrainingsForm(forms.ModelForm):
@@ -429,6 +472,7 @@ class ICTTrainingsForm(forms.ModelForm):
     	super(ICTTrainingsForm, self).__init__(*args, **kwargs)
     	self.helper = FormHelper(self)
     	self.helper.form_show_labels = False
+    	self.fields['ict_training_comments'].required = True
 
 
 class StorageForm(forms.ModelForm):
