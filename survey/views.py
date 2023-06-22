@@ -57,11 +57,12 @@ class view_dash(View):
         return render(request, self.template_name, query)
 
     def post(self, request, *args, **kwargs):
-        db = Survey()
-        if request.POST.get('ia'):
-            db.privacy_section = 1
-            db.user = request.user
-            db.save()
+        if not Survey.objects.filter(user=request.user).exists():
+            db = Survey()
+            if request.POST.get('ia'):
+                db.privacy_section = 1
+                db.user = request.user
+                db.save()
         
         if request.POST.get('submitted'):
             user_survey2 = Survey.objects.get(user=request.user)
@@ -222,10 +223,26 @@ class ICTTrainings(LoginRequiredMixin, UpdateView):
         context['sec'] = 7
         context['pk'] = self.kwargs.get('pk')
         context['ict_training_count'] = ICTTrainingPrograms.objects.count() - 1
+        context['one'] = 'Training on fundamental abilities and knowledge that are essential for effectively using a computer and its associated software.'
+        context['two'] = 'The training focuses on equipping individuals with the competencies to engage with digital tools, platforms, and resources in various contexts.'
+        context['three'] = 'Cybersecurity awareness training promotes online safety and empowers individuals to protect themselves and their organizations from cyber threats.'
+        context['four'] = 'Data analysis training equips individuals with the skills to effectively analyze data, derive insights, and make informed decisions.'
+        context['five'] = 'Digital marketing training imparts the skills needed to succeed in promoting products and brands through online channels.'
+        context['six'] = 'Cloud computing training imparts the necessary skills and knowledge to effectively utilize and manage cloud-based technologies and services.'
+        context['seven'] = 'IoT training imparts skills for developing and managing connected devices, harnessing the potential of IoT technologies.'
+        context['eight'] = 'Website design and development training builds skills for creating functional and visually appealing websites.'
+        context['nine'] = 'Digital Productivity Tools training boosts efficiency by equipping individuals with skills to leverage various digital tools effectively.'
+        context['ten'] = 'Software Testing training ensures software quality through effective testing techniques.'
+        context['eleven'] = 'SQA training ensures high-quality software by providing individuals with the necessary skills and knowledge for effective quality assurance practices.' 
+        context['twelve'] = 'SAD training equips individuals with the skills to analyze and design efficient systems for solving complex business problems.'
+        context['thirteen'] = 'I.T. Project Management training equips individuals with the skills to effectively plan, execute, and oversee projects in the field of information technology.'
+        context['fourteen'] = 'Digital Innovation training enhances skills for leveraging emerging technologies and creative strategies in the digital era.'
+        context['fifteen'] = 'Digital Transformation training develops skills for effectively navigating and driving organizational change in the digital era.'
+        context['sixteen'] = 'ICT Policy Formulation and Development training enables effective ICT policy creation and implementation.'
         return context
 
 def export_to_excel(request):
-    surveys = Survey.objects.all()
+    surveys = Survey.objects.filter(submitted = 1)
 
     # Create a new workbook and select the active sheet
     wb = openpyxl.Workbook()
