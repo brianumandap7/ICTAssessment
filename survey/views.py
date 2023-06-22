@@ -227,6 +227,7 @@ class ICTTrainings(LoginRequiredMixin, UpdateView):
         context['two'] = 'The training focuses on equipping individuals with the competencies to engage with digital tools, platforms, and resources in various contexts.'
         context['three'] = 'Cybersecurity awareness training promotes online safety and empowers individuals to protect themselves and their organizations from cyber threats.'
         context['four'] = 'Data analysis training equips individuals with the skills to effectively analyze data, derive insights, and make informed decisions.'
+
         context['five'] = 'Data Management and Reporting training develops skills for handling and analyzing data and generating meaningful reports.'
         context['six'] = 'Cloud computing training imparts the necessary skills and knowledge to effectively utilize and manage cloud-based technologies and services.'
         context['seven'] = 'Data Privacy and Protection ensures the secure and ethical handling of personal and sensitive data.'
@@ -234,6 +235,7 @@ class ICTTrainings(LoginRequiredMixin, UpdateView):
         context['nine'] = 'Digital Productivity Tools training boosts efficiency by equipping individuals with skills to leverage various digital tools effectively.'
         context['ten'] = 'GIS training enables individuals to effectively collect, manage, analyze, and visualize geographic data for decision-making and spatial analysis.'
         context['eleven'] = 'E-Government and Digital Service Delivery training improves government services through technology and citizen engagement.' 
+
         context['twelve'] = 'SAD training equips individuals with the skills to analyze and design efficient systems for solving complex business problems.'
         context['thirteen'] = 'I.T. Project Management training equips individuals with the skills to effectively plan, execute, and oversee projects in the field of information technology.'
         context['fourteen'] = 'Digital Innovation training enhances skills for leveraging emerging technologies and creative strategies in the digital era.'
