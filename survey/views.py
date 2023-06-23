@@ -83,11 +83,11 @@ class simple_upload(View):
     def get(self, request, *args, **kwargs):
         query = {
             'check_user': Survey.objects.filter(user=request.user),
-            'user_status': Survey.objects.all().order_by('-office_division_name'),
-            'scount': Survey.objects.all().count(),
-            'ucount': User.objects.all().count(),
-            'dcount': Survey.objects.filter(submitted = 1).count(),
-            'pcount': Survey.objects.filter(submitted = 0).count(),
+            'user_status': Survey.objects.all().exclude(user__is_staff=True).order_by('-office_division_name'),
+            'scount': Survey.objects.all().exclude(user__is_staff=True).count(),
+            'ucount': User.objects.all().exclude(is_staff=True).count(),
+            'dcount': Survey.objects.filter(submitted = 1).exclude(user__is_staff=True).count(),
+            'pcount': Survey.objects.filter(submitted = 0).exclude(user__is_staff=True).count(),
         }
         return render(request, self.template_name, query)
 
@@ -249,7 +249,7 @@ class ICTTrainings(LoginRequiredMixin, UpdateView):
         return context
 
 def export_to_excel(request):
-    surveys = Survey.objects.filter(submitted = 1)
+    surveys = Survey.objects.filter(submitted = 1).exclude(user__is_staff = True)
 
     # Create a new workbook and select the active sheet
     wb = openpyxl.Workbook()

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Survey, ProfessionalToolsOption, CompetencyScale, ICTTrainingPrograms, CommunicationToolsOption, ProductivityOption, StorageOption, OnlineStorageOption, BackupStorageOption, OnlineOption, OfficeLocation, ConnectionOption
+from .models import Survey, ProfessionalToolsOption, CompetencyScale, ICTTrainingPrograms, CommunicationToolsOption, ProductivityOption, StorageOption, OnlineStorageOption, BackupStorageOption, OnlineOption, OfficeLocation, ConnectionOption, office_division
 from crispy_forms.helper import FormHelper
 from django.core.exceptions import ValidationError
 
@@ -54,6 +54,7 @@ class demographicsform(forms.ModelForm):
 		kwargs['initial'] = initial_data
 		super().__init__(*args, **kwargs)
 		self.fields['office_division_name'].required = True
+		self.fields['office_division_name'].queryset = office_division.objects.all().order_by('office_division_name')
 		self.fields['presidential_appointee'].required = True
 		self.fields['permanent'].required = True
 		self.fields['coterminus'].required = True
