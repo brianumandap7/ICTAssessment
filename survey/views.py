@@ -83,6 +83,11 @@ class simple_upload(View):
     def get(self, request, *args, **kwargs):
         query = {
             'check_user': Survey.objects.filter(user=request.user),
+            'user_status': Survey.objects.all().order_by('-office_division_name'),
+            'scount': Survey.objects.all().count(),
+            'ucount': User.objects.all().count(),
+            'dcount': Survey.objects.filter(submitted = 1).count(),
+            'pcount': Survey.objects.filter(submitted = 0).count(),
         }
         return render(request, self.template_name, query)
 
