@@ -103,7 +103,8 @@
 				<tr>
 					<th>Office / Division</th>
 					<th>Name</th>
-					<th>Data Privacy</th>
+					<th> </th>
+					<th>Privacy</th>
 					<th>Demographics</th>
 					<th>Hardware</th>
 					<th>Software</th>
@@ -119,6 +120,9 @@
 				<tr>
 					<td>{{items.office_division_name}}</td>
 					<td>{{items.user}}</td>
+					<td>
+						<a href="/survey/userinfo/{{items.user}}" class="btn btn-warning"><small>View User</small></a>
+					</td>
 					<td>
 						{% if items.privacy_section == 1 %}
 						<span style="color: green;">&#x2714;</span>

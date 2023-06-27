@@ -1,0 +1,49 @@
+{% extends "basetemp/newbase.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<section>
+	<div class="container-fluid">
+		<table class="table">
+			<thead class="bg-info">
+				<tr>
+					<th>
+						Username
+					</th>
+					<th>
+						Email
+					</th>
+					<th width="30%">
+						Service
+					</th>
+					<th width="30%">
+						Office/Division
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for items in userinfo %}
+				<tr>
+					<td>
+						{{items.username}}
+					</td>
+					<td>
+						{{items.email}}
+					</td>
+					<td>
+						{{items.first_name}}
+					</td>
+					<td>
+						{{items.last_name}}
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<center><a href="/survey/simple_upload/" class="btn btn-primary">Go Back</a></center>
+	</div>
+</section>
+{% endblock content %}

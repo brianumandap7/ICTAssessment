@@ -18,4 +18,5 @@ urlpatterns = [
   path('ict_trainings/<int:pk>', login_required(views.ICTTrainings.as_view()), name='ICTTrainings'),
   path('simple_upload/', staff_member_required(views.simple_upload.as_view()), name='simple_upload'),
   path('export-excel/', views.export_to_excel, name='export_to_excel'),
+  path('userinfo/<str:usr>', staff_member_required(views.userinfo), name='userinfo'),
 ]	
