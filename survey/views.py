@@ -152,6 +152,13 @@ class profile(View):
 
         return render(request, self.template_name, query)
 
+def userinfo(request, usr = ""):
+    query = {
+        'userinfo': User.objects.filter(username=usr),
+    }
+
+    return render(request, 'survey/userinfo.html', query)
+
 class hardware(UpdateView):
     model = Survey
     form_class = hardwareform
