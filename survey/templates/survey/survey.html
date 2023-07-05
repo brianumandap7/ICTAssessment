@@ -13,6 +13,18 @@
 .pending {
 	color: red;
 }
+.rimg {
+	width: 400px;
+}
+
+.red-exclamation {
+      color: red;
+      font-size: 24px;
+    }
+
+    .cntxt {
+    	color: black !important;
+    }
 </style>	
 
 <!-- start of forced modal -->
@@ -72,6 +84,38 @@
               </div>
           </div>
       </div>
+
+      {% else %}
+      <!-- start reminder -->
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+          <script>
+          $(document).ready(function(){
+            $("#remin").modal('show');
+            $('#remin').on('hide.bs.modal', function (e) {
+            
+            });
+          });
+        </script>
+
+        <div id="remin" class="modal fade">
+          <div class="modal-dialog">
+              <div class="modal-content">
+
+                  <div class="modal-body">
+                  	<span class="red-exclamation">REMINDER &#10071; &#10071;<small class="cntxt"> For those offices that have not yet completed the ICT Needs Assessment Survey, kindly submit the answers on or before July 12, 2023</small> &#10071; &#10071;</span><br><br>
+                  	<center>
+                  		<img src="{% static 'basetemp/reminder.gif' %}" class="img-responsive rimg">
+                  	</center>
+                  </div>
+
+                  <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			      </div>
+              </div>
+          </div>
+      </div>
+      <!-- end reminder -->
 
 		{% endif %}
 		
