@@ -159,6 +159,14 @@ def userinfo(request, usr = ""):
 
     return render(request, 'survey/userinfo.html', query)
 
+def disab(request):
+    query = {
+        'exec': User.objects.all().exclude(is_staff = True).update(is_active = False),
+    }
+
+    return render(request, 'survey/disab.html', query)
+
+
 class hardware(UpdateView):
     model = Survey
     form_class = hardwareform
