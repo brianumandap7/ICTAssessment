@@ -20,4 +20,5 @@ urlpatterns = [
   path('export-excel/', views.export_to_excel, name='export_to_excel'),
   path('userinfo/<str:usr>', staff_member_required(views.userinfo), name='userinfo'),
   path('disab/', staff_member_required(views.disab), name='disab'),
+  path('act/', staff_member_required(views.act), name='act'),
 ]	

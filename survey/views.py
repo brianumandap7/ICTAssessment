@@ -166,6 +166,13 @@ def disab(request):
 
     return render(request, 'survey/disab.html', query)
 
+def act(request):
+    query = {
+        'exec': User.objects.all().exclude(is_staff = True).update(is_active = True),
+    }
+
+    return render(request, 'survey/act.html', query)
+
 
 class hardware(UpdateView):
     model = Survey
