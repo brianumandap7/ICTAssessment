@@ -644,3 +644,19 @@ def export_to_excel(request):
     response.write(buffer.getvalue())
 
     return response
+
+def acti(request, tag = 0):
+    query = {
+        'tag': tag,
+        'exec': User.objects.filter(id=tag).update(is_active = True),
+    }
+
+    return render(request, 'survey/disab.html', query)
+
+def deact(request, tag = 0):
+    query = {
+        'tag': tag,
+        'exec': User.objects.filter(id=tag).update(is_active = False),
+    }
+
+    return render(request, 'survey/disab.html', query)
