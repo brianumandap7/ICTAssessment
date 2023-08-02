@@ -23,4 +23,7 @@ urlpatterns = [
 
   path('act/', staff_member_required(views.act), name='act'),
 
+  path('acti/<int:tag>', staff_member_required(views.acti), name='acti'),
+
+  path('deact/<int:tag>', staff_member_required(views.deact), name='deact'),
 ]	

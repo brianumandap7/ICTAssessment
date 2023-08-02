@@ -60,6 +60,11 @@
 .det {
 	width: 500px;
 }
+
+.ai {
+	padding-left: 10px;
+	padding-right: 10px;
+}
 </style>
 <section>
 	<div class="container-fluid">
@@ -159,13 +164,14 @@
 					<th>Name</th>
 					<th> </th>
 					<th>Privacy</th>
-					<th>Demographics</th>
+					<th>Dmg</th>
 					<th>Hardware</th>
 					<th>Software</th>
 					<th>Storage</th>
-					<th>Competencies</th>
+					<th>Compe</th>
 					<th>Trainings</th>
 					<th>Submitted</th>
+					<th>Actions</th>
 				</tr>
 			</thead>
 
@@ -173,9 +179,16 @@
 				{% for items in user_status %}
 				<tr>
 					<td>{{items.office_division_name}}</td>
-					<td>{{items.user}}</td>
+					<td>{{items.user}}
+						{% if items.user.is_active == True %}
+						<span class="bg-success ai rounded">Active</span>
+
+						{% elif items.user.is_active == False %}
+						<span class="bg-danger ai rounded">Inactive</span>
+						{% endif %}
+					</td>
 					<td>
-						<a href="/survey/userinfo/{{items.user}}" class="btn btn-warning" target="_blank"><small>View User</small></a>
+						<a href="/survey/userinfo/{{items.user}}" class="btn btn-warning btn-sm" target="_blank"><small>View User</small></a>
 					</td>
 					<td>
 						{% if items.privacy_section == 1 %}
@@ -232,6 +245,15 @@
 						{% else %}
 						
 						<small class="pnotif bg-danger rounded">Pending</small>
+						{% endif %}
+					</td>
+
+					<td>
+						{% if items.user.is_active == True %}
+						
+						<a href="/survey/deact/{{items.user.id}}" class="btn btn-sm btn-secondary">Deactivate</a>
+						{% elif items.user.is_active == False %}
+						<a href="/survey/acti/{{items.user.id}}" class="btn btn-sm btn-primary">Activate</a>
 						{% endif %}
 					</td>
 				</tr>
