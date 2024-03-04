@@ -44,6 +44,9 @@ INSTALLED_APPS = [
 
     'crispy_forms',
 
+    'djangosecure',
+    'csp',
+
     'basetemp.apps.BasetempConfig',
     'login.apps.LoginConfig',
     'survey.apps.SurveyConfig',
@@ -51,6 +54,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'csp.middleware.CSPMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -58,6 +62,22 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_SSL_REDIRECT = True
+SECURE_REFERRER_POLICY = "same-origin"
+PERMISSIONS_POLICY = {
+    'accelerometer': [],
+    'camera': [],
+    'geolocation': [],
+    'gyroscope': [],
+    'magnetometer': [],
+    'microphone': [],
+    'payment': [],
+}
 
 ROOT_URLCONF = 'ictsurvey.urls'
 
